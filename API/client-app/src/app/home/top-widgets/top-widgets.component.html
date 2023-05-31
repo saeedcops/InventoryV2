@@ -1,0 +1,39 @@
+<div class="widget-container" *ngIf="(dashboard$ | async) as dashboard">
+  <div class="widget green">
+    <div class="icon">
+      <mat-icon>home</mat-icon>
+      <!--<fa-icon [icon]="faLocation"></fa-icon>-->
+    </div>
+    <div class="value">
+      <div class="top">{{dashboard?.store}}</div>
+      <div class="bottom">Stored</div>
+    </div>
+  </div>
+  <div class="widget yellow">
+    <div class="icon">
+      <mat-icon>supervisor_account</mat-icon>
+    </div>
+    <div class="value">
+      <div class="top">{{dashboard?.browwed}}</div>
+      <div class="bottom">Borrowed</div>
+    </div>
+  </div>
+  <div class="widget red">
+    <div class="icon">
+      <mat-icon>local_mall</mat-icon>
+    </div>
+    <div class="value">
+      <div class="top">{{dashboard?.sold}}</div>
+      <div class="bottom">Products Sold</div>
+    </div>
+  </div>
+  <div class="widget blue">
+    <div class="icon">
+      <mat-icon>description</mat-icon>
+    </div>
+    <div class="value">
+      <div class="top">{{dashboard?.total}}</div>
+      <div class="bottom">Total Items</div>
+    </div>
+  </div>
+</div>

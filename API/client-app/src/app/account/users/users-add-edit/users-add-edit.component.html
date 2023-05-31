@@ -1,0 +1,37 @@
+<div mat-dialog-title>
+  <h1  *ngIf="data?.status != null">{{data.status ? 'Grant': 'Revoke'}}</h1>
+  <h1  *ngIf="data?.status == null">Create User</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>username</mat-label>
+        <input matInput type="text" placeholder="Ex. username" formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"  *ngIf="data?.status == null">
+        <mat-label>Password</mat-label>
+        <input matInput type="text" placeholder="Ex. Password" formControlName="password">
+      </mat-form-field>
+      <div *ngIf="data?.status != null">
+
+
+        <mat-form-field appearance="outline" *ngIf="( role$ | async) as roles">
+          <mat-label>Roles</mat-label>
+          <mat-select formControlName="role">
+            <mat-option *ngFor="let val of roles" [value]="val">
+              {{val}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit"  *ngIf="data?.status != null">{{data.status ? 'Grant': 'Revoke'}}</button>
+    <button mat-raised-button color="primary" type="submit"  *ngIf="data?.status == null">Create</button>
+  </div>
+</form>

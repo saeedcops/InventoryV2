@@ -1,0 +1,90 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button
+          *ngIf="sidenav.mode === 'over'"
+          (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  <span>DaltexIT Inventory</span>
+  <span class="example-spacer"></span>
+  <p>Hello <strong>Saeed</strong></p>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img class="avatar mat-elevation-z8"
+         src="../assets/daltex.jpg" routerLink="/" routerLinkActive="active" />
+
+    <h4 class="name">DaltexIT Inventory</h4>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/" routerLinkActive="active">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/items" routerLinkActive="active">
+      <mat-icon>scanner</mat-icon>
+      <span>Items</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
+      <mat-icon>devices_other</mat-icon>
+      <span>Parts</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
+      <mat-icon>devices_other</mat-icon>
+      <span>Customers</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
+      <mat-icon>devices_other</mat-icon>
+      <span>Brands</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
+      <mat-icon>devices_other</mat-icon>
+      <span>Warehouses</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/orders" routerLinkActive="active">
+      <mat-icon>add_shopping_cart</mat-icon>
+      <span>Orders</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/supply-orders" routerLinkActive="active">
+      <mat-icon>local_mall</mat-icon>
+      <span>Supply Order</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/reports" routerLinkActive="active">
+      <mat-icon>description</mat-icon>
+      <span>Reports</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/users" routerLinkActive="active">
+      <mat-icon>supervisor_account</mat-icon>
+      <span>Users</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/account/login" routerLinkActive="active">
+      <mat-icon>undo</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content mat-elevation-z8">
+    <app-section-header></app-section-header>
+    <div class="content mat-elevation-z8">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
