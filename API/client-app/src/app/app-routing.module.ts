@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'engineers', component: EngineersComponent, data: { breadcrumb: 'Engineers' } },
   { path: 'item-types', component: ItemTypesComponent, data: { breadcrumb: 'Item-Types' } },
   { path: 'orders', component: OrdersComponent, data: { breadcrumb: 'Orders' } },
-  { path: 'parts', component: PartsComponent, data: { breadcrumb: 'Parts' } },
+ // { path: 'parts', component: PartsComponent, data: { breadcrumb: 'Parts' } },
   { path: 'reports', component: ReportsComponent, data: { breadcrumb: 'Reports' } },
   { path: 'users', component: UsersComponent, data: { breadcrumb: 'Users' } },
   { path: 'supply-orders', component: SupplyOrdersComponent, data: { breadcrumb: 'Supply-orders' } },

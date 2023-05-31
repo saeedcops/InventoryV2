@@ -2,21 +2,21 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { WarehouseService } from '../warehouse.service';
+import { BrandsService } from '../brands.service';
 
 
 @Component({
-  selector: 'app-warehouse-add-edit',
-  templateUrl: './warehouse-add-edit.component.html',
-  styleUrls: ['./warehouse-add-edit.component.scss']
+  selector: 'app-brands-add-edit',
+  templateUrl: './brands-add-edit.component.html',
+  styleUrls: ['./brands-add-edit.component.scss']
 })
-export class WarehouseAddEditComponent implements OnInit {
+export class BrandsAddEditComponent implements OnInit {
   empForm: FormGroup;
 
   constructor(
     private _fb: FormBuilder,
-    private _itemService: WarehouseService,
-    private _dialogRef: MatDialogRef<WarehouseAddEditComponent>,
+    private _brandsService: BrandsService,
+    private _dialogRef: MatDialogRef<BrandsAddEditComponent>,
     private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
@@ -35,11 +35,11 @@ export class WarehouseAddEditComponent implements OnInit {
   onFormSubmit() {
     if (this.empForm.valid) {
       if (this.data) {
-        this._itemService
-          .updatewarehouse(this.empForm.value)
+        this._brandsService
+          .updateBrands(this.empForm.value)
           .subscribe({
             next: (val: any) => {
-              this.toastr.success("Warehouse detail updated!");
+              this.toastr.success('Brand detail updated!');
               this._dialogRef.close(true);
               console.error(val);
             },
@@ -48,9 +48,9 @@ export class WarehouseAddEditComponent implements OnInit {
             },
           });
       } else {
-        this._itemService.addwarehouse(this.empForm.value).subscribe({
+        this._brandsService.addBrands(this.empForm.value).subscribe({
           next: (val: any) => {
-            this.toastr.success("Warehouse  added successfully!");
+            this.toastr.success('Brand Added successflly!');
             this._dialogRef.close(true);
             console.error(val);
           },

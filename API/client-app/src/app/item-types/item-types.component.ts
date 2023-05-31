@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { ItemTypesAddEditComponent } from './item-types-add-edit/item-types-add-edit.component';
 import { ItemTypesService } from './item-types.service';
 
@@ -13,11 +14,9 @@ import { ItemTypesService } from './item-types.service';
 })
 export class ItemTypesComponent implements OnInit {
 
-  constructor(private _matDialog: MatDialog, private _itemService: ItemTypesService) { }
+  constructor(private _matDialog: MatDialog,private toaster: ToastrService, private _itemService: ItemTypesService) { }
 
-  loadItems() {
-    this._itemService.getItems();
-  }
+
   openDialog() {
     this._matDialog.open(ItemTypesAddEditComponent);
   }
@@ -74,14 +73,21 @@ export class ItemTypesComponent implements OnInit {
     }
   }
 
-  deleteEmployee(id: number) {
-    //this._empService.deleteEmployee(id).subscribe({
-    //  next: (res) => {
-    //    this._coreService.openSnackBar('Employee deleted!', 'done');
-    //    this.getEmployeeList();
-    //  },
-    //  error: console.log,
-    //});
+  deleteItemType(id: number) {
+    let data = { 'id': id };
+    this._itemService.deleteItems(data).subscribe(
+      res => {
+        this.toaster.success('ItemType deleted!', 'done');
+        this.getItemsList();
+        console.log(res);
+
+      },
+      error => {
+        this.toaster.error("Could't delete the ItemType becuase it's linked to Item!", 'Error');
+
+        console.log(error);
+      }
+    );
   }
 
   openEditForm(data: any) {

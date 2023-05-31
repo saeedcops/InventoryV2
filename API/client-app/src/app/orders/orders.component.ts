@@ -32,6 +32,8 @@ export class OrdersComponent implements OnInit {
     'id',
     'orderType',
     'orderStatus',
+    'created',
+    'createdBy',
     'customer',
     'engineer',
     'action'

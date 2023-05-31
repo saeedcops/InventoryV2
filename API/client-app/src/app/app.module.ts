@@ -21,6 +21,9 @@ import { WarehouseAddEditComponent } from './warehouse/warehouse-add-edit/wareho
 import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { OrdersAddEditComponent } from './orders/orders-add-edit/orders-add-edit.component';
+import { BrandsAddEditComponent } from './brands/brands-add-edit/brands-add-edit.component';
+import { CustomersAddEditComponent } from './customers/customers-add-edit/customers-add-edit.component';
+import { EngineersAddEditComponent } from './engineers/engineers-add-edit/engineers-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,11 @@ import { OrdersAddEditComponent } from './orders/orders-add-edit/orders-add-edit
     ItemTypesAddEditComponent,
     ItemTypesComponent,
     CustomersComponent,
+    CustomersAddEditComponent,
     BrandsComponent,
+    BrandsAddEditComponent,
     EngineersComponent,
+    EngineersAddEditComponent,
     OrdersComponent,
     WarehouseComponent,
     WarehouseAddEditComponent,

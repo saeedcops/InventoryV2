@@ -28,7 +28,7 @@ export class ItemAddEditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.empForm = this._fb.group({
-
+      id:'',
       partNumber:[null,Validators.required],
       oracleCode:'',
       serialNumber: [null, Validators.required],

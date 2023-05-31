@@ -28,4 +28,10 @@ export class ItemTypesService {
 
     return this.http.post(this.baseUrl + 'ItemTypes/Update', data);
   }
+
+  deleteItems(data: any) {
+
+
+    return this.http.post(this.baseUrl + 'ItemTypes/Delete', data);
+  }
 }

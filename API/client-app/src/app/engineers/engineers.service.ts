@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { IEngineer } from '../shared/models/engineer';
 import { IItemPagination } from '../shared/models/item';
 import { IUser } from '../shared/models/user';
 
@@ -16,20 +17,26 @@ export class EngineersService {
   constructor(private http: HttpClient) { }
 
 
-  getengineers() {
+  getEngineers() {
 
-    return this.http.get(this.baseUrl + 'engineers');
+    return this.http.get<IEngineer[]>(this.baseUrl + 'engineers');
   }
 
-  addengineers(data: any) {
+  addEngineers(data: any) {
     
 
     return this.http.post(this.baseUrl + 'engineers',data);
   }
 
-  updateengineers(data: any) {
+  updatEengineers(data: any) {
 
 
     return this.http.post(this.baseUrl + 'engineers/update', data);
+  }
+
+  deleteEngineers(data: any) {
+
+
+    return this.http.post(this.baseUrl + 'engineers/delete', data);
   }
 }

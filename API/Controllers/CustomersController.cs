@@ -17,14 +17,22 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> Create([FromForm] CreateCustomerCommand command)
+        public async Task<ActionResult<Customer>> Create([FromBody] CreateCustomerCommand command)
         {
           
             return await Mediator.Send(command);
         }
 
         [HttpPost("Update")]
-        public async Task<ActionResult<Customer>> Update([FromForm] UpdateCustomersCommand command)
+        public async Task<ActionResult<Customer>> Update([FromBody] UpdateCustomersCommand command)
+        {
+
+            return await Mediator.Send(command);
+        }
+
+
+        [HttpPost("Delete")]
+        public async Task<ActionResult<bool>> Delete([FromBody] DeleteCustomerCommand command)
         {
 
             return await Mediator.Send(command);

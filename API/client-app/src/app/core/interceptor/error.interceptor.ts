@@ -23,30 +23,30 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (error.status === 400) {
             if (error.error.errors) {
               // console.log(error);
-              this.toastr.error(error.error.errors.Detail[0], error.error.statusCode);
+              this.toastr.error(error.error.errors.Detail[0], error.status);
 
               //throw error.error
             } else {
              // console.log(error);
-              this.toastr.error(error.errors.detail, error.error.statusCode);
+              this.toastr.error(error.errors.detail, error.status);
 
             }
           } 
 
           if (error.status === 401) {
-            this.toastr.error(error.error.detail, error.error.statusCode);
+            this.toastr.error(error.error.detail, error.status);
             console.log(error.error.massage);
 
 
           }
 
           if (error.status === 404) {
-            this.toastr.error(error.error.detail, error.error.statusCode);
+            this.toastr.error(error.error.detail, error.status);
            // this.router.navigateByUrl('/not-found');
           }
 
           if (error.status === 500) {
-            this.toastr.error(error.error, error.status);
+            //this.toastr.error(error.error, error.status);
 
             //const navigation: NavigationExtras = { state: { error: error.error } };
            // this.router.navigateByUrl('/server-error', navigation);

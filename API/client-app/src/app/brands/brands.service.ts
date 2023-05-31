@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { IBrand } from '../shared/models/brand';
 import { IItemPagination } from '../shared/models/item';
 import { IUser } from '../shared/models/user';
 
@@ -18,7 +19,7 @@ export class BrandsService {
 
   getBrands() {
 
-    return this.http.get(this.baseUrl + 'brands');
+    return this.http.get<IBrand[]>(this.baseUrl + 'brands');
   }
 
   addBrands(data: any) {
@@ -31,5 +32,11 @@ export class BrandsService {
 
 
     return this.http.post(this.baseUrl + 'brands/update', data);
+  }
+
+  deleteBrands(data: any) {
+
+
+    return this.http.post(this.baseUrl + 'brands/delete', data);
   }
 }

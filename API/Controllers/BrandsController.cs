@@ -19,14 +19,21 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Brand>> Create([FromForm] CreateBrandCommand command)
+        public async Task<ActionResult<Brand>> Create([FromBody] CreateBrandCommand command)
         {
           
             return await Mediator.Send(command);
         }
 
         [HttpPost("Update")]
-        public async Task<ActionResult<Brand>> Update([FromForm] UpdateBrandCommand command)
+        public async Task<ActionResult<Brand>> Update([FromBody] UpdateBrandCommand command)
+        {
+
+            return await Mediator.Send(command);
+        }
+
+        [HttpPost("Delete")]
+        public async Task<ActionResult<bool>> Delete([FromBody] DeleteBrandCommand command)
         {
 
             return await Mediator.Send(command);

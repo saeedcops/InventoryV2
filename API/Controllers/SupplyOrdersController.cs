@@ -20,14 +20,14 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<SupplyOrder>> Create([FromForm] CreateSupplyOrderCommand command)
+        public async Task<ActionResult<SupplyOrder>> Create([FromBody] CreateSupplyOrderCommand command)
         {
           
             return await Mediator.Send(command);
         }
 
         [HttpPost("Update")]
-        public async Task<ActionResult<SupplyOrder>> Update([FromForm] UpdateSupplyOrdersCommand command)
+        public async Task<ActionResult<SupplyOrder>> Update([FromBody] UpdateSupplyOrdersCommand command)
         {
 
             return await Mediator.Send(command);

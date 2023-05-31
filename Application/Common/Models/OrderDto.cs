@@ -17,7 +17,9 @@ namespace Application.Common.Models
         public string OrderStatus { get; set; } 
         public string Customer { get; set; }
         public string Engineer { get; set; }
-       // public byte[] Document { get; set; }
+        public string Created { get; set; }
+        public string CreatedBy { get; set; }
+        // public byte[] Document { get; set; }
         //public List<ItemDto> OrderItems { get; set; }
     }
 }

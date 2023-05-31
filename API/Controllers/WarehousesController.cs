@@ -31,5 +31,12 @@ namespace API.Controllers
 
             return await Mediator.Send(command);
         }
+
+        [HttpPost("Delete")]
+        public async Task<ActionResult<bool>> Delete([FromBody] DeleteWarehouseCommand command)
+        {
+
+            return await Mediator.Send(command);
+        }
     }
 }

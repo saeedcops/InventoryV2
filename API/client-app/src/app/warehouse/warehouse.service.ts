@@ -32,4 +32,10 @@ export class WarehouseService {
 
     return this.http.post(this.baseUrl + 'warehouses/update', data);
   }
+
+  deletewarehouse(data: any) {
+
+
+    return this.http.post(this.baseUrl + 'warehouses/delete', data);
+  }
 }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { WarehouseAddEditComponent } from './warehouse-add-edit/warehouse-add-edit.component';
 import { WarehouseService } from './warehouse.service';
 
@@ -13,11 +14,9 @@ import { WarehouseService } from './warehouse.service';
 })
 export class WarehouseComponent implements OnInit {
 
-  constructor(private _matDialog: MatDialog, private _itemService: WarehouseService) { }
+  constructor(private _matDialog: MatDialog, private toastr: ToastrService, private _warehouseService: WarehouseService) { }
 
-  loadItems() {
-    this._itemService.getwarehouse();
-  }
+
   openDialog() {
     this._matDialog.open(WarehouseAddEditComponent);
   }
@@ -37,7 +36,7 @@ export class WarehouseComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getEmployeeList();
+    this.getWarehouseList();
   }
 
   openAddEditItemForm() {
@@ -46,14 +45,14 @@ export class WarehouseComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
-          this.getEmployeeList();
+          this.getWarehouseList();
         }
       },
     });
   }
 
-  getEmployeeList() {
-    this._itemService.getwarehouse().subscribe({
+  getWarehouseList() {
+    this._warehouseService.getwarehouse().subscribe({
       next: (res: any) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
@@ -73,14 +72,21 @@ export class WarehouseComponent implements OnInit {
     }
   }
 
-  deleteEmployee(id: number) {
-    //this._empService.deleteEmployee(id).subscribe({
-    //  next: (res) => {
-    //    this._coreService.openSnackBar('Employee deleted!', 'done');
-    //    this.getEmployeeList();
-    //  },
-    //  error: console.log,
-    //});
+  deleteWarehouse(id: number) {
+    let data = { 'id': id };
+    this._warehouseService.deletewarehouse(data).subscribe(
+      res => {
+        this.toastr.success('Warehouse deleted!', 'done');
+        this.getWarehouseList();
+        console.log(res);
+
+      },
+      error => {
+        this.toastr.error("Could't delete the Warehouse becuase it's linked to Item!", 'Error');
+
+        console.log(error);
+        }
+    );
   }
 
   openEditForm(data: any) {
@@ -91,7 +97,7 @@ export class WarehouseComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
-          this.getEmployeeList();
+          this.getWarehouseList();
         }
       },
     });

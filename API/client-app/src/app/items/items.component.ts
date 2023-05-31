@@ -25,6 +25,7 @@ export class ItemsComponent implements OnInit{
 
 
   displayedColumns: string[] = [
+    'id',
     'brand',
     'description',
     'itemStatus',

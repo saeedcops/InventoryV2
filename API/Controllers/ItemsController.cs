@@ -45,7 +45,7 @@ namespace API.Controllers
         }
 
         [HttpPost("Update")]
-        public async Task<ActionResult<Item>> Update([FromForm] UpdateItemsCommand command)
+        public async Task<ActionResult<Item>> Update([FromBody] UpdateItemsCommand command)
         {
 
             return await Mediator.Send(command);

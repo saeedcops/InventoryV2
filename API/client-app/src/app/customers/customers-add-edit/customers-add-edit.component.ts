@@ -1,29 +1,31 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { WarehouseService } from '../warehouse.service';
+import { CustomersService } from '../customers.service';
 
 
 @Component({
-  selector: 'app-warehouse-add-edit',
-  templateUrl: './warehouse-add-edit.component.html',
-  styleUrls: ['./warehouse-add-edit.component.scss']
+  selector: 'app-customers-add-edit',
+  templateUrl: './customers-add-edit.component.html',
+  styleUrls: ['./customers-add-edit.component.scss']
 })
-export class WarehouseAddEditComponent implements OnInit {
+export class CustomersAddEditComponent implements OnInit {
   empForm: FormGroup;
 
   constructor(
     private _fb: FormBuilder,
-    private _itemService: WarehouseService,
-    private _dialogRef: MatDialogRef<WarehouseAddEditComponent>,
+    private _customerService: CustomersService,
+    private _dialogRef: MatDialogRef<CustomersAddEditComponent>,
     private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.empForm = this._fb.group({
       id:'',
-      name:'',
-      description:'',
+      name:[null,Validators.required],
+      phone: [null, Validators.required],
+      email: [null, Validators.required],
+      address:'',
     });
 
   }
@@ -35,11 +37,12 @@ export class WarehouseAddEditComponent implements OnInit {
   onFormSubmit() {
     if (this.empForm.valid) {
       if (this.data) {
-        this._itemService
-          .updatewarehouse(this.empForm.value)
+        this._customerService
+          .updatecustomers(this.empForm.value)
           .subscribe({
             next: (val: any) => {
-              this.toastr.success("Warehouse detail updated!");
+              this.toastr.success("Customer detail updated!");
+              //this._coreService.openSnackBar('Employee detail updated!');
               this._dialogRef.close(true);
               console.error(val);
             },
@@ -48,9 +51,11 @@ export class WarehouseAddEditComponent implements OnInit {
             },
           });
       } else {
-        this._itemService.addwarehouse(this.empForm.value).subscribe({
+        this._customerService.addcustomers(this.empForm.value).subscribe({
           next: (val: any) => {
-            this.toastr.success("Warehouse  added successfully!");
+            this.toastr.success("Customer added successfully");
+
+            //this._coreService.openSnackBar('Employee added successfully');
             this._dialogRef.close(true);
             console.error(val);
           },

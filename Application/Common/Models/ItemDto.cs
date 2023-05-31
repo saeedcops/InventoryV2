@@ -14,6 +14,10 @@ namespace Application.Common.Models
     {
         [Required]
         public string PartNumber { get; set; }
+        public int Id { get; set; }
+
+        public string Created { get; set; }
+        public string CreatedBy { get; set; }
         public string SerialNumber { get; set; }
         public string OracleCode { get; set; }
         public string ItemStatus { get; set; }
