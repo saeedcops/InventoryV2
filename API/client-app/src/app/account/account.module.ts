@@ -11,7 +11,7 @@ import { UsersAddEditComponent } from './users/users-add-edit/users-add-edit.com
 
 @NgModule({
   declarations: [
-    LoginComponent,
+   // LoginComponent,
     RegisterComponent,
     UsersComponent,
     UsersAddEditComponent

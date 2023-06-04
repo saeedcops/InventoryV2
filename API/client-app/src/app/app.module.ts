@@ -34,6 +34,7 @@ import { OrderDetailsComponent } from './orders/order-detail/order-details.compo
 import { ItemDetailsComponent } from './items/item-detail/item-details.component';
 import { PartDetailsComponent } from './parts/part-detail/part-details.component';
 import { AccountModule } from './account/account.module';
+import { LoginComponent } from './account/login/login.component';
 
 @NgModule({
   declarations: [
@@ -60,11 +61,11 @@ import { AccountModule } from './account/account.module';
     PartDetailsComponent,
     PurchasePartAddEditComponent,
     PurchasePartComponent,
-    
+    LoginComponent
   ],
   imports: [
     //BrowserModule,
-    AccountModule,
+   // AccountModule,
     CoreModule,
     HomeModule,
     SharedModule,

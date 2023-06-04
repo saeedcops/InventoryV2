@@ -3,6 +3,7 @@
   <h3>Loading...</h3>
 </ngx-spinner>
 
+
 <mat-toolbar class="mat-elevation-z8">
   <button mat-icon-button
           *ngIf="sidenav.mode === 'over'"
@@ -16,7 +17,10 @@
 
 </mat-toolbar>
 
-<mat-sidenav-container>
+<!--<app-login *ngIf="(user$ | async) == null"></app-login>-->
+
+
+<mat-sidenav-container >
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <img class="avatar mat-elevation-z8"
          src="../assets/daltex.jpg" routerLink="/" routerLinkActive="active" />
@@ -33,9 +37,9 @@
       <span>Items</span>
     </button>
     <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
-    <mat-icon>devices_other</mat-icon>
-    <span>Parts</span>
-  </button>
+      <mat-icon>devices_other</mat-icon>
+      <span>Parts</span>
+    </button>
 
     <button mat-button class="menu-button" routerLink="/customers" routerLinkActive="active">
       <mat-icon>devices_other</mat-icon>
@@ -97,13 +101,13 @@
 
   <mat-sidenav-content class=" mat-elevation-z8">
 
+    <app-section-header></app-section-header>
     <div class="content">
-        <app-section-header></app-section-header>
-          <div>
-            <router-outlet></router-outlet>
-          </div>
-        </div>
-</mat-sidenav-content>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
 
 

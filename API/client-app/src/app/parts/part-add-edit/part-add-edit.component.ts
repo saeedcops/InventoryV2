@@ -49,7 +49,7 @@ export class PartAddEditComponent implements OnInit {
           oracleCode: res.oracleCode,
           model: res.name,
           description: res.description,
-          warehouseId: 2,
+          warehouseId: 3,
           image: res.image,
         });
         this.dataSet = true;
