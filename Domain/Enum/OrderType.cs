@@ -9,6 +9,8 @@ namespace Domain.Enum
     public enum OrderType
     {
         Purchase,
-        Borrow
+        Borrow,
+        MaintenanceContract,
+        Workshop
     }
 }

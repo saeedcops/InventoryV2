@@ -12,11 +12,55 @@ import { HomeService } from '../home.service';
 
 export class TopWidgetsComponent implements OnInit {
 
-  dashboard$!: Observable<IDashboardItem>;
+  parts =0;
+  items = 0;
+
+  soldItems = 0;
+
+  borrowItems = 0;
 
   constructor(private _homeService: HomeService) { }
     ngOnInit(): void {
-      this._homeService.getItemsdashboard();
-      this.dashboard$ = this._homeService.dashboard$;
+
+      this._homeService.getItems().subscribe(res => {
+        res.forEach(c => this.items += c.qty);
+        console.log(this.items);
+
+      }, err => { console.log(err); });
+
+      this._homeService.getParts().subscribe(res => {
+        res.forEach(c => this.parts += c.qty);
+        console.log(this.parts);
+
+      }, err => { console.log(err); });
+
+
+
+      this._homeService.getSoldItems().subscribe(res => {
+        res.forEach(c => this.soldItems += c.qty);
+        console.log(this.items);
+
+      }, err => { console.log(err); });
+
+      this._homeService.getSoldParts().subscribe(res => {
+        res.forEach(c => this.soldItems += c.qty);
+        console.log(this.parts);
+
+      }, err => { console.log(err); });
+
+      this._homeService.getBorrowItems().subscribe(res => {
+        this.borrowItems += res;
+        console.log(this.items);
+
+      }, err => { console.log(err); });
+
+      this._homeService.getBorrowParts().subscribe(res => {
+        this.borrowItems += res;
+        console.log(this.parts);
+
+      }, err => { console.log(err); });
     }
+
+
+
 }

@@ -5,7 +5,7 @@
   <form [formGroup]="reactform" (ngSubmit)="ProceedSave()">
     <div mat-dialog-content class="content">
       <div class="row">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" >
           <mat-label>Customer</mat-label>
           <mat-select formControlName="customerId">
             <mat-option *ngFor="let val of customers" [value]="val.id">
@@ -13,6 +13,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+
 
         <mat-form-field appearance="outline">
           <mat-label>Engineer</mat-label>
@@ -29,41 +30,77 @@
         <mat-radio-group formControlName="orderType">
           <mat-radio-button value="0">Buy</mat-radio-button>
           <mat-radio-button value="1">Borrow</mat-radio-button>
+          <mat-radio-button value="2">MaintenanceContract</mat-radio-button>
+          <mat-radio-button value="3">Workshop</mat-radio-button>
           <mat-error *ngIf="reactform.get('orderType')?.invalid">Order Type Required </mat-error>
         </mat-radio-group>
 
 
       </div>
 
-      <div>
-        <a mat-raised-button color="primary" (click)="Addnewrow()">Add New (+)</a>
+
+
+      <div class="row">
+        <table formArrayName="items">
+          <div>
+            <a mat-raised-button color="primary" (click)="Addnewrow('items')">Add Item (+)</a>
+          </div>
+          <tbody>
+            <tr *ngFor="let item of addItems.controls;let i=index" [formGroupName]="i">
+              <td>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Part Number</mat-label>
+                  <mat-select formControlName="partNumber">
+                    <mat-option *ngFor="let val of orderItems" [value]="val.partNumber">
+                      {{val.partNumber }} -- {{ val.qty}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Qty</mat-label>
+                  <input matInput type="number" placeholder="Ex. Qty" formControlName="count">
+                </mat-form-field>
+              </td>
+
+              <td><button mat-button color="accent" (click)="Removeitem(i,'items')">(-)</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table formArrayName="parts">
+          <div>
+            <a mat-raised-button color="primary" (click)="Addnewrow('parts')">Add Parts (+)</a>
+          </div>
+          <tbody>
+            <tr *ngFor="let item of addParts.controls;let i=index" [formGroupName]="i">
+              <td>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Part Number</mat-label>
+                  <mat-select formControlName="partNumber">
+                    <mat-option *ngFor="let val of orderParts" [value]="val.partNumber">
+                      {{val.partNumber }} -- {{val.qty}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Qty</mat-label>
+                  <input matInput type="number" placeholder="Ex. Qty" formControlName="count">
+                </mat-form-field>
+              </td>
+
+              <td><button mat-button color="accent" (click)="Removeitem(i,'parts')">(-)</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <table formArrayName="orderItemsPartNumber">
-        <tbody>
-          <tr *ngFor="let item of addPartNumber.controls;let i=index" [formGroupName]="i">
-            <td>
-              <mat-form-field appearance="outline">
-                <mat-label>Part Number</mat-label>
-                <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber">
-              </mat-form-field>
-            </td>
-            <td>
-              <mat-form-field appearance="outline">
-                <mat-label>Count</mat-label>
-                <input matInput type="number" placeholder="Ex. Count" formControlName="count">
-              </mat-form-field>
-            </td>
-
-            <td><button mat-button color="accent" (click)="Removeitem(i)">(-)</button></td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
-      <div class="example-button-row" style="margin-top: 5px">
-        <button mat-raised-button color="primary">Submit</button>
+      <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
       </div>
     </div>
   </form>

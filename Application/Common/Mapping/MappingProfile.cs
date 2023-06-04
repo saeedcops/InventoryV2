@@ -17,7 +17,7 @@ namespace Application.Common.Mapping
             ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
 
             CreateMap<Item, ItemDto>()
-                .ForMember(p => p.ItemType, resp => resp.MapFrom(r => r.ItemType.Name))
+                //.ForMember(p => p.ItemType, resp => resp.MapFrom(r => r.ItemType.Name))
                 .ForMember(p => p.Engineer, resp => resp.MapFrom(r => r.Engineer.Name))
                 .ForMember(p => p.Warehouse, resp => resp.MapFrom(r => r.Warehouse.Name))
                 .ForMember(p => p.Brand, resp => resp.MapFrom(r => r.Brand.Name))
@@ -26,12 +26,21 @@ namespace Application.Common.Mapping
                 .ForMember(p => p.Created, resp => resp.MapFrom(r => r.Created.ToString()))
                 .ReverseMap();
 
-    
+
+            CreateMap<PurchaseItem, PurchaseItemsDto>()
+                .ForMember(p => p.Brand, resp => resp.MapFrom(r => r.Brand.Name))
+                .ForMember(p => p.Created, resp => resp.MapFrom(r => r.Created.ToString()))
+                .ReverseMap();
+
+            //CreateMap<PurchaseOrder, PurchaseOrderDto>()
+            //    .ForMember(p => p.Items, resp => resp.MapFrom(r => r.Items))
+            //    .ReverseMap();
+
 
             CreateMap<Part, PartDto>()
                 .ForMember(p => p.Engineer, resp => resp.MapFrom(r => r.Engineer.Name))
                 .ForMember(p => p.Warehouse, resp => resp.MapFrom(r => r.Warehouse.Name))
-                .ForMember(p => p.Brand, resp => resp.MapFrom(r => r.Brand.Name))
+                //.ForMember(p => p.Brand, resp => resp.MapFrom(r => r.Brand.Name))
                 .ForMember(p => p.Customer, resp => resp.MapFrom(r => r.Customer.Name))
                 .ReverseMap();
 

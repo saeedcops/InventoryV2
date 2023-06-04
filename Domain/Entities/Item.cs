@@ -1,11 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Enum;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -13,13 +8,15 @@ namespace Domain.Entities
     {
         [Required]
         public string PartNumber { get; set; }
-        public string? SerialNumber { get; set; }
-        public string? OracleCode { get; set; }
+        [Required]
+        public string SerialNumber { get; set; }
+        [Required]
+        public string OracleCode { get; set; }
+        public DateTime? OrderDate { get; set; }
+
         public ItemStatus ItemStatus { get; set; } = ItemStatus.stored;
         public string Model { get; set; }
-        public string? Description { get; set; }
-        public int ItemTypeId { get; set; }
-        public ItemType ItemType { get; set; }
+        public string Description { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
         public int WarehouseId { get; set; }

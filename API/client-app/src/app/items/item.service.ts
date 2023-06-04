@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IBrand } from '../shared/models/brand';
-import { IItem, IItemType } from '../shared/models/item';
+import { IItem, IItemDetail, IItemType } from '../shared/models/item';
+import { IPurchaseItem, IPurchaseItemAdd } from '../shared/models/purchase';
 import { IUser } from '../shared/models/user';
 import { IWarehouse } from '../shared/models/warehouse';
 
@@ -17,9 +18,15 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
 
-  getItemTypes() {
 
-    return this.http.get<IItemType[]>(this.baseUrl + 'ItemTypes');
+  getItemById(id: string) {
+
+    return this.http.get<IPurchaseItemAdd>(this.baseUrl + 'Purchaseitems/' + id);
+  }
+
+  getItem(id:number) {
+
+    return this.http.get<IItemDetail>(this.baseUrl + 'Items/'+id);
   }
 
   getBrands() {

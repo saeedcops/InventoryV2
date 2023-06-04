@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IDashboardItem, IItemPagination } from '../shared/models/item';
+import { IPartNumber } from '../shared/models/order';
 import { IUser } from '../shared/models/user';
 
 @Injectable({
@@ -11,25 +12,39 @@ import { IUser } from '../shared/models/user';
 })
 export class HomeService {
   baseUrl = environment.apiUrl;
-  //dashboard!: IDashboardItem;
-  private dash = new ReplaySubject<IDashboardItem>(1);
-
-  dashboard$ = this.dash.asObservable();
 
   constructor(private http: HttpClient) { }
 
+  getBorrowParts() {
 
-  getItemsdashboard() {
-    
-    return this.http.get<IDashboardItem>(this.baseUrl + 'items/dashboard')
-      .subscribe(res => {
+    return this.http.get<number>(this.baseUrl + 'Parts/Borrowed');
+  }
 
-        this.dash.next(res);
-        console.log(res);
 
-    }, err => {
-        console.log(err);
-    });
+  getBorrowItems() {
+
+    return this.http.get<number>(this.baseUrl + 'Items/Borrowed');
+  }
+  getSoldParts() {
+
+    return this.http.get<IPartNumber[]>(this.baseUrl + 'Parts/Sold');
+  }
+
+
+  getSoldItems() {
+
+    return this.http.get<IPartNumber[]>(this.baseUrl + 'Items/Sold');
+  }
+
+  getParts() {
+
+    return this.http.get<IPartNumber[]>(this.baseUrl + 'Parts/PartNumbers');
+  }
+
+
+  getItems() {
+
+    return this.http.get<IPartNumber[]>(this.baseUrl + 'Items/PartNumbers');
   }
 
 }

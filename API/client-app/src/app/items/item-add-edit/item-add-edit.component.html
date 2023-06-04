@@ -1,12 +1,12 @@
 <div mat-dialog-title>
   <h1>Item Form</h1>
 </div>
-<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()" >
   <div mat-dialog-content class="content">
     <div class="row">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" >
         <mat-label>partNumber</mat-label>
-        <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber">
+        <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber" (ngModelChange)="getItemById($event)" >
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>oracleCode</mat-label>
@@ -54,19 +54,7 @@
       </mat-form-field>
 
     </div>
-    
-    <div class="row">
-      <mat-form-field appearance="outline">
-        <mat-label>Item Type</mat-label>
-        <mat-select formControlName="itemTypeId">
-          <mat-option *ngFor="let val of itemTypes" [value]="val.id">
-            {{val.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
 
- 
    
   </div>
   <div mat-dialog-actions class="action">

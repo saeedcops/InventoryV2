@@ -28,8 +28,6 @@ namespace Infrastructure.Persistence
             _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
         }
 
-        //public DbSet<Rol> Users => Set<IdentityUser>();
-        public DbSet<IdentityUser> Users => Set<IdentityUser>();
         public DbSet<Brand> Brands => Set<Brand>();
         public DbSet<Part> Parts => Set<Part>();
 
@@ -39,13 +37,21 @@ namespace Infrastructure.Persistence
 
         public DbSet<Item> Items => Set<Item>();
 
-        public DbSet<ItemType> ItemTypes => Set<ItemType>();
 
         public DbSet<Order> Orders => Set<Order>();
 
-        public DbSet<SupplyOrder> SupplyOrders => Set<SupplyOrder>();
 
         public DbSet<Warehouse> Warehouses => Set<Warehouse>();
+
+        public DbSet<PurchaseOrder> PurchaseOrders => Set<PurchaseOrder>();
+
+        public DbSet<PurchaseOrderItem> PurchaseOrderItems => Set<PurchaseOrderItem>();
+
+        public DbSet<PurchaseOrderPart> PurchaseOrderParts => Set<PurchaseOrderPart>();
+
+        public DbSet<PurchasePart> PurchaseParts => Set<PurchasePart>();
+
+        public DbSet<PurchaseItem> PurchaseItems => Set<PurchaseItem>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

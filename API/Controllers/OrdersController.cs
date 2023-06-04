@@ -24,6 +24,12 @@ namespace API.Controllers
         {
             return await Mediator.Send(query);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrder(int id)
+        {
+            return await Mediator.Send(new GetOrderQueries { Id=id});
+        }
         [HttpPost]
         public async Task<ActionResult<int>> Create([FromBody] CreateOrderCommand command)
         {

@@ -1,3 +1,8 @@
+import { IBrand } from "./brand"
+import { ICustomer } from "./customer"
+import { IEngineer } from "./engineer"
+import { IWarehouse } from "./warehouse"
+
 export interface IItemPagination {
   items: IItem[]
   pageNumber: number
@@ -12,7 +17,6 @@ export interface IDashboardItem {
   sold: string
   store: string
   total: string
-
   degitalCheck: string
   brabouz: string
   panini: string
@@ -34,6 +38,7 @@ export interface IItem {
   description: string
   itemType: string
   brand: string
+  brandId: number
   warehouse: string
   customer: string
   engineer: string
@@ -44,4 +49,26 @@ export interface IItemType {
   id: number
   name: string
   description: string
+}
+
+export interface IItemDetail {
+  partNumber: string
+  serialNumber: string
+  oracleCode: string
+  itemStatus: string
+  partStatus: string
+  model: string
+  description: string
+  brand: IBrand
+  id: number
+  warehouse: IWarehouse
+  customer: ICustomer
+  engineer: IEngineer
+  orderDate: string
+  created: string
+  createdBy: string
+  lastModified: string
+  lastModifiedBy: string
+  image: any
+
 }

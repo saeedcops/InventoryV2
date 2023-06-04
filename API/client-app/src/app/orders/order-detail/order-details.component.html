@@ -1,0 +1,175 @@
+
+<div class="container mt-2" id="print-section">
+
+  <div class="row" *ngIf="order">
+    <div class="col-6 m-5">
+      <mat-label>order ID : </mat-label>
+      <mat-label style="color:teal;"> {{order.id}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Order Type : </mat-label>
+      <mat-label style="color:teal;"> {{order.orderType}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Order Status : </mat-label>
+      <mat-label style="color:teal;"> {{order.orderStatus}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Customer : </mat-label>
+      <mat-label style="color:teal;"> {{order.customer.name}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Engineer : </mat-label>
+      <mat-label style="color:teal;"> {{order.engineer.name}}</mat-label>
+      <br />
+      <hr />
+
+    </div>
+    <div class="col-6 m-5">
+
+      <mat-label>Created At : </mat-label>
+      <mat-label style="color:teal;"> {{order.created | date}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Last Modified At : </mat-label>
+      <mat-label style="color:teal;"> {{order.lastModified | date }}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Created By : </mat-label>
+      <mat-label style="color:teal;"> {{order.createdBy}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Last Modified By : </mat-label>
+      <mat-label style="color:teal;"> {{order.lastModifiedBy}}</mat-label>
+      <br />
+
+    </div>
+    <button printTitle="{{order.customer.name}} Order"
+	          printSectionId="print-section"  
+	          ngxPrint>print</button>
+  </div>
+
+  <br />
+  <hr />
+  <div class="row" *ngIf="order" >
+
+        
+    <div class="container">
+      <h1 style="color:teal;"><strong>Items:</strong> </h1>
+
+      <div class="row" style="background:gray; border-radius:10px; ">
+        <div class="col-12 py-5 mb-1">
+
+          <div class="table-responsive" >
+            <table class="table" style="padding:10px;">
+              <thead style="color: darkgray;">
+                <tr>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2 px-3">Image</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2 px-3">Part Number</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2 px-3">Oracle Code</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2">Model</div>
+                  </th>
+
+                  <th class="border-0" scope="col">
+                    <div  class="p-2">Description</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div >Brand</div>
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="col-12 ml-3" *ngFor="let val of order.orderItems">
+                  <th scope="row">
+                    <div class="p-2">
+                      <img src="data:image/jpeg;base64,{{val.image}}" style="height:60px;width:60px;border-radius:5px; margin:10px;" />
+
+                    </div>
+                  </th>
+
+                  <td style="color:teal;" class="align-middle"> {{val.partNumber}}</td>
+                  <td style="color:teal;" class="align-middle"> {{val.oracleCode}}</td>
+                  <td style="color:teal;" class="align-middle"> {{val.model}}</td>
+                  <td style="color:teal;" class="align-middle"> {{val.description}}</td>
+                  <td style="color:teal;" class="align-middle"> {{val.brandId}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+      <hr />
+      <h1 style="color:teal;"><strong>Parts:</strong> </h1>
+
+      <div class="row"  style="background:gray; border-radius:10px; ">
+        <div class="col-12 py-10 mb-1">
+
+          <div class="table-responsive">
+            <table class="table"  style="padding:10px;">
+              <thead style="color: darkgray;">
+                <tr>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2 px-3">Image</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2 px-3">Part Number</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2 px-3">Oracle Code</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2">Model</div>
+                  </th>
+                  <th class="border-0" scope="col">
+                    <div  class="p-2">Description</div>
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="col-12 ml-3" *ngFor="let val of order.orderParts">
+                  <th scope="row">
+                    <div class="p-2">
+                      <img src="data:image/jpeg;base64,{{val.image}}" style="height:60px;width:60px;border-radius:5px; margin:10px;"  />
+
+                    </div>
+                  </th>
+
+                  <td style="color:teal;" class="align-middle"> {{val.partNumber}}</td>
+                  <td style="color:teal;" class="align-middle"> {{val.oracleCode}}</td>
+                  <td style="color:teal;" class="align-middle"> {{val.model}}</td>
+                  <td style="color:teal;" class="align-middle"> {{val.description}}</td>
+              
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

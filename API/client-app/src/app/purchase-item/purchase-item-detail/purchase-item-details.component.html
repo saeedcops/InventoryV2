@@ -1,0 +1,114 @@
+
+<div class="container mt-2">
+
+  <div class="row" *ngIf="item">
+    <div class="col-6 m-5">
+      <div class="p-2">
+        <img src="data:image/jpeg;base64,{{item.image}}" style="height:110px;width:150px;border-radius:5px; margin:10px;" />
+
+      </div>
+      <mat-label>Model : </mat-label>
+      <mat-label style="color:teal;"> {{item.model}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Part Number : </mat-label>
+      <mat-label style="color:teal;"> {{item.partNumber}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Brand : </mat-label>
+      <mat-label style="color:teal;"> {{item.brand.name}}</mat-label>
+      <br />
+      <hr />
+
+
+    </div>
+    <div class="col-6 m-5">
+
+
+      <mat-label>Oracle Code : </mat-label>
+      <mat-label style="color:teal;"> {{item.oracleCode}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Description : </mat-label>
+      <mat-label style="color:teal;"> {{item.description}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Created By : </mat-label>
+      <mat-label style="color:teal;"> {{item.createdBy}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Created At : </mat-label>
+      <mat-label style="color:teal;"> {{item.created | date}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Last Modified At : </mat-label>
+      <mat-label style="color:teal;"> {{item.lastModified | date }}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Last Modified By : </mat-label>
+      <mat-label style="color:teal;"> {{item.lastModifiedBy}}</mat-label>
+      <br />
+
+    </div>
+  </div>
+
+  <br />
+  <hr />
+  <h1 style="color:teal;"><strong>Parts:</strong> </h1>
+  <div class="row" *ngIf="item">
+
+    <div class="row" style="background:gray; border-radius:10px; ">
+      <div class="col-12 py-10 mb-1">
+
+        <div class="table-responsive">
+          <table class="table" style="padding:10px;">
+            <thead style="color: darkgray;">
+              <tr>
+                <th class="border-0" scope="col">
+                  <div class="p-2 px-3">Image</div>
+                </th>
+                <th class="border-0" scope="col">
+                  <div class="p-2 px-3">Part Number</div>
+                </th>
+                <th class="border-0" scope="col">
+                  <div class="p-2 px-3">Oracle Code</div>
+                </th>
+                <th class="border-0" scope="col">
+                  <div class="p-2">Model</div>
+                </th>
+                <th class="border-0" scope="col">
+                  <div class="p-2">Description</div>
+                </th>
+                <th class="border-0 " scope="col">
+                  <div class="p-2">Quantity</div>
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="col-12 ml-3" *ngFor="let val of item.parts">
+                <th scope="row">
+                  <div class="p-2">
+                    <img src="data:image/jpeg;base64,{{val.image}}" style="height:60px;width:60px;border-radius:5px; margin:10px;" />
+
+                  </div>
+                </th>
+
+                <td style="color:teal;" class="align-middle"> {{val.partNumber}}</td>
+                <td style="color:teal;" class="align-middle"> {{val.oracleCode}}</td>
+                <td style="color:teal;" class="align-middle"> {{val.name}}</td>
+                <td style="color:teal;" class="align-middle"> {{val.description}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

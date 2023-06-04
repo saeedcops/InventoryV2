@@ -20,8 +20,9 @@ export class LoadingInterceptor implements HttpInterceptor {
     if (request.method === 'DELETE')
       return next.handle(request);
 
-    if (request.url.includes('emailexist'))
+    if (request.url.includes('PurchaseItems/'))
       return next.handle(request);
+
     console.log("Busy");
     this.busyService.busy();
     return next.handle(request).pipe(

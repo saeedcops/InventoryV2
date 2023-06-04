@@ -18,8 +18,7 @@ export class ItemAddEditComponent implements OnInit {
   brands!: IBrand[];
   itemTypes!: IItemType[];
   warehouses!: IWarehouse[];
-
-
+  dataSet = false;
   constructor(
     private _fb: FormBuilder,
     private _itemService: ItemService,
@@ -30,19 +29,32 @@ export class ItemAddEditComponent implements OnInit {
     this.empForm = this._fb.group({
       id:'',
       partNumber:[null,Validators.required],
-      oracleCode:'',
+      oracleCode: [null, Validators.required],
       serialNumber: [null, Validators.required],
-      model:  '',
+      model: [null, Validators.required],
       description:  '',
-      itemTypeId: [null, Validators.required],
       brandId: [null, Validators.required],
       warehouseId: [null, Validators.required],
       image: '',
     });
-
   }
 
+
+  getItemById(event: any) {
+    console.log("Weka");
+    if (!this.dataSet) {
+
+      this._itemService.getItemById(event).subscribe(res => {
+        console.log(res);
+
+        this.empForm.patchValue(res);
+        this.dataSet = true;
+      }, err => { console.log(err); });
+
+    }
+  }
   ngOnInit(): void {
+ 
     this.empForm.patchValue(this.data);
     this._itemService.getBrands().subscribe(res =>
     {
@@ -50,15 +62,6 @@ export class ItemAddEditComponent implements OnInit {
       //console.log(res);
     }, err =>
     {
-      this.toastr.error(err);
-      console.log(err);
-
-    });
-
-    this._itemService.getItemTypes().subscribe(res => {
-      this.itemTypes = res;
-     // console.log(res);
-    }, err => {
       this.toastr.error(err);
       console.log(err);
 
@@ -83,9 +86,7 @@ export class ItemAddEditComponent implements OnInit {
           .subscribe({
             next: (val: any) => {
               this.toastr.success("Item detail updated!");
-              //this._coreService.openSnackBar('Employee detail updated!');
               this._dialogRef.close(true);
-             // console.error(val);
             },
             error: (err: any) => {
               this.toastr.error(err);
@@ -95,10 +96,10 @@ export class ItemAddEditComponent implements OnInit {
       } else {
         this._itemService.addItems(this.empForm.value).subscribe({
           next: (val: any) => {
-            this.toastr.success("Item added successfully");
-            //this._coreService.openSnackBar('Employee added successfully');
-            this._dialogRef.close(true);
-           // console.error(val);
+            this.toastr.success("Item added successfully","Items");
+            //this._dialogRef.close(true);
+            this.dataSet = false;
+            this.empForm.reset();
           },
           error: (err: any) => {
             this.toastr.error(err);

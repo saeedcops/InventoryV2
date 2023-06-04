@@ -2,6 +2,7 @@
 using Application.Common.Security;
 using Application.Items.Commands;
 using Application.Items.Queries;
+using Application.Parts.Queries;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,11 +24,23 @@ namespace API.Controllers
             return await Mediator.Send(query);
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<PaginatedList<ItemDto>>> GetItemsWithPagination([FromQuery] GetItemsWithPaginationQuery query)
-        //{
-        //    return await Mediator.Send(query);
-        //}
+        [HttpGet("PartNumbers")]
+        public async Task<ActionResult<List<PartNumberQtyDto>>> GetPartPartNumber([FromQuery] GetItemsPartNumberQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
+        [HttpGet("Sold")]
+        public async Task<ActionResult<List<PartNumberQtyDto>>> GetSold([FromQuery] GetSoldItemsQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
+        [HttpGet("Borrowed")]
+        public async Task<ActionResult<int>> GetBorrowed([FromQuery] GetBorrowedItemsQuery query)
+        {
+            return await Mediator.Send(query);
+        }
 
 
         [HttpGet("{id}")]

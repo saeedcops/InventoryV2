@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Application.Parts.Commands
 {
-   public record CreatePartCommand : IRequest<Part>
+   public record CreatePartCommand : IRequest<int>
     {
         [Required]
         public string PartNumber { get; set; }
@@ -18,7 +18,7 @@ namespace Application.Parts.Commands
         public int WarehouseId { get; set; }
     }
 
-    public class CreatePartCommandHandler : IRequestHandler<CreatePartCommand, Part>
+    public class CreatePartCommandHandler : IRequestHandler<CreatePartCommand, int>
     {
         private readonly IApplicationDbContext _context;
 
@@ -27,12 +27,12 @@ namespace Application.Parts.Commands
             _context = context;
         }
 
-        public async Task<Part> Handle(CreatePartCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreatePartCommand request, CancellationToken cancellationToken)
         {
             var entity = new Part
             {
                // Brand = _context.Brands.FirstOrDefault(b => b.Id == request.BrandId),
-                BrandId = request.BrandId,
+                //BrandId = request.BrandId,
                 //Warehouse = _context.Warehouses.FirstOrDefault(b => b.Id == request.WarehouseId),
                 Image = request.Image,
                 WarehouseId = request.WarehouseId,
@@ -50,7 +50,7 @@ namespace Application.Parts.Commands
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            return entity;
+            return entity.Id;
         }
     }
 

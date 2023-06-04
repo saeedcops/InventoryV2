@@ -26,7 +26,7 @@ namespace Application.Parts.Queries
         public async Task<Part> Handle(GetPartQuery request, CancellationToken cancellationToken)
         {
             return await _context.Parts
-                .Include(p => p.Brand)
+                //.Include(p => p.Brand)
                 .Include(p => p.Engineer)
                 .Include(p => p.Customer)
                 .Include(p => p.Warehouse).FirstOrDefaultAsync(i => i.Id == request.Id);

@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { TopWidgetsComponent } from './top-widgets/top-widgets.component';
-import { SalesByMonthComponent } from './sales-by-month/sales-by-month.component';
-import { SalesByCategoryComponent } from './sales-by-category/sales-by-category.component';
-import { LastTransactionsComponent } from './last-transactions/last-transactions.component';
-import { TopProductsComponent } from './top-products/top-products.component';
+import { SoldItemsComponent } from './sold-items/sold-items.component';
+import { SoldPartsComponent } from './sold-parts/sold-parts.component';
+import { AvailablePartsComponent } from './available-parts/available-parts.component';
 import { SharedModule } from '../shared/shared.module';
 import { ChartModule } from 'angular-highcharts';
+import { AvailableItemsComponent } from './available-tems/available-tems.component';
 
 
 
@@ -15,13 +14,12 @@ import { ChartModule } from 'angular-highcharts';
   declarations: [
     HomeComponent,
     TopWidgetsComponent,
-    SalesByMonthComponent,
-    SalesByCategoryComponent,
-    LastTransactionsComponent,
-    TopProductsComponent
+    SoldItemsComponent,
+    SoldPartsComponent,
+    AvailablePartsComponent,
+    AvailableItemsComponent,
   ],
   imports: [
-    CommonModule,
     SharedModule,
     ChartModule
   ]

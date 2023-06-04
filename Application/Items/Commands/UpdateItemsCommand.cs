@@ -49,7 +49,7 @@ namespace Application.Items.Commands
             entity.OracleCode = request.OracleCode != null ? request.OracleCode : entity.OracleCode;
             entity.Model = request.Model != null ? request.Model : entity.Model;
             entity.Description = request.Description != null ? request.Description : entity.Description;
-            entity.ItemTypeId = request.ItemTypeId != 0 ? request.ItemTypeId : entity.ItemTypeId;
+            //entity.ItemTypeId = request.ItemTypeId != 0 ? request.ItemTypeId : entity.ItemTypeId;
             entity.BrandId = request.BrandId != 0 ? request.BrandId : entity.BrandId;
             entity.WarehouseId = request.WarehouseId != 0 ? request.WarehouseId : entity.WarehouseId;
             entity.CustomerId = request.CustomerId != 0 ? request.CustomerId : entity.CustomerId;

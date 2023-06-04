@@ -122,6 +122,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EngineerId")
@@ -136,9 +137,6 @@ namespace Infrastructure.Migrations
                     b.Property<int>("ItemStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("ItemTypeId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
@@ -150,7 +148,11 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OracleCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("OrderDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -160,10 +162,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SerialNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SupplyOrderId")
-                        .HasColumnType("int");
 
                     b.Property<int>("WarehouseId")
                         .HasColumnType("int");
@@ -176,35 +176,11 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("EngineerId");
 
-                    b.HasIndex("ItemTypeId");
-
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("SupplyOrderId");
 
                     b.HasIndex("WarehouseId");
 
                     b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("Domain.Entities.ItemType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ItemTypes");
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>
@@ -259,9 +235,6 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -294,7 +267,11 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OracleCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("OrderDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -306,15 +283,10 @@ namespace Infrastructure.Migrations
                     b.Property<int>("PartStatus")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupplyOrderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("WarehouseId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
 
                     b.HasIndex("CustomerId");
 
@@ -322,14 +294,57 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("SupplyOrderId");
-
                     b.HasIndex("WarehouseId");
 
                     b.ToTable("Parts");
                 });
 
-            modelBuilder.Entity("Domain.Entities.SupplyOrder", b =>
+            modelBuilder.Entity("Domain.Entities.PurchaseItem", b =>
+                {
+                    b.Property<string>("PartNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OracleCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PartNumber");
+
+                    b.HasIndex("BrandId");
+
+                    b.ToTable("PurchaseItems");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchaseOrder", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -358,7 +373,129 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SupplyOrders");
+                    b.ToTable("PurchaseOrders");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchaseOrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ItemPartNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PurchaseOrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemPartNumber");
+
+                    b.HasIndex("PurchaseOrderId");
+
+                    b.ToTable("PurchaseOrderItems");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchaseOrderPart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PartNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("PurchaseOrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PartNumber");
+
+                    b.HasIndex("PurchaseOrderId");
+
+                    b.ToTable("PurchaseOrderParts");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchasePart", b =>
+                {
+                    b.Property<string>("PartNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OracleCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PurchaseItemPartNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("PartNumber");
+
+                    b.HasIndex("PurchaseItemPartNumber");
+
+                    b.ToTable("PurchaseParts");
                 });
 
             modelBuilder.Entity("Domain.Entities.Warehouse", b =>
@@ -595,19 +732,9 @@ namespace Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("EngineerId");
 
-                    b.HasOne("Domain.Entities.ItemType", "ItemType")
-                        .WithMany()
-                        .HasForeignKey("ItemTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.Entities.Order", null)
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId");
-
-                    b.HasOne("Domain.Entities.SupplyOrder", null)
-                        .WithMany("SupplyOrderItems")
-                        .HasForeignKey("SupplyOrderId");
 
                     b.HasOne("Domain.Entities.Warehouse", "Warehouse")
                         .WithMany()
@@ -620,8 +747,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Engineer");
-
-                    b.Navigation("ItemType");
 
                     b.Navigation("Warehouse");
                 });
@@ -647,12 +772,6 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Part", b =>
                 {
-                    b.HasOne("Domain.Entities.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.Entities.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
@@ -665,23 +784,63 @@ namespace Infrastructure.Migrations
                         .WithMany("OrderParts")
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("Domain.Entities.SupplyOrder", null)
-                        .WithMany("SupplyOrderParts")
-                        .HasForeignKey("SupplyOrderId");
-
                     b.HasOne("Domain.Entities.Warehouse", "Warehouse")
                         .WithMany()
                         .HasForeignKey("WarehouseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Brand");
-
                     b.Navigation("Customer");
 
                     b.Navigation("Engineer");
 
                     b.Navigation("Warehouse");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchaseItem", b =>
+                {
+                    b.HasOne("Domain.Entities.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchaseOrderItem", b =>
+                {
+                    b.HasOne("Domain.Entities.PurchaseItem", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemPartNumber");
+
+                    b.HasOne("Domain.Entities.PurchaseOrder", null)
+                        .WithMany("Items")
+                        .HasForeignKey("PurchaseOrderId");
+
+                    b.Navigation("Item");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchaseOrderPart", b =>
+                {
+                    b.HasOne("Domain.Entities.PurchasePart", "Part")
+                        .WithMany()
+                        .HasForeignKey("PartNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.PurchaseOrder", null)
+                        .WithMany("Parts")
+                        .HasForeignKey("PurchaseOrderId");
+
+                    b.Navigation("Part");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PurchasePart", b =>
+                {
+                    b.HasOne("Domain.Entities.PurchaseItem", null)
+                        .WithMany("Parts")
+                        .HasForeignKey("PurchaseItemPartNumber");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -742,11 +901,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("OrderParts");
                 });
 
-            modelBuilder.Entity("Domain.Entities.SupplyOrder", b =>
+            modelBuilder.Entity("Domain.Entities.PurchaseItem", b =>
                 {
-                    b.Navigation("SupplyOrderItems");
+                    b.Navigation("Parts");
+                });
 
-                    b.Navigation("SupplyOrderParts");
+            modelBuilder.Entity("Domain.Entities.PurchaseOrder", b =>
+                {
+                    b.Navigation("Items");
+
+                    b.Navigation("Parts");
                 });
 #pragma warning restore 612, 618
         }

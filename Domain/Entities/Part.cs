@@ -13,12 +13,12 @@ namespace Domain.Entities
     {
         [Required]
         public string PartNumber { get; set; }
-        public string? OracleCode { get; set; }
+        [Required]
+        public string OracleCode { get; set; }
         public ItemStatus PartStatus { get; set; } = ItemStatus.stored;
+        public DateTime? OrderDate { get; set; }
         public string Model { get; set; }
         public string? Description { get; set; }
-        public int BrandId { get; set; }
-        public Brand Brand { get; set; }
         public int WarehouseId { get; set; }
         public Warehouse Warehouse { get; set; }
         public int? CustomerId { get; set; }

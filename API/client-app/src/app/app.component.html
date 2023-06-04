@@ -2,6 +2,7 @@
 <ngx-spinner>
   <h3>Loading...</h3>
 </ngx-spinner>
+
 <mat-toolbar class="mat-elevation-z8">
   <button mat-icon-button
           *ngIf="sidenav.mode === 'over'"
@@ -31,14 +32,11 @@
       <mat-icon>scanner</mat-icon>
       <span>Items</span>
     </button>
-    <!--<button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
-      <mat-icon>devices_other</mat-icon>
-      <span>Parts</span>
-    </button>-->
-    <button mat-button class="menu-button" routerLink="/item-types" routerLinkActive="active">
-      <mat-icon>devices_other</mat-icon>
-      <span>Item Types</span>
-    </button>
+    <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
+    <mat-icon>devices_other</mat-icon>
+    <span>Parts</span>
+  </button>
+
     <button mat-button class="menu-button" routerLink="/customers" routerLinkActive="active">
       <mat-icon>devices_other</mat-icon>
       <span>Customers</span>
@@ -64,9 +62,19 @@
       <span>Orders</span>
     </button>
 
-    <button mat-button class="menu-button" routerLink="/supply-orders" routerLinkActive="active">
+    <button mat-button class="menu-button" routerLink="/purchase-orders" routerLinkActive="active">
       <mat-icon>local_mall</mat-icon>
-      <span>Supply Order</span>
+      <span>Purchase Order</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/purchase-item" routerLinkActive="active">
+      <mat-icon>local_mall</mat-icon>
+      <span>Purchase Item</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/purchase-part" routerLinkActive="active">
+      <mat-icon>local_mall</mat-icon>
+      <span>Purchase Part</span>
     </button>
 
     <button mat-button class="menu-button" routerLink="/reports" routerLinkActive="active">
@@ -87,14 +95,10 @@
     </button>
   </mat-sidenav>
 
-  <mat-sidenav-content class="content mat-elevation-z8">
-
-
-        <app-section-header></app-section-header>
+  <mat-sidenav-content class=" mat-elevation-z8">
 
     <div class="content">
-    
-        
+        <app-section-header></app-section-header>
           <div>
             <router-outlet></router-outlet>
           </div>

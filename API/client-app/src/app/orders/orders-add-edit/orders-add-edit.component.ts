@@ -5,7 +5,10 @@ import { ToastrService } from 'ngx-toastr';
 import { IBrand } from '../../shared/models/brand';
 import { ICustomer } from '../../shared/models/customer';
 import { IEngineer } from '../../shared/models/engineer';
-import { IItemType } from '../../shared/models/item';
+import { IItem, IItemType } from '../../shared/models/item';
+import { IPartNumber } from '../../shared/models/order';
+import { IPart } from '../../shared/models/part';
+import { IPurchaseItem, IPurchasePart } from '../../shared/models/purchase';
 import { IWarehouse } from '../../shared/models/warehouse';
 import { OrdersService } from '../orders.service';
 
@@ -20,21 +23,47 @@ export class OrdersAddEditComponent implements OnInit {
     private _dialogRef: MatDialogRef<OrdersAddEditComponent>,
 
     private toastr: ToastrService) { }
+
   engineers!: IEngineer[];
   customers!: ICustomer[];
+  items!: FormArray;
+  parts!: FormArray;
+  orderItems!: IPartNumber[];
+  orderParts!: IPartNumber[];
+
   ngOnInit(): void {
     this.orderService.getCustomers().subscribe(res => { this.customers = res; }, err => { console.log(err); });
     this.orderService.getEngineers().subscribe(res => { this.engineers = res; }, err => { console.log(err); });
-    this.Addnewrow();
+    this.orderService.getItems().subscribe(res => {
+      this.orderItems = res;
+      //console.log(res);
+    }, err => {
+      this.toastr.error(err);
+      console.log(err);
+
+    });
+
+    this.orderService.getParts().subscribe(res => {
+      this.orderParts = res;
+      // console.log(res);
+    }, err => {
+      this.toastr.error(err);
+      console.log(err);
+
+    });
+    //this.Addnewrow('items');
+    //this.Addnewrow('parts');
   }
 
   title = 'FormArray';
-  items!: FormArray;
+ // items!: FormArray;
+
   reactform = new FormGroup({
     customerId: new FormControl('', Validators.required),
     engineerId: new FormControl('', Validators.required),
     orderType: new FormControl('', Validators.required),
-    orderItemsPartNumber: new FormArray([])
+    items: new FormArray([]),
+    parts: new FormArray([]),
   });
 
   ProceedSave() {
@@ -50,21 +79,26 @@ export class OrdersAddEditComponent implements OnInit {
       });
   }
 
-  Addnewrow() {
-    this.items = this.reactform.get("orderItemsPartNumber") as FormArray;
+  Addnewrow(form: string) {
+    this.items = this.reactform.get(form) as FormArray;
     this.items.push(this.Genrow())
   }
-  Removeitem(index: any) {
-    if (this.items.length > 1) {
-      this.items = this.reactform.get("orderItemsPartNumber") as FormArray;
+
+  Removeitem(index: any, form: string) {
+    //if (this.items.length > 1) {
+      this.items = this.reactform.get(form) as FormArray;
       this.items.removeAt(index)
-    } else {
-      this.toastr.warning("Order must contains at least 1 item");
-    }
+    //} else {
+    //  this.toastr.warning("Order must contains at least 1 item");
+    //}
   }
 
-  get addPartNumber() {
-    return this.reactform.get("orderItemsPartNumber") as FormArray;
+  get addParts() {
+    return this.reactform.get("parts") as FormArray;
+  }
+
+  get addItems() {
+    return this.reactform.get("items") as FormArray;
   }
 
   Genrow(): FormGroup {

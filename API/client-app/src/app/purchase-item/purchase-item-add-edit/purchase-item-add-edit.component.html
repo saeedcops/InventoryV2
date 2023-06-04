@@ -1,0 +1,88 @@
+<div mat-dialog-title>
+  <h1>Item Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>partNumber</mat-label>
+        <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>oracleCode</mat-label>
+        <input matInput placeholder="Ex. OracleCode" formControlName="oracleCode">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Model</mat-label>
+        <input matInput type="text" placeholder="Ex.  model" formControlName="model">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Brand</mat-label>
+        <mat-select formControlName="brandId">
+          <mat-option *ngFor="let val of brands" [value]="val.id">
+            {{val.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" placeholder="Ex. Description" formControlName="description">
+      </mat-form-field>
+
+      
+
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Select Image</mat-label>
+        <input matInput readonly type="text" id="itemImage" (click)="hiddenInput.click()">
+        <input hidden type="file" accept=".png,.jpg,.jfif" #hiddenInput (change)="GetFileOnLoad($event)">
+        <mat-icon matSuffix>folder_open</mat-icon>
+      </mat-form-field>
+
+      <img [src]="url" class="itemImg" alt="Image" />
+    </div>
+    <div>
+      <a mat-raised-button color="primary" (click)="Addnewrow()">Add Part (+)</a>
+    </div>
+
+    <table formArrayName="parts">
+      <tbody>
+        <tr *ngFor="let item of addPart.controls;let i=index" [formGroupName]="i">
+          <td>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Part Number</mat-label>
+              <mat-select formControlName="partNumber">
+                <mat-option *ngFor="let val of itemParts" [value]="val.partNumber">
+                  {{val.partNumber}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="visibility:hidden">
+              <mat-label>Part Number</mat-label>
+              <input matInput type="number" placeholder="Ex. Part Number" formControlName="count">
+            </mat-form-field>
+          </td>
+
+          <td><button mat-button color="accent" (click)="Removeitem(i)">(-)</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+    <div mat-dialog-actions class="action">
+      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+      <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>

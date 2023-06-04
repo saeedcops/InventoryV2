@@ -15,6 +15,8 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private router: Router, private toastr: ToastrService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (request.url.includes('Purchaseitems/') || request.url.includes('Purchaseparts/'))
+      return next.handle(request);
     return next.handle(request).pipe(
 
       catchError(error => {

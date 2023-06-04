@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.Parts.Commands
 {
-   public record UpdatePartCommand : IRequest<Part>
+   public record UpdatePartCommand : IRequest<int>
     {
         public int Id { get; set; }
         public string? PartNumber { get; set; }
@@ -26,7 +26,7 @@ namespace Application.Parts.Commands
         public byte[]? Image { get; set; }
     }
 
-    public class UpdatePartCommandHandler : IRequestHandler<UpdatePartCommand, Part>
+    public class UpdatePartCommandHandler : IRequestHandler<UpdatePartCommand, int>
     {
         private readonly IApplicationDbContext _context;
 
@@ -35,19 +35,19 @@ namespace Application.Parts.Commands
             _context = context;
         }
 
-        public async Task<Part> Handle(UpdatePartCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdatePartCommand request, CancellationToken cancellationToken)
         {
 
            var entity=await _context.Parts.FirstOrDefaultAsync(b=> b.Id == request.Id);
             if (entity == null)
-                throw new NotFoundException($"No Brands with {request.Id}");
+                throw new NotFoundException($"No Parts with {request.Id}");
 
             entity.PartNumber = request.PartNumber != null ? request.PartNumber : entity.PartNumber;
             entity.OracleCode = request.OracleCode != null ? request.OracleCode : entity.OracleCode;
             entity.Model = request.Model != null ? request.Model : entity.Model;
             entity.Image = request.Image != null ? request.Image : entity.Image;
             entity.Description = request.Description != null ? request.Description : entity.Description;
-            entity.BrandId = request.BrandId != null ? (int)request.BrandId : entity.BrandId;
+           // entity.BrandId = request.BrandId != null ? (int)request.BrandId : entity.BrandId;
             entity.WarehouseId = request.WarehouseId != null ? (int)request.WarehouseId : entity.WarehouseId;
             entity.CustomerId = request.CustomerId != null ? (int)request.CustomerId : entity.CustomerId;
             entity.EngneerId = request.EngineerId != null ? (int)request.EngineerId : entity.EngneerId;
@@ -55,7 +55,7 @@ namespace Application.Parts.Commands
             _context.Parts.Update(entity);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return entity;
+            return entity.Id;
         }
     }
 

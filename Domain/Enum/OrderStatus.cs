@@ -10,7 +10,6 @@ namespace Domain.Enum
     {
         Returned,
         Ready,
-        Dispatched,
         Delivered
     }
 }

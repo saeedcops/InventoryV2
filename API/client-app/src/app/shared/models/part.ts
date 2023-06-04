@@ -12,6 +12,7 @@ export interface IPart {
   oracleCode: string
   model: string
   description: string
+  partStatus: number
   brandId: number
   warehouseId: number
   customerId: number

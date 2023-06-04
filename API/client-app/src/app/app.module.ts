@@ -7,7 +7,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './core/interceptor/error.interceptor';
 import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
-import { AccountModule } from './account/account.module';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { ItemTypesComponent } from './item-types/item-types.component';
@@ -24,6 +23,17 @@ import { OrdersAddEditComponent } from './orders/orders-add-edit/orders-add-edit
 import { BrandsAddEditComponent } from './brands/brands-add-edit/brands-add-edit.component';
 import { CustomersAddEditComponent } from './customers/customers-add-edit/customers-add-edit.component';
 import { EngineersAddEditComponent } from './engineers/engineers-add-edit/engineers-add-edit.component';
+import { PurchasePartAddEditComponent } from './purchase-part/purchase-part-add-edit/purchase-part-add-edit.component';
+import { PurchasePartComponent } from './purchase-part/purchase-part.component';
+import { PurchaseOrderModule } from './purchase-order/purchase-order.module';
+import { PurchaseItemModule } from './purchase-item/purchase-item.module';
+import { PurchasePartDetailsComponent } from './purchase-part/purchase-part-detail/purchase-part-details.component';
+import { PartsComponent } from './parts/parts.component';
+import { PartAddEditComponent } from './parts/part-add-edit/part-add-edit.component';
+import { OrderDetailsComponent } from './orders/order-detail/order-details.component';
+import { ItemDetailsComponent } from './items/item-detail/item-details.component';
+import { PartDetailsComponent } from './parts/part-detail/part-details.component';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +42,7 @@ import { EngineersAddEditComponent } from './engineers/engineers-add-edit/engine
     ItemAddEditComponent,
     ItemTypesAddEditComponent,
     ItemTypesComponent,
+    ItemDetailsComponent,
     CustomersComponent,
     CustomersAddEditComponent,
     BrandsComponent,
@@ -39,17 +50,29 @@ import { EngineersAddEditComponent } from './engineers/engineers-add-edit/engine
     EngineersComponent,
     EngineersAddEditComponent,
     OrdersComponent,
+    OrderDetailsComponent,
     WarehouseComponent,
     WarehouseAddEditComponent,
-    OrdersAddEditComponent
+    OrdersAddEditComponent,
+    PurchasePartDetailsComponent,
+    PartsComponent,
+    PartAddEditComponent,
+    PartDetailsComponent,
+    PurchasePartAddEditComponent,
+    PurchasePartComponent,
     
   ],
   imports: [
+    //BrowserModule,
     AccountModule,
     CoreModule,
     HomeModule,
-    SharedModule
-    
+    SharedModule,
+  
+    PurchaseItemModule,
+    PurchaseOrderModule,
+    //RouterModule,
+   
    // BreadcrumbModule
   ],
   providers: [MatDialogModule,

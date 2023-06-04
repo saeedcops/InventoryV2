@@ -35,19 +35,19 @@ namespace Application.Items.Queries
             //    .GroupBy(i => i.LastModified).Select(i => new { Total =i.Count() }) ;
 
             IEnumerable<int> soldScanerByYear = items
-                .Where(i => i.ItemTypeId == 1 && i.ItemStatus == Domain.Enum.ItemStatus.Sold)
+               // .Where(i => i.ItemTypeId == 1 && i.ItemStatus == Domain.Enum.ItemStatus.Sold)
                 .OrderBy(i => i.LastModified.Value.Month)
                 .GroupBy(i => i.LastModified.Value.Month)
                 .Select(e => e.Count());
 
             IEnumerable<int> soldPartByYear = items
-                .Where(i => i.ItemTypeId == 3 && i.ItemStatus == Domain.Enum.ItemStatus.Sold)
+               // .Where(i => i.ItemTypeId == 3 && i.ItemStatus == Domain.Enum.ItemStatus.Sold)
                 .OrderBy(i => i.LastModified.Value.Month)
                 .GroupBy(i => i.LastModified.Value.Month)
                 .Select(e => e.Count());
 
             IEnumerable<int> soldPrinterByYear = items
-                .Where(i => i.ItemTypeId == 2 && i.ItemStatus == Domain.Enum.ItemStatus.Sold)
+               // .Where(i => i.ItemTypeId == 2 && i.ItemStatus == Domain.Enum.ItemStatus.Sold)
                 .OrderBy(i => i.LastModified.Value.Month)
                 .GroupBy(i => i.LastModified.Value.Month)
                 .Select(e => e.Count());

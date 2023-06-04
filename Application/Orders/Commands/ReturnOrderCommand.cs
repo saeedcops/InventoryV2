@@ -33,8 +33,8 @@ namespace Application.Orders.Commands
             var order = await _context.Orders.Include(o=>o.OrderItems).FirstOrDefaultAsync(o => o.Id == request.OrderId && o.OrderStatus != OrderStatus.Returned);
             if (order == null)
                 throw new NotFoundException($"Order with Id {request.OrderId} Not found or it's already on store");
-
-                foreach (var item in order?.OrderItems)
+            if (order.OrderItems != null)
+                foreach (var item in order.OrderItems)
                 {
 
                     item.EngneerId = null;
@@ -43,10 +43,19 @@ namespace Application.Orders.Commands
                     item.ItemStatus =  ItemStatus.stored;
                
                     _context.Items.Update(item);
-            
                 }
 
+            if (order.OrderParts != null)
+                foreach (var item in order.OrderParts)
+                {
 
+                    item.EngneerId = null;
+                    item.Engineer = null;
+                    item.CustomerId = null;
+                    item.PartStatus = ItemStatus.stored;
+                    _context.Parts.Update(item);
+                }
+            
             order.OrderStatus = OrderStatus.Returned;
             _context.Orders.Update(order);
 

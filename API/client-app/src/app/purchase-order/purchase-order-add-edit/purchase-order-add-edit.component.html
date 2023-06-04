@@ -1,0 +1,76 @@
+<div mat-dialog-title>
+  <h1>Purchase Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" placeholder="Ex. Name" formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <table formArrayName="items">
+        <div>
+          <a mat-raised-button color="primary" (click)="Addnewrow('items')">Add Item (+)</a>
+        </div>
+        <tbody>
+          <tr *ngFor="let item of addItem.controls;let i=index" [formGroupName]="i">
+            <td>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Part Number</mat-label>
+                <mat-select formControlName="partNumber">
+                  <mat-option *ngFor="let val of purchaseItems" [value]="val.partNumber">
+                    {{val.partNumber}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Qty</mat-label>
+                <input matInput type="number" placeholder="Ex. Qty" formControlName="count">
+              </mat-form-field>
+            </td>
+
+            <td><button mat-button color="accent" (click)="Removeitem(i,'items')">(-)</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table formArrayName="parts">
+        <div>
+          <a mat-raised-button color="primary" (click)="Addnewrow('parts')">Add Parts (+)</a>
+        </div>
+        <tbody>
+          <tr *ngFor="let item of addPart.controls;let i=index" [formGroupName]="i">
+            <td>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Part Number</mat-label>
+                <mat-select formControlName="partNumber">
+                  <mat-option *ngFor="let val of purchaseParts" [value]="val.partNumber">
+                    {{val.partNumber}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Qty</mat-label>
+                <input matInput type="number" placeholder="Ex. Qty" formControlName="count">
+              </mat-form-field>
+            </td>
+
+            <td><button mat-button color="accent" (click)="Removeitem(i,'parts')">(-)</button></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+    </div>
+    <div mat-dialog-actions class="action">
+      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+      <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>

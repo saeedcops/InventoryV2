@@ -15,9 +15,12 @@ namespace Application.Common.Interfaces
         DbSet<Customer> Customers { get; }
         DbSet<Engineer> Engineers { get; }
         DbSet<Item> Items { get; }
-        DbSet<ItemType> ItemTypes { get; }
         DbSet<Order> Orders { get; }
-        DbSet<SupplyOrder> SupplyOrders { get; }
+        DbSet<PurchaseOrder> PurchaseOrders { get; }
+        DbSet<PurchasePart> PurchaseParts { get; }
+        DbSet<PurchaseItem> PurchaseItems { get; }
+        DbSet<PurchaseOrderItem> PurchaseOrderItems { get; }
+        DbSet<PurchaseOrderPart> PurchaseOrderParts { get; }
         DbSet<Warehouse> Warehouses { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

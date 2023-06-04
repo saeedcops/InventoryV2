@@ -23,7 +23,7 @@ namespace Application.Common.Models
         public string ItemStatus { get; set; }
         public string Model { get; set; }
         public string Description { get; set; }
-        public string ItemType { get; set; }
+       // public string ItemType { get; set; }
         public string Brand { get; set; }
         public string Warehouse { get; set; }
         public string Customer { get; set; }

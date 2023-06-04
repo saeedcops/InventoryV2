@@ -21,20 +21,38 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<PaginatedList<PartDto>>> GetPartsWithPagination([FromQuery] GetPartsWithPaginationQuery query)
+        public async Task<ActionResult<List<Part>>> GetParts([FromQuery] GetPartsQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
+        [HttpGet("Sold")]
+        public async Task<ActionResult<List<PartNumberQtyDto>>> GetSold([FromQuery] GetSoldPartsQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
+        [HttpGet("Borrowed")]
+        public async Task<ActionResult<int>> GetBorrowed([FromQuery] GetBorrowedPartsQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
+        [HttpGet("PartNumbers")]
+        public async Task<ActionResult<List<PartNumberQtyDto>>> GetPartPartNumber([FromQuery] GetPartsPartNumberQuery query)
         {
             return await Mediator.Send(query);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Part>> Create([FromForm] CreatePartCommand command)
+        public async Task<ActionResult<int>> Create([FromBody] CreatePartCommand command)
         {
           
             return await Mediator.Send(command);
         }
 
         [HttpPost("Update")]
-        public async Task<ActionResult<Part>> Update([FromForm] UpdatePartCommand command)
+        public async Task<ActionResult<int>> Update([FromBody] UpdatePartCommand command)
         {
 
             return await Mediator.Send(command);

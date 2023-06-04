@@ -29,7 +29,6 @@ export class ItemsComponent implements OnInit{
     'brand',
     'description',
     'itemStatus',
-    'itemType',
     'model',
     'oracleCode',
     'partNumber',

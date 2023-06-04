@@ -40,11 +40,6 @@
         <td mat-cell *matCellDef="let row"> {{row.itemStatus}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="itemType">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> itemType </th>
-        <td mat-cell *matCellDef="let row"> {{row.itemType}}</td>
-      </ng-container>
-
       <ng-container matColumnDef="model">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> model </th>
         <td mat-cell *matCellDef="let row"> {{row.model}}</td>
@@ -73,6 +68,9 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" routerLink="/items/{{row.id}}">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
           <button mat-icon-button color="primary" (click)="openEditForm(row)">
             <mat-icon>edit</mat-icon>
           </button>

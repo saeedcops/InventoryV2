@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Common.Models
 {
-    public class SupplyOrderDto : IMapFrom<SupplyOrder>
+    public class SupplyOrderDto : IMapFrom<PurchaseOrder>
     {
         public string Name { get; set; }
         public byte[] Document { get; set; }

@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace Domain.Entities
 {
 
-        public class Order : BaseAuditableEntity
-        {
+    public class Order : BaseAuditableEntity
+    {
         public OrderType OrderType { get; set; } = OrderType.Purchase;
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Ready;
         public int CustomerId { get; set; }

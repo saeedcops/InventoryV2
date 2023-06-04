@@ -1,0 +1,75 @@
+
+<div class="container mt-2">
+
+  <div class="row" *ngIf="item">
+    <div class="col-6 m-5">
+      <div class="p-2">
+        <img src="data:image/jpeg;base64,{{item.image}}" style="height:110px;width:150px;border-radius:5px; margin:10px;" />
+
+      </div>
+      <mat-label>Model : </mat-label>
+      <mat-label style="color:teal;"> {{item.model}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Serial Number : </mat-label>
+      <mat-label style="color:teal;"> {{item.serialNumber}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Part Number : </mat-label>
+      <mat-label style="color:teal;"> {{item.partNumber}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Oracle Code : </mat-label>
+      <mat-label style="color:teal;"> {{item.oracleCode}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Item Status : </mat-label>
+      <mat-label style="color:teal;"> {{item.itemStatus}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label>Warehouse : </mat-label>
+      <mat-label style="color:teal;"> {{item.warehouse.name}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Brand : </mat-label>
+      <mat-label style="color:teal;"> {{item.brand.name}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Customer : </mat-label>
+      <mat-label style="color:teal;"> {{item.customer.name}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Engineer : </mat-label>
+      <mat-label style="color:teal;"> {{item.engineer.name}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Description : </mat-label>
+      <mat-label style="color:teal;"> {{item.description}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Created By : </mat-label>
+      <mat-label style="color:teal;"> {{item.createdBy}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Created At : </mat-label>
+      <mat-label style="color:teal;"> {{item.created | date}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Last Modified At : </mat-label>
+      <mat-label style="color:teal;"> {{item.lastModified | date }}</mat-label>
+      <br />
+      <hr />
+      <mat-label>Last Modified By : </mat-label>
+      <mat-label style="color:teal;"> {{item.lastModifiedBy}}</mat-label>
+      <br />
+    </div>
+    <div class="col-6 m-5">
+
+
+    </div>
+  </div>
+
+</div>

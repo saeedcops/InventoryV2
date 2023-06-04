@@ -10,6 +10,7 @@ namespace Domain.Enum
     {
         stored,
         Sold,
-        Borrowed
+        Borrowed,
+        Workshop
     }
 }
