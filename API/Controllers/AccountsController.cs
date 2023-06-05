@@ -6,6 +6,7 @@ using Application.Common.Models;
 using Application.Engineers.Commands;
 using Application.Engineers.Queries;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -13,12 +14,11 @@ namespace API.Controllers
     public class AccountsController: ApiControllerBase
     {
 
-        [HttpPost("Login")]
-        public async Task<ActionResult<TokenResponse>> Login(LoginUserQuery login)
+        [HttpGet]
+        public async Task<ActionResult<TokenResponse>> ISLoggedIn([FromQuery] GetUserDataQuery command)
         {
-            return await Mediator.Send(login);
+            return await Mediator.Send(command);
         }
-
 
         [HttpGet("Roles")]
         public async Task<ActionResult<List<string>>> GetRoles([FromQuery] GetRolesQuery command)
@@ -32,6 +32,13 @@ namespace API.Controllers
         {
 
             return await Mediator.Send(command);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("Login")]
+        public async Task<ActionResult<TokenResponse>> Login(LoginUserQuery login)
+        {
+            return await Mediator.Send(login);
         }
 
         [HttpPost("Register")]

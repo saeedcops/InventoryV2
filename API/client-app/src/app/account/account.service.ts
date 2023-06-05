@@ -10,15 +10,15 @@ import { IUser, IUserRole } from '../shared/models/user';
 })
 export class AccountService {
   baseUrl = environment.apiUrl;
+  private userSource = new ReplaySubject<IUser>();
   user!: IUser;
-  private userSource = new ReplaySubject<IUser>(1);
-
   user$ = this.userSource.asObservable();
 
   private role = new ReplaySubject<string[]>();
   role$ = this.role.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   getRoles() {
     return this.http.get<string[]>(this.baseUrl + 'Accounts/Roles').subscribe(res => {
@@ -47,19 +47,19 @@ export class AccountService {
 
   loadCurrentUser(token: string) {
     if (token === null) {
-      this.userSource.next(this.user);
+      console.log("No token");
       return of();
     }
     let header = new HttpHeaders();
     header = header.set('Authorization', `Bearer ${token}`);
-    return this.http.get(this.baseUrl + 'account', { headers: header }).pipe(
-      map((user: any) => {
-        if (user) {
-          localStorage.setItem('token', user.token);
-          this.userSource.next(user);
-        }
-      })
-    );
+
+    return this.http.get<IUser>(this.baseUrl + 'Accounts', { headers: header })
+      .subscribe(res => {
+        this.userSource.next(res);
+        console.log(res);
+      }, err => {
+        console.log(err);
+      });
   }
 
   login(values: any) {
@@ -76,8 +76,6 @@ export class AccountService {
         })
       );
   }
-
-
 
   logout() {
     localStorage.removeItem('token');

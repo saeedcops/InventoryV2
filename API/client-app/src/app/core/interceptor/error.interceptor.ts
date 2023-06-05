@@ -36,8 +36,9 @@ export class ErrorInterceptor implements HttpInterceptor {
           } 
 
           if (error.status === 401) {
-            this.toastr.error(error.error.detail, error.status);
-            console.log(error.error.massage);
+            //this.toastr.error(error.error.detail, error.status);
+            this.router.navigateByUrl('/login');
+           // console.log(error.error.massage);
 
 
           }

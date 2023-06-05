@@ -15,7 +15,7 @@ import { IUser } from './shared/models/user';
 export class AppComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  private userSource = new ReplaySubject<IUser>(1);
+  private userSource = new ReplaySubject<IUser>();
 
   user$ = this.userSource.asObservable();
 
@@ -23,25 +23,26 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
-    this._accountService.loadCurrentUser(token!).subscribe(() => {
-      console.log("Loaded");
-      this.user$ = this._accountService.user$;
-    },
-      er => { console.log(er); });
+    this._accountService.loadCurrentUser(token!);
+    this.user$ = this._accountService.user$;
+   
     }
 
-  
-  ngAfterViewInit() {
-    setTimeout(() => {
-    this.observer.observe(["(max-width: 800px)"]).subscribe((res: { matches: any; }) => {
-      if (res.matches) {
-        this.sidenav.mode = "over";
-        this.sidenav.close();
-      } else {
-        this.sidenav.mode = "side";
-        this.sidenav.open();
-      }
-    });
-    });
+  logout() {
+    this._accountService.logout();
   }
+  ngAfterViewInit() {
+    //setTimeout(() => {
+    //this.observer.observe(["(max-width: 800px)"]).subscribe((res: { matches: any; }) => {
+    //  if (res.matches) {
+    //   // this.sidenav.mode = "over";
+    //    this.sidenav.close();
+    //  } else {
+    //    this.sidenav.mode = "side";
+    //    this.sidenav.open();
+    //  }
+    //});
+    //});
+  }
+
 }

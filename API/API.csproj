@@ -12,6 +12,7 @@
     <None Remove="client-app\src\app\account\account.service.ts" />
     <None Remove="client-app\src\app\brands\brands.service.ts" />
     <None Remove="client-app\src\app\core\busy.service.ts" />
+    <None Remove="client-app\src\app\core\guards\auth.guard.ts" />
     <None Remove="client-app\src\app\core\interceptor\error.interceptor.ts" />
     <None Remove="client-app\src\app\core\interceptor\jwt.interceptor.ts" />
     <None Remove="client-app\src\app\core\interceptor\loading.interceptor.ts" />
@@ -64,6 +65,7 @@
     <TypeScriptCompile Include="client-app\src\app\brands\brands.service.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="client-app\src\app\core\guards\auth.guard.ts" />
     <TypeScriptCompile Include="client-app\src\app\core\interceptor\error.interceptor.ts" />
     <TypeScriptCompile Include="client-app\src\app\core\interceptor\jwt.interceptor.ts" />
     <TypeScriptCompile Include="client-app\src\app\core\interceptor\loading.interceptor.ts" />
