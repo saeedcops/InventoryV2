@@ -36,6 +36,15 @@ export class HomeService {
     return this.http.get<IPartNumber[]>(this.baseUrl + 'Items/Sold');
   }
 
+  getExceededItems() {
+
+    return this.http.get<IPartNumber[]>(this.baseUrl + 'Items/Exceeded');
+  }
+
+  getExceededParts() {
+
+    return this.http.get<IPartNumber[]>(this.baseUrl + 'Parts/Exceeded');
+  }
   getParts() {
 
     return this.http.get<IPartNumber[]>(this.baseUrl + 'Parts/PartNumbers');

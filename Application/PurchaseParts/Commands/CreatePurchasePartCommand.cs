@@ -18,6 +18,8 @@ namespace Application.PurchaseParts.Commands
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
+        public int ExceedLimit { get; set; }
+
         public byte[]? Image { get; set; }
     }
 
@@ -38,8 +40,9 @@ namespace Application.PurchaseParts.Commands
                 OracleCode = request.OracleCode,
                 Description = request.Description,  
                 Image = request.Image,
-                Name = request.Name
- 
+                Name = request.Name,
+                ExceededLimit = request.ExceedLimit,
+
             };
 
             entity = _context.PurchaseParts.Add(entity).Entity;

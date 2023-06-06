@@ -11,6 +11,8 @@ namespace Application.PurchaseParts.Commands
         public string PartNumber { get; set; }
         public string OracleCode { get; set; }
         public string Name { get; set; }
+        public int ExceedLimit { get; set; }
+
         public string Description { get; set; }
         public byte[]? Image { get; set; }
     }
@@ -26,7 +28,7 @@ namespace Application.PurchaseParts.Commands
 
         public async Task<int> Handle(UpdatePurchasePartCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.PurchaseParts.FirstOrDefaultAsync(b => b.PartNumber == request.PartNumber);
+            var entity = await _context.PurchaseParts.FirstOrDefaultAsync(b => b.PartNumber.Equals(request.PartNumber));
             if (entity == null)
                 throw new NotFoundException($"No PurchaseParts with {request.PartNumber}");
 
@@ -34,8 +36,8 @@ namespace Application.PurchaseParts.Commands
             entity.Name = request.Name != null ? request.Name : entity.Name;
             entity.Description = request.Description != null ? request.Description : entity.Description;
             entity.Image = request.Image != null ? request.Image : entity.Image;
-          
-          
+            entity.ExceededLimit = request.ExceedLimit != 0 ? request.ExceedLimit : entity.ExceededLimit;
+
             _context.PurchaseParts.Update(entity);
             await _context.SaveChangesAsync(cancellationToken);
 

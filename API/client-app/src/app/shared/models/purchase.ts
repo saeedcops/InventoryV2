@@ -20,6 +20,8 @@ export interface IPurchaseItem {
   partNumber: string
   oracleCode: string
   model: string
+  exceedLimit: number
+
   description: string
   brandId: number
   brand: IBrand
@@ -40,6 +42,7 @@ export interface IPurchasePart {
   lastModified: string
   lastModifiedBy: string
   partNumber: string
+  exceedLimit: number
   oracleCode: string
   description: string
   name: string

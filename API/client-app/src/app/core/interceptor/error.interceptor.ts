@@ -37,7 +37,8 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           if (error.status === 401) {
             //this.toastr.error(error.error.detail, error.status);
-            this.router.navigateByUrl('/login');
+            const navigation: NavigationExtras = { state: { returnUrl: request.url } };
+            this.router.navigateByUrl('/login',navigation);
            // console.log(error.error.massage);
 
 

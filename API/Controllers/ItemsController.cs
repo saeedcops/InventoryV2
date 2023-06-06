@@ -36,6 +36,11 @@ namespace API.Controllers
             return await Mediator.Send(query);
         }
 
+        [HttpGet("Exceeded")]
+        public async Task<ActionResult<List<PartNumberQtyDto>>> Exceeded([FromQuery] GetExceededItemsPartNumberQuery query)
+        {
+            return await Mediator.Send(query);
+        }
         [HttpGet("Borrowed")]
         public async Task<ActionResult<int>> GetBorrowed([FromQuery] GetBorrowedItemsQuery query)
         {

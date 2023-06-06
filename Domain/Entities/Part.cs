@@ -17,6 +17,8 @@ namespace Domain.Entities
         public string OracleCode { get; set; }
         public ItemStatus PartStatus { get; set; } = ItemStatus.stored;
         public DateTime? OrderDate { get; set; }
+        public int ExceededLimit { get; set; }
+        
         public string Model { get; set; }
         public string? Description { get; set; }
         public int WarehouseId { get; set; }

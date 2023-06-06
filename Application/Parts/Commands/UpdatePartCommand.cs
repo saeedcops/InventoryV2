@@ -22,6 +22,7 @@ namespace Application.Parts.Commands
         public int? BrandId { get; set; }
         public int? WarehouseId { get; set; }
         public int? EngineerId { get; set; }
+
         public int? CustomerId { get; set; }
         public byte[]? Image { get; set; }
     }

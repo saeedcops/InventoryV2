@@ -11,12 +11,14 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    this.accountService.loadCurrentUser(localStorage.getItem('token')!);
     return this.accountService.user$.pipe(
       map(auth => {
         console.log("Check");
         if (auth) {
           return true;
         }
+        console.log(state.url);
         return this.router.createUrlTree(['account/login'], { queryParams: { returnUrl: state.url } })
         //this.router.createUrlTree(['account/login'], { queryParams: { returnUrl: state.url } });
         // return false;

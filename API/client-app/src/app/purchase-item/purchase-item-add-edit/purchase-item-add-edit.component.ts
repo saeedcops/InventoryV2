@@ -33,6 +33,7 @@ export class PurchaseItemAddEditComponent implements OnInit {
       model: [null, Validators.required],
       description: [null, Validators.required],
       brandId: [null, Validators.required],
+      exceedLimit: [null, Validators.required],
       parts: new FormArray([]),
       image: { value: '', disabled: false }
     });

@@ -16,6 +16,9 @@ namespace Application.Parts.Commands
         public byte[]? Image { get; set; }
         public int BrandId { get; set; }
         public int WarehouseId { get; set; }
+        public int ExceedLimit { get; set; }
+
+
     }
 
     public class CreatePartCommandHandler : IRequestHandler<CreatePartCommand, int>
@@ -40,6 +43,7 @@ namespace Application.Parts.Commands
                 Model = request.Model,
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
+                ExceededLimit = request.ExceedLimit,
 
 
             };

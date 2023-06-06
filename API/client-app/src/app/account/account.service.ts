@@ -47,6 +47,7 @@ export class AccountService {
 
   loadCurrentUser(token: string) {
     if (token === null) {
+      this.userSource.next(this.user);
       console.log("No token");
       return of();
     }
@@ -58,6 +59,7 @@ export class AccountService {
         this.userSource.next(res);
         console.log(res);
       }, err => {
+        this.userSource.next(this.user);
         console.log(err);
       });
   }

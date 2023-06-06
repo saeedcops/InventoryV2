@@ -19,6 +19,8 @@ namespace Application.Items.Commands
         public string OracleCode { get; set; }
         public string Model { get; set; }
         public string Description { get; set; }
+        public int ExceedLimit { get; set; }
+
         public int ItemTypeId { get; set; }
         public int BrandId { get; set; }
         public int WarehouseId { get; set; }
@@ -51,6 +53,7 @@ namespace Application.Items.Commands
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
                 Image = request.Image,
+                ExceededLimit = request.ExceedLimit
 
             };
 

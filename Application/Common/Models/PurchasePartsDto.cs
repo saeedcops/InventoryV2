@@ -9,6 +9,8 @@ namespace Application.Common.Models
         public string PartNumber { get; set; }
         public string OracleCode { get; set; }
         public string Description { get; set; }
+        public int ExceededLimit { get; set; }
+
         public string Name { get; set; }
         public string Created { get; set; }
         public string CreatedBy { get; set; }

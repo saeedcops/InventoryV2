@@ -15,10 +15,12 @@ namespace Application.PurchaseItems.Commands
         public string PartNumber { get; set; }
         public string OracleCode { get; set; }
         public string Model { get; set; }
+        public int ExceedLimit { get; set; }
+
         public string Description { get; set; }
         public int BrandId { get; set; }
         public byte[]? Image { get; set; }
-        public List<string> Parts { get; set; }
+        public List<OrderItem>? Parts { get; set; }
     }
 
     public class UpdatePurchaseItemCommandHandler : IRequestHandler<UpdatePurchaseItemCommand, int>
@@ -32,7 +34,7 @@ namespace Application.PurchaseItems.Commands
 
         public async Task<int> Handle(UpdatePurchaseItemCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.PurchaseItems.FirstOrDefaultAsync(b => b.PartNumber == request.PartNumber);
+            var entity = await _context.PurchaseItems.FirstOrDefaultAsync(b => b.PartNumber.Equals(request.PartNumber));
             if (entity == null)
                 throw new NotFoundException($"No PurchaseItems with {request.PartNumber}");
 
@@ -41,12 +43,13 @@ namespace Application.PurchaseItems.Commands
             entity.Description = request.Description != null ? request.Description : entity.Description;
             entity.BrandId = request.BrandId != 0 ? request.BrandId : entity.BrandId;
             entity.Image = request.Image != null ? request.Image : entity.Image;
+            entity.ExceededLimit = request.ExceedLimit != 0 ? request.ExceedLimit : entity.ExceededLimit;
            
             if (request.Parts != null)
             {
                 var parts = new List<PurchasePart>();
                 foreach (var serial in request.Parts)
-                    parts.Add(await _context.PurchaseParts.FirstOrDefaultAsync(x => x.PartNumber.Equals(serial)));
+                    parts.Add(await _context.PurchaseParts.FirstOrDefaultAsync(x => x.PartNumber.Equals(serial.PartNumber)));
 
                 entity.Parts = parts;
             }

@@ -19,6 +19,7 @@ namespace Application.PurchaseItems.Commands
         public string Model { get; set; }
         public string Description { get; set; }
         public int BrandId { get; set; }
+        public int ExceedLimit { get; set; }
         public byte[]? Image { get; set; }
         public List<OrderItem> Parts { get; set; }
     }
@@ -42,6 +43,7 @@ namespace Application.PurchaseItems.Commands
                 Description = request.Description,  
                 BrandId = request.BrandId,
                 Image = request.Image,
+                ExceededLimit = request.ExceedLimit,
  
             };
             var parts = new List<PurchasePart>();

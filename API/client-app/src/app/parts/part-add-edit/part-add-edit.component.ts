@@ -30,7 +30,9 @@ export class PartAddEditComponent implements OnInit {
       id:'',
       partNumber:[null,Validators.required],
       oracleCode: [null, Validators.required],
-      model:  '',
+      model: '',
+      exceedLimit: '',
+
       description:  '',
       warehouseId: [null, Validators.required],
       image: '',
@@ -51,6 +53,7 @@ export class PartAddEditComponent implements OnInit {
           description: res.description,
           warehouseId: 3,
           image: res.image,
+          exceedLimit: res.exceedLimit
         });
         this.dataSet = true;
       }, err => { console.log(err); });

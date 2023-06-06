@@ -28,6 +28,8 @@ export class PurchasePartAddEditComponent implements OnInit {
       oracleCode: [null, Validators.required],
       name: [null, Validators.required],
       description: [null, Validators.required],
+      exceedLimit: [null, Validators.required],
+
       image: { value: '', disabled: false }
     });
 

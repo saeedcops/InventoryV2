@@ -16,6 +16,8 @@ namespace Domain.Entities
         [Required]
         public string OracleCode { get; set; }
         public string Description { get; set; }
+        public int ExceededLimit { get; set; }
+
         public string Name { get; set; }
         public byte[]? Image { get; set; }
     }

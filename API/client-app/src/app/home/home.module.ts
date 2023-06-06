@@ -7,6 +7,8 @@ import { AvailablePartsComponent } from './available-parts/available-parts.compo
 import { SharedModule } from '../shared/shared.module';
 import { ChartModule } from 'angular-highcharts';
 import { AvailableItemsComponent } from './available-tems/available-tems.component';
+import { ExceededLimitItemsComponent } from './exceeded-limit-items/exceeded-limit-items.component';
+import { ExceededLimitPartsComponent } from './exceeded-limit-parts/exceeded-limit-parts.component';
 
 
 
@@ -18,6 +20,8 @@ import { AvailableItemsComponent } from './available-tems/available-tems.compone
     SoldPartsComponent,
     AvailablePartsComponent,
     AvailableItemsComponent,
+    ExceededLimitItemsComponent,
+    ExceededLimitPartsComponent
   ],
   imports: [
     SharedModule,
