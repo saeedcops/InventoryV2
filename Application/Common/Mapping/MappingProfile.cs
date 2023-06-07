@@ -24,6 +24,7 @@ namespace Application.Common.Mapping
                 .ForMember(p => p.Customer, resp => resp.MapFrom(r => r.Customer.Name))
                 .ForMember(p => p.ItemStatus, resp => resp.MapFrom(r => r.ItemStatus.ToString()))
                 .ForMember(p => p.Created, resp => resp.MapFrom(r => r.Created.ToString()))
+                .ForMember(p => p.OrderDate, resp => resp.MapFrom(r => r.OrderDate.ToString()))
                 .ReverseMap();
 
 
@@ -42,6 +43,9 @@ namespace Application.Common.Mapping
                 .ForMember(p => p.Warehouse, resp => resp.MapFrom(r => r.Warehouse.Name))
                 //.ForMember(p => p.Brand, resp => resp.MapFrom(r => r.Brand.Name))
                 .ForMember(p => p.Customer, resp => resp.MapFrom(r => r.Customer.Name))
+                .ForMember(p => p.OrderDate, resp => resp.MapFrom(r => r.OrderDate.ToString()))
+                .ForMember(p => p.Created, resp => resp.MapFrom(r => r.Created.ToString()))
+
                 .ReverseMap();
 
             CreateMap<Order, OrderDto>()

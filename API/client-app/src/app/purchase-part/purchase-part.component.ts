@@ -26,7 +26,7 @@ export class PurchasePartComponent implements OnInit{
     'partNumber',
     'oracleCode',
     'description',
-    'exceedLimit',
+    'exceededLimit',
     'name',
     'action'
   ];

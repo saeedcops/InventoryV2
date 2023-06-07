@@ -1,0 +1,65 @@
+<div mat-dialog-title>
+  <h1>Item Actions Report</h1>
+</div>
+<form [formGroup]="reportForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>partNumber</mat-label>
+        <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>From</mat-label>
+        <input matInput type="date" placeholder="Ex. From Date" formControlName="from">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>To</mat-label>
+        <input matInput type="date" placeholder="Ex. To Date" formControlName="to">
+      </mat-form-field>
+
+      <div mat-dialog-actions class="action">
+        <button mat-raised-button color="primary" type="submit">Generate</button>
+      </div>
+    </div>
+
+  </div>
+
+</form>
+<div >
+  <table class="center" *ngIf="(items$ | async) as it">
+    <tr>
+      <th>Brand</th>
+      <th>Created At</th>
+      <th>Created By</th>
+      <th>Customer</th>
+      <th>Description</th>
+      <th>Engineer</th>
+      <th>Item Status</th>
+      <th>Model</th>
+      <th>Oracle Code</th>
+      <th>Action Date</th>
+      <th>Part Number</th>
+      <th>Serial Number</th>
+      <th>Warehouse</th>
+    </tr>
+
+    <tr *ngFor="let val of it">
+      <td>{{val.brand}}</td>
+      <td>{{val.created | date}}</td>
+      <td>{{val.createdBy}}</td>
+
+      <td>{{val.customer}}</td>
+      <td>{{val.description}}</td>
+      <td>{{val.engineer}}</td>
+      <td>{{val.itemStatus}}</td>
+      <td>{{val.model}}</td>
+      <td>{{val.oracleCode}}</td>
+      <td>{{val.orderDate | date}}</td>
+      <td>{{val.partNumber}}</td>
+      <td>{{val.serialNumber}}</td>
+      <td>{{val.warehouse}}</td>
+    </tr>
+
+  </table>
+  </div>

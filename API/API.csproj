@@ -31,6 +31,7 @@
     <None Remove="client-app\src\app\purchase-order\purchase-order.service.ts" />
     <None Remove="client-app\src\app\purchase-item\purchase-item.service.ts" />
     <None Remove="client-app\src\app\purchase-part\purchase-part.service.ts" />
+    <None Remove="client-app\src\app\reports\reports.service.ts" />
     <None Remove="client-app\src\app\shared\models\brand.ts" />
     <None Remove="client-app\src\app\shared\models\customer.ts" />
     <None Remove="client-app\src\app\shared\models\engineer.ts" />
@@ -110,6 +111,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="client-app\src\app\orders\orders.service.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="client-app\src\app\reports\reports.service.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="client-app\src\app\shared\models\order.ts" />

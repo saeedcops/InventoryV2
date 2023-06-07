@@ -24,7 +24,9 @@ namespace Application.Items.Queries
             return await _context.Items
                 .Where(i => i.ItemStatus == Domain.Enum.ItemStatus.stored)
                 .GroupBy( i => i.PartNumber)
-                .Where(i => i.First().ExceededLimit > i.Count())
+                .Where(i => i.Count() < 5)
+
+                //.Where(i => i.Count() < i.First().ExceededLimit)
                 .Select(i => new PartNumberQtyDto { PartNumber = i.First().PartNumber,Qty =i.Count() })
                 .ToListAsync();
         }

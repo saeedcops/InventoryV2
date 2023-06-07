@@ -30,7 +30,7 @@ export class PurchaseItemsComponent implements OnInit{
     'brand',
     'created',
     'createdBy',
-    'exceedLimit',
+    'exceededLimit',
     'action'
   ];
 

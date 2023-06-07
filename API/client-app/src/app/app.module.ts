@@ -35,6 +35,8 @@ import { ItemDetailsComponent } from './items/item-detail/item-details.component
 import { PartDetailsComponent } from './parts/part-detail/part-details.component';
 import { AccountModule } from './account/account.module';
 import { LoginComponent } from './account/login/login.component';
+import { ReportsComponent } from './reports/reports.component';
+import { ItemActionComponent } from './reports/item-action/item-action.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { LoginComponent } from './account/login/login.component';
     PartDetailsComponent,
     PurchasePartAddEditComponent,
     PurchasePartComponent,
-    LoginComponent
+    LoginComponent,
+    ReportsComponent,
+    ItemActionComponent
   ],
   imports: [
     //BrowserModule,

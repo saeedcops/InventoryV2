@@ -16,10 +16,13 @@ namespace Application.Common.Models
         public string OracleCode { get; set; }
         public ItemStatus PartStatus { get; set; }
         public string Model { get; set; }
+        public string OrderDate { get; set; }
+        public string Created { get; set; }
+
         public string Description { get; set; }
         public string Warehouse { get; set; }
         public string Customer { get; set; }
         public string Engineer { get; set; }
-        public byte[] Image { get; set; }
+       // public byte[] Image { get; set; }
     }
 }

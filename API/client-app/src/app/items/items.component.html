@@ -8,14 +8,16 @@
   <button mat-raised-button (click)="openAddEditItemForm()">
     ADD Items
   </button>
+
+
 </mat-toolbar>
 
 <div class="main-body">
 
  
 
-  <div class="table-container ">
-    <table mat-table [dataSource]="dataSource" matSort>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort >
 
       <!-- ID Column -->
       <ng-container matColumnDef="id">

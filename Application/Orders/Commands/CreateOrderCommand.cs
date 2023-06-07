@@ -95,6 +95,7 @@ namespace Application.Orders.Commands
                                 break;
                         }
                         item.ItemStatus = status;
+                        item.OrderDate = DateTime.Now;
                         items.Add(item);
                         _context.Items.Update(item);
                     }
@@ -146,6 +147,8 @@ namespace Application.Orders.Commands
                                 status = ItemStatus.Sold;
                                 break;
                         }
+                        item.OrderDate = DateTime.Now;
+
                         item.PartStatus = status;
                         parts.Add(item);
                         _context.Parts.Update(item);
@@ -164,7 +167,9 @@ namespace Application.Orders.Commands
                 OrderType =(OrderType) request.OrderType,
                 Document = request.Document,
                 OrderItems = items,
-                OrderParts = parts
+                OrderParts = parts,
+                
+               
             };
 
             entity = _context.Orders.Add(entity).Entity;

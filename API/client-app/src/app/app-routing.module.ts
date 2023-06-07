@@ -24,6 +24,7 @@ import { ItemDetailsComponent } from './items/item-detail/item-details.component
 import { PartDetailsComponent } from './parts/part-detail/part-details.component';
 import { LoginComponent } from './account/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { ItemActionComponent } from './reports/item-action/item-action.component';
 
 const routes: Routes = [
   { path: '',  component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -38,8 +39,8 @@ const routes: Routes = [
   { path: 'purchase-orders', canActivate: [AuthGuard], component: PurchaseOrderComponent, data: { breadcrumb: 'Purchase-orders' } },
   { path: 'purchase-orders/:id', canActivate: [AuthGuard], component: PurchaseOrderDetailsComponent, data: { breadcrumb: 'Purchase-orders' } },
   //{
-  //  path: 'purchase-item',
-  //  loadChildren: () => import('./purchase-item/purchase-item.module').then(m => m.PurchaseItemModule)
+  //  path: 'reports', canActivate: [AuthGuard],
+  //  loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
   //},
   { path: 'brands', canActivate: [AuthGuard], component: BrandsComponent, data: { breadcrumb: 'Brands' } },
   { path: 'customers', canActivate: [AuthGuard], component: CustomersComponent, data: { breadcrumb: 'Customers' } },
@@ -48,8 +49,8 @@ const routes: Routes = [
   { path: 'item-types', canActivate: [AuthGuard], component: ItemTypesComponent, data: { breadcrumb: 'Item-Types' } },
   { path: 'orders', canActivate: [AuthGuard], component: OrdersComponent, data: { breadcrumb: 'Orders' } },
   { path: 'orders/:id', canActivate: [AuthGuard], component: OrderDetailsComponent, data: { breadcrumb: 'Details' } },
- // { path: 'parts', component: PartsComponent, data: { breadcrumb: 'Parts' } },
   { path: 'reports', canActivate: [AuthGuard], component: ReportsComponent, data: { breadcrumb: 'Reports' } },
+  { path: 'item-action', canActivate: [AuthGuard], component: ItemActionComponent, data: { breadcrumb: 'Item Action' } },
   { path: 'users', canActivate: [AuthGuard], component: UsersComponent, data: { breadcrumb: 'Users' } },
   { path: 'login', component: LoginComponent, data: { breadcrumb: 'Login' } },
   { path: 'account', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule), data: { breadcrumb: { skip: true } } },

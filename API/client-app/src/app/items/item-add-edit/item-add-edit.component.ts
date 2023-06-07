@@ -33,7 +33,7 @@ export class ItemAddEditComponent implements OnInit {
       serialNumber: [null, Validators.required],
       model: [null, Validators.required],
       description: '',
-      exceedLimit: '',
+      exceededLimit: '',
       brandId: [null, Validators.required],
       warehouseId: [null, Validators.required],
       image: '',
@@ -95,6 +95,7 @@ export class ItemAddEditComponent implements OnInit {
             },
           });
       } else {
+        console.log(this.empForm.value);
         this._itemService.addItems(this.empForm.value).subscribe({
           next: (val: any) => {
             this.toastr.success("Item added successfully","Items");

@@ -36,6 +36,9 @@ export interface IItem {
   itemStatus: string
   model: string
   description: string
+  created: string
+  createdBy: string
+  orderDate: string
   itemType: string
   brand: string
   brandId: number

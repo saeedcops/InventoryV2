@@ -17,6 +17,7 @@ namespace Application.Common.Models
         public int Id { get; set; }
 
         public string Created { get; set; }
+        public string OrderDate { get; set; }
         public string CreatedBy { get; set; }
         public string SerialNumber { get; set; }
         public string OracleCode { get; set; }

@@ -28,7 +28,7 @@ export class PurchasePartAddEditComponent implements OnInit {
       oracleCode: [null, Validators.required],
       name: [null, Validators.required],
       description: [null, Validators.required],
-      exceedLimit: [null, Validators.required],
+      exceededLimit: [null, Validators.required],
 
       image: { value: '', disabled: false }
     });
@@ -68,6 +68,7 @@ export class PurchasePartAddEditComponent implements OnInit {
             },
           });
       } else {
+        console.log(this.empForm.value);
         this._itemService.addParts(this.empForm.value).subscribe({
           next: (val: any) => {
             this.toastr.success("Part added successfully");

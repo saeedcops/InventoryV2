@@ -18,7 +18,7 @@ namespace Application.PurchaseParts.Commands
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
-        public int ExceedLimit { get; set; }
+        public int ExceededLimit { get; set; }
 
         public byte[]? Image { get; set; }
     }
@@ -41,7 +41,7 @@ namespace Application.PurchaseParts.Commands
                 Description = request.Description,  
                 Image = request.Image,
                 Name = request.Name,
-                ExceededLimit = request.ExceedLimit,
+                ExceededLimit = request.ExceededLimit,
 
             };
 
