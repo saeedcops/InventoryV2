@@ -13,8 +13,12 @@ export interface IPart {
   model: string
   description: string
   created: string
+  createdBy: string
+  customer: string
+  warehouse: string
+  engineer: string
   orderDate: string
-  partStatus: number
+  partStatus: string
   brandId: number
   warehouseId: number
   customerId: number

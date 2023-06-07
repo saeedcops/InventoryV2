@@ -25,6 +25,9 @@ import { PartDetailsComponent } from './parts/part-detail/part-details.component
 import { LoginComponent } from './account/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { ItemActionComponent } from './reports/item-action/item-action.component';
+import { PartActionComponent } from './reports/part-action/part-action.component';
+import { ItemStocktakingComponent } from './reports/item-stocktaking/item-stocktaking.component';
+import { PartStocktakingComponent } from './reports/part-stocktaking/part-stocktaking.component';
 
 const routes: Routes = [
   { path: '',  component: HomeComponent, data: { breadcrumb: 'Home' } },
@@ -51,6 +54,9 @@ const routes: Routes = [
   { path: 'orders/:id', canActivate: [AuthGuard], component: OrderDetailsComponent, data: { breadcrumb: 'Details' } },
   { path: 'reports', canActivate: [AuthGuard], component: ReportsComponent, data: { breadcrumb: 'Reports' } },
   { path: 'item-action', canActivate: [AuthGuard], component: ItemActionComponent, data: { breadcrumb: 'Item Action' } },
+  { path: 'part-action', canActivate: [AuthGuard], component: PartActionComponent, data: { breadcrumb: 'Part Action' } },
+  { path: 'item-stocktaking', canActivate: [AuthGuard], component: ItemStocktakingComponent, data: { breadcrumb: 'Part Action' } },
+  { path: 'part-stocktaking', canActivate: [AuthGuard], component: PartStocktakingComponent, data: { breadcrumb: 'Part Action' } },
   { path: 'users', canActivate: [AuthGuard], component: UsersComponent, data: { breadcrumb: 'Users' } },
   { path: 'login', component: LoginComponent, data: { breadcrumb: 'Login' } },
   { path: 'account', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule), data: { breadcrumb: { skip: true } } },

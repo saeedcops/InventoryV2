@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SharedModule } from '../../shared/shared.module';
+import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { filter, take, pairwise } from 'rxjs';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -31,8 +31,27 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.accountService.login(this.loginForm.value).subscribe(() => {
-      console.log("Submit" + this.returnUrl);
+     
+     
       this.router.navigateByUrl(this.returnUrl);
+
+      //this.router.events
+      //  .pipe(take(1), filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
+      //  .subscribe((events: RoutesRecognized[]) => {
+
+      //    console.log('previous url', events[0].urlAfterRedirects);
+      //    console.log('current url', events[1].urlAfterRedirects);
+
+      //    this.returnUrl = events[0].urlAfterRedirects;
+
+      //    if (!this.returnUrl) {
+      //      console.log("navigate /" );
+      //      this.router.navigate(['/']);
+      //    } else {
+      //      console.log("navigate" + this.returnUrl);
+      //     this.router.navigateByUrl(this.returnUrl);
+      //    }
+      //  }, err => { console.log(err); });
 
     }, er => {
       this.errors = er.errors;

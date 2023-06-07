@@ -1,0 +1,37 @@
+<div class="row" mat-dialog-title>
+  <h1>Part Stocktaking Report</h1>
+
+  <button *ngIf="(parts$ | async) != null" printTitle="Part Stocktaking Report"
+          printSectionId="print-section"
+          ngxPrint>
+    print
+  </button>
+</div>
+
+<div id="print-section" >
+  <table border=1 frame=hsides  rules=rows class="center" *ngIf="(parts$ | async) as it">
+    <tr>
+      <th i18n>CreatedAt</th>
+      <th i18n>CreatedBy</th>
+      <th i18n>Description</th>
+      <th i18n>PartStatus</th>
+      <th i18n>Model</th>
+      <th i18n>OracleCode</th>
+      <th i18n>PartNumber</th>
+      <th i18n>Warehouse</th>
+    </tr>
+
+    <tr *ngFor="let val of it">
+      <td>{{val.created | date}}</td>
+      <td>{{val.createdBy}}</td>
+
+      <td>{{val.description}}</td>
+      <td>{{val.partStatus}}</td>
+      <td>{{val.model}}</td>
+      <td>{{val.oracleCode}}</td>
+      <td>{{val.partNumber}}</td>
+      <td>{{val.warehouse}}</td>
+    </tr>
+
+  </table>
+  </div>

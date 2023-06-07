@@ -25,9 +25,18 @@ export class ReportsService {
     return this.http.get<IItem[]>(this.baseUrl + 'Reports/ItemAction?From' + data.from + '&To=' + data.to + '&PartNumber=' +data.partNumber);
   }
 
-  getPartActions(from:string,to:string,partNumber:string) {
+  getPartActions(data: any) {
 
-    return this.http.get<IPart[]>(this.baseUrl + 'Reports/PartAction?From='+from+'&To='+to+'&PartNumber='+partNumber);
+    return this.http.get<IPart[]>(this.baseUrl + 'Reports/PartAction?From='+data.from+'&To='+data.to+'&PartNumber='+data.partNumber);
   }
 
+  getItemStock() {
+
+    return this.http.get<IItem[]>(this.baseUrl + 'Reports/ItemStocktaking');
+  }
+
+  getPartStock() {
+
+    return this.http.get<IPart[]>(this.baseUrl + 'Reports/PartStocktaking');
+  }
 }

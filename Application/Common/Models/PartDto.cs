@@ -14,11 +14,11 @@ namespace Application.Common.Models
     {
         public string PartNumber { get; set; }
         public string OracleCode { get; set; }
-        public ItemStatus PartStatus { get; set; }
+        public string PartStatus { get; set; }
         public string Model { get; set; }
         public string OrderDate { get; set; }
         public string Created { get; set; }
-
+        public string CreatedBy { get; set; }
         public string Description { get; set; }
         public string Warehouse { get; set; }
         public string Customer { get; set; }

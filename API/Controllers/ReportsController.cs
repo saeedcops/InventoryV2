@@ -29,6 +29,20 @@ namespace API.Controllers
         }
 
 
+        [HttpGet("ItemStocktaking")]
+        public async Task<ActionResult<List<ItemDto>>> ItemStocktaking([FromQuery] GetStocktakingItemsQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
+
+        [HttpGet("PartStocktaking")]
+        public async Task<ActionResult<List<PartDto>>> PartStocktaking([FromQuery] GetStocktakingPartsQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
+
 
 
     }

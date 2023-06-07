@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReplaySubject } from 'rxjs';
 import { IItem } from '../../shared/models/item';
+import { IPart } from '../../shared/models/part';
 import { ReportsService } from '../reports.service';
 @Component({
-  selector: 'app-item-action',
-  templateUrl: './item-action.component.html',
-  styleUrls: ['./item-action.component.scss']
+  selector: 'app-part-action',
+  templateUrl: './part-action.component.html',
+  styleUrls: ['./part-action.component.scss']
 })
-export class ItemActionComponent implements OnInit {
-  private itemSource = new ReplaySubject<IItem[]>();
-  items$ = this.itemSource.asObservable();
+export class PartActionComponent implements OnInit {
+  private partSource = new ReplaySubject<IPart[]>();
+  parts$ = this.partSource.asObservable();
   reportForm: FormGroup;
   constructor(private _reportService: ReportsService,  private _fb: FormBuilder,) {
 
@@ -26,11 +27,11 @@ export class ItemActionComponent implements OnInit {
 
 
   onFormSubmit() {
-    
+
         console.log(this.reportForm.value);
-        this._reportService.getItemActions(this.reportForm.value).subscribe(
+        this._reportService.getPartActions(this.reportForm.value).subscribe(
           next => {
-            this.itemSource.next(next);
+            this.partSource.next(next);
              console.log(next);
           },
           error => {

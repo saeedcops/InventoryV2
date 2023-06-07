@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="2559885490456050359" datatype="html">
+        <source>Brand</source>
+        <target>الماركه</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1740829510890499561" datatype="html">
+        <source>CreatedAt</source>
+         <target>وقت الانشاء</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9215133063211811946" datatype="html">
+        <source>CreatedBy</source>
+        <target>المنشئ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4902817035128594900" datatype="html">
+        <source>Description</source>
+        <target>الوصف</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4247396709182838391" datatype="html">
+        <source>ItemStatus</source>
+        <target>الحالة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1141886420788473147" datatype="html">
+        <source>Model</source>
+        <target>الموديل</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="432149571173739362" datatype="html">
+        <source>OracleCode</source>
+        <target>كود اوريكال</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6597175685772936523" datatype="html">
+        <source>PartNumber</source>
+        <target>رقم القطعة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6097503000338392027" datatype="html">
+        <source>SerialNumber</source>
+        <target>الرقم المسلسل</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8618345666238432801" datatype="html">
+        <source>Warehouse</source>
+        <target>المخزن</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/item-stocktaking/item-stocktaking.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1321190161984860858" datatype="html">
+        <source>PartStatus</source>
+        <target>الحالة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/reports/part-stocktaking/part-stocktaking.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

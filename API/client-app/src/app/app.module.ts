@@ -37,6 +37,9 @@ import { AccountModule } from './account/account.module';
 import { LoginComponent } from './account/login/login.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ItemActionComponent } from './reports/item-action/item-action.component';
+import { PartActionComponent } from './reports/part-action/part-action.component';
+import { ItemStocktakingComponent } from './reports/item-stocktaking/item-stocktaking.component';
+import { PartStocktakingComponent } from './reports/part-stocktaking/part-stocktaking.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { ItemActionComponent } from './reports/item-action/item-action.component
     PurchasePartComponent,
     LoginComponent,
     ReportsComponent,
-    ItemActionComponent
+    ItemActionComponent,
+    PartActionComponent,
+    ItemStocktakingComponent,
+    PartStocktakingComponent
   ],
   imports: [
     //BrowserModule,

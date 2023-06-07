@@ -41,7 +41,7 @@ namespace Application.Common.Mapping
             CreateMap<Part, PartDto>()
                 .ForMember(p => p.Engineer, resp => resp.MapFrom(r => r.Engineer.Name))
                 .ForMember(p => p.Warehouse, resp => resp.MapFrom(r => r.Warehouse.Name))
-                //.ForMember(p => p.Brand, resp => resp.MapFrom(r => r.Brand.Name))
+                .ForMember(p => p.PartStatus, resp => resp.MapFrom(r => r.PartStatus.ToString()))
                 .ForMember(p => p.Customer, resp => resp.MapFrom(r => r.Customer.Name))
                 .ForMember(p => p.OrderDate, resp => resp.MapFrom(r => r.OrderDate.ToString()))
                 .ForMember(p => p.Created, resp => resp.MapFrom(r => r.Created.ToString()))
