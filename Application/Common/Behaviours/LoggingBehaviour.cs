@@ -1,11 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Common.Behaviours
 {
@@ -33,7 +28,7 @@ namespace Application.Common.Behaviours
                 userName = await _identityService.GetUserNameAsync(userId);
             }
 
-            _logger.LogInformation("Trader Request: {Name} {@UserId} {@UserName} {@Request}",
+            _logger.LogInformation("Inventory Request: {Name} {@UserId} {@UserName} {@Request}",
                 requestName, userId, userName, request);
         }
     }

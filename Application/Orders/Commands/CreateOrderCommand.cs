@@ -1,22 +1,18 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.Common.Security;
 using Domain.Entities;
 using Domain.Enum;
 using FluentValidation.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace Application.Orders.Commands
 {
-
-  public record CreateOrderCommand : IRequest<int>
+    [Authorize(Roles = "Supervaisuor")]
+    public record CreateOrderCommand : IRequest<int>
     {
         public int CustomerId { get; set; }
         public int EngineerId { get; set; }

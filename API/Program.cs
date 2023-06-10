@@ -6,7 +6,9 @@ using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,7 +45,7 @@ builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", policy =>
     {
-        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+        policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
     });
 });
 
@@ -58,6 +60,11 @@ builder.Services.AddRazorPages();
 builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true);
 
+//Add logging
+builder.Host.UseSerilog((context,config)=>
+        config.ReadFrom.Configuration(context.Configuration));
+
+//Add Exception Filter
 builder.Services.AddControllersWithViews(options =>
             options.Filters.Add<ApiExceptionFilterAttribute>())
                 .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
@@ -68,9 +75,26 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  
 }
+// Initialise and seed database
+using (var scope = app.Services.CreateScope())
+{
+    var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
+    await initialiser.InitialiseAsync();
+    await initialiser.SeedAsync();
+}
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseStaticFiles();
+
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+//    RequestPath = "/wwwroot"
+//});
+
+app.UseSerilogRequestLogging();
 app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 
@@ -78,6 +102,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 //app.MapControllers();
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller}/{action=Index}/{id?}");
+
+
+app.MapFallbackToFile("index.html");
 
 app
   .MapControllers()

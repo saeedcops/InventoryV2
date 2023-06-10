@@ -3,66 +3,61 @@
 
   <div class="row" *ngIf="part">
     <div class="col-6 m-5">
-      <div class="p-2">
-        <img src="data:image/jpeg;base64,{{part.image}}" style="height:110px;width:150px;border-radius:5px; margin:10px;" />
-
-      </div>
-      <mat-label>Model : </mat-label>
+      
+      <mat-label> {{"Model :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.model}}</mat-label>
       <br />
       <hr />
 
-      <mat-label>Part Number : </mat-label>
+      <mat-label> {{"Part Number :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.partNumber}}</mat-label>
       <br />
       <hr />
 
-      <mat-label>Oracle Code : </mat-label>
+      <mat-label> {{"Oracle Code :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.oracleCode}}</mat-label>
       <br />
       <hr />
-      <mat-label>part Status : </mat-label>
-      <mat-label style="color:teal;"> {{part.partStatus}}</mat-label>
+      <mat-label> {{"Part Status :" | translate}} </mat-label>
+      <mat-label style="color:teal;"> {{status[part.partStatus]}}</mat-label>
       <br />
       <hr />
 
-      <mat-label>Warehouse : </mat-label>
+      <mat-label> {{"Warehouse :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.warehouse.name}}</mat-label>
+   
       <br />
       <hr />
-      <mat-label>Brand : </mat-label>
-      <mat-label style="color:teal;"> {{part.brand.name}}</mat-label>
-      <br />
-      <hr />
-      <mat-label>Customer : </mat-label>
+      <mat-label> {{"Customer :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.customer.name}}</mat-label>
       <br />
       <hr />
-      <mat-label>Engineer : </mat-label>
+      <mat-label> {{"Engineer :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.engineer.name}}</mat-label>
       <br />
       <hr />
-      <mat-label>Description : </mat-label>
+      <mat-label>  {{"Description :" | translate}}</mat-label>
       <mat-label style="color:teal;"> {{part.description}}</mat-label>
       <br />
       <hr />
-      <mat-label>Created By : </mat-label>
+      <mat-label> {{"Created By :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.createdBy}}</mat-label>
       <br />
       <hr />
-      <mat-label>Created At : </mat-label>
+      <mat-label>  {{"Created At :" | translate}}</mat-label>
       <mat-label style="color:teal;"> {{part.created | date}}</mat-label>
       <br />
       <hr />
-      <mat-label>Last Modified At : </mat-label>
+      <mat-label> {{"Last Modified At :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.lastModified | date }}</mat-label>
       <br />
       <hr />
-      <mat-label>Last Modified By : </mat-label>
+      <mat-label> {{"Last Modified By :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{part.lastModifiedBy}}</mat-label>
       <br />
     </div>
     <div class="col-6 m-5">
+        <img src="data:image/jpeg;base64,{{part.image}}" style="height:610px;width:550px;border-radius:5px; margin:10px;" />
 
 
     </div>

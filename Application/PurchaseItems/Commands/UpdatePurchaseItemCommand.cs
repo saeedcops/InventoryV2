@@ -1,16 +1,19 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.Common.Security;
 using Domain.Entities;
 using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IO;
 
 namespace Application.PurchaseItems.Commands
 {
-  public record UpdatePurchaseItemCommand : IRequest<int>
+    [Authorize(Roles = "User")]
+    public record UpdatePurchaseItemCommand : IRequest<int>
     {
         public string PartNumber { get; set; }
         public string OracleCode { get; set; }

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { PurchaseItemAddEditComponent } from './purchase-item-add-edit/purchase-item-add-edit.component';
@@ -14,7 +15,7 @@ import { PurchaseItemsComponent } from './purchase-item.component';
     PurchaseItemDetailsComponent
   ],
   imports: [
-    //CommonModule,
+    CommonModule,
     SharedModule,
    // RouterModule,
 

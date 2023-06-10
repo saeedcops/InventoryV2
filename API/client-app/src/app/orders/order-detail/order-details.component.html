@@ -3,26 +3,26 @@
 
   <div class="row" *ngIf="order">
     <div class="col-6 m-5">
-      <mat-label>order ID : </mat-label>
+      <mat-label>{{"ID :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{order.id}}</mat-label>
       <br />
       <hr />
-      <mat-label>Order Type : </mat-label>
-      <mat-label style="color:teal;"> {{order.orderType}}</mat-label>
+      <mat-label>{{"Order Type :" | translate}} </mat-label>
+      <mat-label style="color:teal;"> {{oType[order.orderType]}}</mat-label>
       <br />
       <hr />
 
-      <mat-label>Order Status : </mat-label>
-      <mat-label style="color:teal;"> {{order.orderStatus}}</mat-label>
+      <mat-label>{{"Order Status :" | translate}} </mat-label>
+      <mat-label style="color:teal;"> {{status[order.orderStatus]}}</mat-label>
       <br />
       <hr />
 
-      <mat-label>Customer : </mat-label>
+      <mat-label>{{"Customer :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{order.customer.name}}</mat-label>
       <br />
       <hr />
 
-      <mat-label>Engineer : </mat-label>
+      <mat-label>{{"Engineer :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{order.engineer.name}}</mat-label>
       <br />
       <hr />
@@ -30,27 +30,29 @@
     </div>
     <div class="col-6 m-5">
 
-      <mat-label>Created At : </mat-label>
+      <mat-label>{{"Created At :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{order.created | date}}</mat-label>
       <br />
       <hr />
-      <mat-label>Last Modified At : </mat-label>
+      <mat-label>{{"Last Modified At :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{order.lastModified | date }}</mat-label>
       <br />
       <hr />
 
-      <mat-label>Created By : </mat-label>
+      <mat-label> {{"Created By :" | translate}}</mat-label>
       <mat-label style="color:teal;"> {{order.createdBy}}</mat-label>
       <br />
       <hr />
-      <mat-label>Last Modified By : </mat-label>
+      <mat-label> {{"Last Modified By :" | translate}}</mat-label>
       <mat-label style="color:teal;"> {{order.lastModifiedBy}}</mat-label>
       <br />
 
     </div>
     <button printTitle="{{order.customer.name}} Order"
-	          printSectionId="print-section"  
-	          ngxPrint>print</button>
+            printSectionId="print-section"
+            ngxPrint>
+      {{"Print" | translate}}
+    </button>
   </div>
 
   <br />
@@ -59,33 +61,33 @@
 
         
     <div class="container">
-      <h1 style="color:teal;"><strong>Items:</strong> </h1>
+      <h1 style="color:teal;"><strong> {{"Items : " | translate}}</strong> </h1>
 
       <div class="row" style="background:gray; border-radius:10px; ">
         <div class="col-12 py-5 mb-1">
 
           <div class="table-responsive" >
-            <table class="table" style="padding:10px;">
+            <table  border=1 frame=hsides  rules=rows class="table" style="padding:10px;">
               <thead style="color: darkgray;">
                 <tr>
                   <th class="border-0" scope="col">
-                    <div  class="p-2 px-3">Image</div>
+                    <div class="p-2 px-3">{{"Image" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div  class="p-2 px-3">Part Number</div>
+                    <div class="p-2 px-3">{{"PartNumber" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div  class="p-2 px-3">Oracle Code</div>
+                    <div class="p-2 px-3">{{"OracleCode" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div  class="p-2">Model</div>
+                    <div class="p-2">{{"Model" | translate}}</div>
                   </th>
 
                   <th class="border-0" scope="col">
-                    <div  class="p-2">Description</div>
+                    <div class="p-2">{{"Description" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div >Brand</div>
+                    <div>{{"Brand" | translate}}</div>
                   </th>
 
                 </tr>
@@ -118,29 +120,29 @@
 
 
       <hr />
-      <h1 style="color:teal;"><strong>Parts:</strong> </h1>
+      <h1 style="color:teal;"><strong>{{"Parts :" | translate}}</strong> </h1>
 
       <div class="row"  style="background:gray; border-radius:10px; ">
         <div class="col-12 py-10 mb-1">
 
           <div class="table-responsive">
-            <table class="table"  style="padding:10px;">
+            <table border=1 frame=hsides  rules=rows class="table"  style="padding:10px;">
               <thead style="color: darkgray;">
                 <tr>
                   <th class="border-0" scope="col">
-                    <div  class="p-2 px-3">Image</div>
+                    <div class="p-2 px-3">{{"Image" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div  class="p-2 px-3">Part Number</div>
+                    <div class="p-2 px-3">{{"PartNumber" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div  class="p-2 px-3">Oracle Code</div>
+                    <div class="p-2 px-3">{{"OracleCode" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div  class="p-2">Model</div>
+                    <div class="p-2">{{"Model" | translate}}</div>
                   </th>
                   <th class="border-0" scope="col">
-                    <div  class="p-2">Description</div>
+                    <div class="p-2">{{"Description" | translate}}</div>
                   </th>
 
                 </tr>

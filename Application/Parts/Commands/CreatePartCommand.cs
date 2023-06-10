@@ -1,12 +1,13 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Security;
 using Domain.Entities;
-using Domain.Enum;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
 namespace Application.Parts.Commands
 {
-   public record CreatePartCommand : IRequest<int>
+    [Authorize(Roles = "User")]
+    public record CreatePartCommand : IRequest<int>
     {
         [Required]
         public string PartNumber { get; set; }
@@ -16,7 +17,7 @@ namespace Application.Parts.Commands
         public byte[]? Image { get; set; }
         public int BrandId { get; set; }
         public int WarehouseId { get; set; }
-        public int ExceedLimit { get; set; }
+        public int ExceededLimit { get; set; }
 
 
     }
@@ -34,21 +35,15 @@ namespace Application.Parts.Commands
         {
             var entity = new Part
             {
-               // Brand = _context.Brands.FirstOrDefault(b => b.Id == request.BrandId),
-                //BrandId = request.BrandId,
-                //Warehouse = _context.Warehouses.FirstOrDefault(b => b.Id == request.WarehouseId),
                 Image = request.Image,
                 WarehouseId = request.WarehouseId,
                 Description = request.Description,
                 Model = request.Model,
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
-                ExceededLimit = request.ExceedLimit,
-
+                ExceededLimit = request.ExceededLimit,
 
             };
-
-            //entity.AddDomainEvent(new TodoItemCreatedEvent(entity));
 
             _context.Parts.Add(entity);
 

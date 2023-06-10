@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IUser, IUserRole } from '../shared/models/user';
@@ -17,7 +19,8 @@ export class AccountService {
   private role = new ReplaySubject<string[]>();
   role$ = this.role.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient,private translate:TranslateService,
+    private router: Router, private toaster: ToastrService) {
   }
 
   getRoles() {
@@ -73,7 +76,10 @@ export class AccountService {
             localStorage.setItem('token', user.token);
             localStorage.setItem('role', user.role);
             localStorage.setItem('user', user.user);
+            console.log(user);
             this.userSource.next(user);
+          } else {
+            this.toaster.error(this.translate.instant('Username or Password wrong!',"Error"))
           }
         })
       );

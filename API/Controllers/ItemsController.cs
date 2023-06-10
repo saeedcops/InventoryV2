@@ -12,11 +12,11 @@ namespace API.Controllers
     public class ItemsController: ApiControllerBase
     {
 
-        [HttpGet("Dashboard")]
-        public async Task<ActionResult<ItemDashboardDto>> GetItemDashboard([FromQuery] GetItemDashboardQuery query)
-        {
-            return await Mediator.Send(query);
-        }
+        //[HttpGet("Dashboard")]
+        //public async Task<ActionResult<ItemDashboardDto>> GetItemDashboard([FromQuery] GetItemDashboardQuery query)
+        //{
+        //    return await Mediator.Send(query);
+        //}
 
         [HttpGet]
         public async Task<ActionResult<List<ItemDto>>> GetItems([FromQuery] GetItemsQuery query)

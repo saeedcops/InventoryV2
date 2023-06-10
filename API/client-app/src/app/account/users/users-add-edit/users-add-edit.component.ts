@@ -41,6 +41,7 @@ export class UsersAddEditComponent implements OnInit {
             next: (val: any) => {
               //this._coreService.openSnackBar('Employee detail updated!');
               this._dialogRef.close(true);
+              
               console.error(val);
             },
             error: (err: any) => {
@@ -55,7 +56,7 @@ export class UsersAddEditComponent implements OnInit {
               next: (val: any) => {
                 //this._coreService.openSnackBar('Employee detail updated!');
                 this._dialogRef.close(true);
-                console.error(val);
+                console.log(val);
               },
               error: (err: any) => {
                 console.error(err);
@@ -67,7 +68,7 @@ export class UsersAddEditComponent implements OnInit {
             next: (val: any) => {
               //this._coreService.openSnackBar('Employee added successfully');
               this._dialogRef.close(true);
-              console.error(val);
+              console.log(val);
             },
             error: (err: any) => {
               console.error(err);

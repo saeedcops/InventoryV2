@@ -1,17 +1,14 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
+using Application.Common.Security;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Items.Commands
 {
-   public record UpdateItemsCommand : IRequest<Item>
+    [Authorize(Roles = "User")]
+    public record UpdateItemsCommand : IRequest<Item>
     {
         public int Id { get; set; }
         public string? PartNumber { get; set; }

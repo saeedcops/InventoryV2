@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Accounts.Queries
 {
-public record LoginUserQuery : IRequest<TokenResponse>
+    public record LoginUserQuery : IRequest<TokenResponse>
     {
         public string Email { get; set; }
         public string Password { get; set; }

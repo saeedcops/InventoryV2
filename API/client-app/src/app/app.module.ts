@@ -1,9 +1,8 @@
-
 import { AppComponent } from './app.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ItemsComponent } from './items/items.component';
 import { ItemAddEditComponent } from './items/item-add-edit/item-add-edit.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './core/interceptor/error.interceptor';
 import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
@@ -33,39 +32,48 @@ import { PartAddEditComponent } from './parts/part-add-edit/part-add-edit.compon
 import { OrderDetailsComponent } from './orders/order-detail/order-details.component';
 import { ItemDetailsComponent } from './items/item-detail/item-details.component';
 import { PartDetailsComponent } from './parts/part-detail/part-details.component';
-import { AccountModule } from './account/account.module';
 import { LoginComponent } from './account/login/login.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ItemActionComponent } from './reports/item-action/item-action.component';
 import { PartActionComponent } from './reports/part-action/part-action.component';
 import { ItemStocktakingComponent } from './reports/item-stocktaking/item-stocktaking.component';
 import { PartStocktakingComponent } from './reports/part-stocktaking/part-stocktaking.component';
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { ItemsModule } from './items/items.module';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PurchasePartModule } from './purchase-part/purchase-part.module';
+import { OrderModule } from './orders/order.module';
+import { PartsModule } from './parts/parts.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsComponent,
-    ItemAddEditComponent,
+   // ItemsComponent,
+    //ItemAddEditComponent,
     ItemTypesAddEditComponent,
     ItemTypesComponent,
-    ItemDetailsComponent,
+   // ItemDetailsComponent,
     CustomersComponent,
     CustomersAddEditComponent,
     BrandsComponent,
     BrandsAddEditComponent,
     EngineersComponent,
     EngineersAddEditComponent,
-    OrdersComponent,
-    OrderDetailsComponent,
+  
     WarehouseComponent,
     WarehouseAddEditComponent,
-    OrdersAddEditComponent,
-    PurchasePartDetailsComponent,
+    //OrdersComponent,
+    //OrderDetailsComponent,
+    //OrdersAddEditComponent,
+    //PurchasePartDetailsComponent,
+    //PurchasePartAddEditComponent,
+    //PurchasePartComponent,
     PartsComponent,
     PartAddEditComponent,
     PartDetailsComponent,
-    PurchasePartAddEditComponent,
-    PurchasePartComponent,
+    
     LoginComponent,
     ReportsComponent,
     ItemActionComponent,
@@ -76,15 +84,31 @@ import { PartStocktakingComponent } from './reports/part-stocktaking/part-stockt
   imports: [
     //BrowserModule,
    // AccountModule,
+   // PartsModule,
+   // ReportsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
     CoreModule,
     HomeModule,
     SharedModule,
-  
+    ItemsModule,
+    PurchasePartModule,
     PurchaseItemModule,
     PurchaseOrderModule,
+    OrderModule,
     //RouterModule,
-   
+
    // BreadcrumbModule
+    //NgbModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }) 
+
   ],
   providers: [MatDialogModule,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -93,4 +117,10 @@ import { PartStocktakingComponent } from './reports/part-stocktaking/part-stockt
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+}
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}

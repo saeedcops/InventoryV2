@@ -1,15 +1,18 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.Common.Security;
 using Domain.Entities;
 using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IO;
 
 namespace Application.PurchaseOrders.Commands
 {
-  public record CreatePurchaseOrderCommand : IRequest<int>
+    [Authorize(Roles = "User")]
+    public record CreatePurchaseOrderCommand : IRequest<int>
     {
         [Required]
         public string Name { get; set; }

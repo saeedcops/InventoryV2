@@ -56,15 +56,19 @@ namespace Infrastructure.Persistence
         public async Task TrySeedAsync()
         {
             // Default roles
-            var administratorRole = new IdentityRole("Administrator");
+            var administratorRole = new IdentityRole("Admin");
+            var userRole = new IdentityRole("User");
+            var superRole = new IdentityRole("Supervaisuor");
 
             if (_roleManager.Roles.All(r => r.Name != administratorRole.Name))
             {
                 await _roleManager.CreateAsync(administratorRole);
+                await _roleManager.CreateAsync(userRole);
+                await _roleManager.CreateAsync(superRole);
             }
 
             // Default users
-            var administrator = new IdentityUser { UserName = "admin@localhost", Email = "admin@localhost" };
+            var administrator = new IdentityUser { UserName = "admin", Email = "admin" };
 
             if (_userManager.Users.All(u => u.UserName != administrator.UserName))
             {
@@ -72,24 +76,8 @@ namespace Infrastructure.Persistence
                 await _userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
             }
 
-            // Default data
-            // Seed, if necessary
-            //if (!_context.TodoLists.Any())
-            //{
-            //    _context.TodoLists.Add(new TodoList
-            //    {
-            //        Title = "Todo List",
-            //        Items =
-            //    {
-            //        new TodoItem { Title = "Make a todo list 📃" },
-            //        new TodoItem { Title = "Check off the first item ✅" },
-            //        new TodoItem { Title = "Realise you've already done two things on the list! 🤯"},
-            //        new TodoItem { Title = "Reward yourself with a nice, long nap 🏆" },
-            //    }
-            //    });
-
-            //    await _context.SaveChangesAsync();
-            //}
+                await _context.SaveChangesAsync();
+          
         }
     }
 

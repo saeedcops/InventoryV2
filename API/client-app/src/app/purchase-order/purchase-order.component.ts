@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { PurchaseOrderAddEditComponent } from './purchase-order-add-edit/purchase-order-add-edit.component';
 import { PurchaseOrderService } from './purchase-order.service';
@@ -14,7 +15,9 @@ import { PurchaseOrderService } from './purchase-order.service';
 })
 export class PurchaseOrderComponent implements OnInit{
 
-  constructor(private _matDialog: MatDialog, private _itemService: PurchaseOrderService, private toastr: ToastrService) { }
+  
+  constructor(private _matDialog: MatDialog, 
+    private _itemService: PurchaseOrderService, private toastr: ToastrService) { }
 
 
   openDialog() {

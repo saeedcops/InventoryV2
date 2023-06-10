@@ -1,16 +1,19 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.Common.Security;
 using Domain.Entities;
 using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IO;
 
 namespace Application.PurchaseOrders.Commands
 {
-  public record UpdatePurchaseOrderCommand : IRequest<int>
+    [Authorize(Roles = "User")]
+    public record UpdatePurchaseOrderCommand : IRequest<int>
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { ReplaySubject } from 'rxjs';
 import { IItem } from '../../shared/models/item';
 import { IPart } from '../../shared/models/part';
@@ -10,10 +11,16 @@ import { ReportsService } from '../reports.service';
   styleUrls: ['./part-action.component.scss']
 })
 export class PartActionComponent implements OnInit {
+
+  status = [this._translate.instant('Stored'),
+            this._translate.instant('Sold'),
+            this._translate.instant('Borrowed'),
+            this._translate.instant('Workshop')];
   private partSource = new ReplaySubject<IPart[]>();
   parts$ = this.partSource.asObservable();
   reportForm: FormGroup;
-  constructor(private _reportService: ReportsService,  private _fb: FormBuilder,) {
+  constructor(private _reportService: ReportsService, private _fb: FormBuilder,
+     private _translate: TranslateService) {
 
     this.reportForm = this._fb.group({
       from: [null, Validators.required],

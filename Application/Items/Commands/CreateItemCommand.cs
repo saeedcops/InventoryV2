@@ -1,17 +1,20 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Security;
 using Domain.Entities;
 using Domain.Enum;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Items.Commands
 {
-   public record CreateItemCommand : IRequest<int>
+    [Authorize(Roles = "User")]
+    public record CreateItemCommand : IRequest<int>
     {
         [Required]
         public string PartNumber { get; set; }
@@ -19,7 +22,7 @@ namespace Application.Items.Commands
         public string OracleCode { get; set; }
         public string Model { get; set; }
         public string Description { get; set; }
-        public int ExceedLimit { get; set; }
+        public int ExceededLimit { get; set; }
 
         public int ItemTypeId { get; set; }
         public int BrandId { get; set; }
@@ -53,7 +56,7 @@ namespace Application.Items.Commands
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
                 Image = request.Image,
-                ExceededLimit = request.ExceedLimit
+                ExceededLimit = request.ExceededLimit
 
             };
 

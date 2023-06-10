@@ -22,7 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   exports: [SideBarComponent, SectionHeaderComponent],
   imports: [
-   // CommonModule,
+   CommonModule,
     RouterModule,
     BreadcrumbModule,
     SharedModule,

@@ -13,8 +13,8 @@ namespace Application.Common.Models
     public class OrderDto : IMapFrom<Order>
     {
         public int Id { get; set; }
-        public string OrderType { get; set; } 
-        public string OrderStatus { get; set; } 
+        public OrderType OrderType { get; set; } 
+        public OrderStatus OrderStatus { get; set; } 
         public string Customer { get; set; }
         public string Engineer { get; set; }
         public string Created { get; set; }

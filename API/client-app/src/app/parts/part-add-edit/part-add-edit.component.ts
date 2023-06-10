@@ -31,7 +31,7 @@ export class PartAddEditComponent implements OnInit {
       partNumber:[null,Validators.required],
       oracleCode: [null, Validators.required],
       model: '',
-      exceedLimit: '',
+      exceededLimit: '',
 
       description:  '',
       warehouseId: [null, Validators.required],
@@ -53,7 +53,7 @@ export class PartAddEditComponent implements OnInit {
           description: res.description,
           warehouseId: 3,
           image: res.image,
-          exceedLimit: res.exceedLimit
+          exceededLimit: res.exceededLimit
         });
         this.dataSet = true;
       }, err => { console.log(err); });
@@ -92,6 +92,7 @@ export class PartAddEditComponent implements OnInit {
             },
           });
       } else {
+        console.log(this.empForm.value);
         this._itemService.addPart(this.empForm.value).subscribe({
           next: (val: any) => {
             this.toastr.success("Part added successfully","Parts");

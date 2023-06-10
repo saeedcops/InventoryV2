@@ -2,6 +2,7 @@
 using Application.Common.Interfaces;
 using Application.Common.Mapping;
 using Application.Common.Models;
+using Application.Common.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Domain.Entities;
@@ -9,12 +10,14 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.PurchaseOrders.Queries
 {
+    [Authorize(Roles = "User")]
     public record GetPurchaseOrderQuery : IRequest<PurchaseOrder>
     {
         public int Id { get; set; }

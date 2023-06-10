@@ -24,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPrintModule } from 'ngx-print';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { NgxPrintModule } from 'ngx-print';
     CommonModule,
 
     ReactiveFormsModule,
-
+    TranslateModule,
    // AppRoutingModule,
    // NgxSpinnerModule,
   // BrowserModule,
@@ -66,17 +67,16 @@ import { NgxPrintModule } from 'ngx-print';
     MatSortModule,
     MatSnackBarModule,
     HttpClientModule,
-   // RouterModule,
-   //AppRoutingModule
+    RouterModule,
+  // AppRoutingModule
   ],
   exports: [
-
+    TranslateModule,
     ReactiveFormsModule,
     NgxPrintModule,
     NgxSpinnerModule,
    // BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+  
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -95,7 +95,7 @@ import { NgxPrintModule } from 'ngx-print';
     MatSortModule,
     MatSnackBarModule,
   //  HttpClientModule,
-   // RouterModule,
+  //  RouterModule,
   ]
 })
 export class SharedModule { }

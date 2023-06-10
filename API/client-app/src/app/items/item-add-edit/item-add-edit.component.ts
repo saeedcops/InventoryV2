@@ -13,6 +13,7 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-add-edit.component.scss']
 })
 export class ItemAddEditComponent implements OnInit {
+
   empForm: FormGroup;
 
   brands!: IBrand[];
@@ -63,7 +64,7 @@ export class ItemAddEditComponent implements OnInit {
       //console.log(res);
     }, err =>
     {
-      this.toastr.error(err);
+      //this.toastr.error(err);
       console.log(err);
 
     });
@@ -73,7 +74,7 @@ export class ItemAddEditComponent implements OnInit {
       this.warehouses = res;
       //console.log(res);
     }, err => {
-      this.toastr.error(err);
+     // this.toastr.error(err);
       console.log(err);
 
     });
@@ -90,7 +91,7 @@ export class ItemAddEditComponent implements OnInit {
               this._dialogRef.close(true);
             },
             error: (err: any) => {
-              this.toastr.error(err);
+             // this.toastr.error(err);
               console.error(err);
             },
           });
@@ -104,7 +105,7 @@ export class ItemAddEditComponent implements OnInit {
             this.empForm.reset();
           },
           error: (err: any) => {
-            this.toastr.error(err);
+            //this.toastr.error(err);
             console.error(err);
           },
         });

@@ -1,11 +1,13 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Security;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.PurchaseOrders.Queries
 {
-  public record GetPurchaseOrdersQuery : IRequest<List<PurchaseOrder>>
+    [Authorize(Roles = "User")]
+    public record GetPurchaseOrdersQuery : IRequest<List<PurchaseOrder>>
     {
     }
 

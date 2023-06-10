@@ -1,6 +1,6 @@
 
 <ngx-spinner type='timer'>
-  <h3>Loading...</h3>
+  <h3 translate>Loading...</h3>
 </ngx-spinner>
 
 <!--<div *ngIf="(user$ | async) as user">-->
@@ -19,9 +19,9 @@
     </button>
     <span>DaltexIT Inventory</span>
     <span class="example-spacer"></span>
-    <button (click)="changeLangage('ar')">Arabic</button>
-    <button (click)="changeLangage('en')">English</button>
-    <p>Hello <strong>{{user.user}}</strong></p>
+    <button class="lang-btn"  mat-raised-button type="button" (click)="changeLangage()">{{lang ==='ar'? 'English': 'عربي'}}</button>
+  
+    <p translate>Hello <strong>{{user.user}}</strong></p>
 
   </mat-toolbar>
 
@@ -35,76 +35,79 @@
 
       <button mat-button class="menu-button" routerLink="/" routerLinkActive="active">
         <mat-icon>home</mat-icon>
-        <span>Home</span>
+        <span translate>Home</span>
       </button>
-      <button mat-button class="menu-button" routerLink="/items" routerLinkActive="active">
-        <mat-icon>scanner</mat-icon>
-        <span>Items</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
-        <mat-icon>devices_other</mat-icon>
-        <span>Parts</span>
-      </button>
+      <ng-container *ngIf="role.includes('User')">
+        <button mat-button class="menu-button" routerLink="/items" routerLinkActive="active">
+          <mat-icon>scanner</mat-icon>
+          <span translate>Machines</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/parts" routerLinkActive="active">
+          <mat-icon>devices_other</mat-icon>
+          <span translate>Parts</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/purchase-orders" routerLinkActive="active">
+          <mat-icon>local_mall</mat-icon>
+          <span translate>Purchase Order</span>
+        </button>
 
-      <button mat-button class="menu-button" routerLink="/customers" routerLinkActive="active">
-        <mat-icon>devices_other</mat-icon>
-        <span>Customers</span>
-      </button>
+        <button mat-button class="menu-button" routerLink="/purchase-item" routerLinkActive="active">
+          <mat-icon>chrome_reader_mode</mat-icon>
+          <span translate>Purchase Item</span>
+        </button>
 
-      <button mat-button class="menu-button" routerLink="/brands" routerLinkActive="active">
-        <mat-icon>devices_other</mat-icon>
-        <span>Brands</span>
-      </button>
+        <button mat-button class="menu-button" routerLink="/purchase-part" routerLinkActive="active">
+          <mat-icon>class</mat-icon>
+          <span translate>Purchase Part</span>
+        </button>
+        </ng-container>
 
-      <button mat-button class="menu-button" routerLink="/warehouses" routerLinkActive="active">
-        <mat-icon>devices_other</mat-icon>
-        <span>Warehouses</span>
-      </button>
+        <button mat-button class="menu-button" routerLink="/customers" routerLinkActive="active">
+          <mat-icon>people_outline</mat-icon>
+          <span translate>Customers</span>
+        </button>
 
-      <button mat-button class="menu-button" routerLink="/engineers" routerLinkActive="active">
-        <mat-icon>devices_other</mat-icon>
-        <span>Engineers</span>
-      </button>
+        <button mat-button class="menu-button" routerLink="/brands" routerLinkActive="active">
+          <mat-icon>pages</mat-icon>
+          <span translate>Brands</span>
+        </button>
 
-      <button mat-button class="menu-button" routerLink="/orders" routerLinkActive="active">
-        <mat-icon>add_shopping_cart</mat-icon>
-        <span>Orders</span>
-      </button>
+        <button mat-button class="menu-button" routerLink="/warehouses" routerLinkActive="active">
+          <mat-icon>local_convenience_store</mat-icon>
+          <span translate>Warehouses</span>
+        </button>
 
-      <button mat-button class="menu-button" routerLink="/purchase-orders" routerLinkActive="active">
-        <mat-icon>local_mall</mat-icon>
-        <span>Purchase Order</span>
-      </button>
+        <button mat-button class="menu-button" routerLink="/engineers" routerLinkActive="active">
+          <mat-icon>group</mat-icon>
+          <span translate>Engineers</span>
+        </button>
+        <ng-container *ngIf="role.includes('Supervaisuor')">
+          <button mat-button class="menu-button" routerLink="/orders" routerLinkActive="active">
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span translate>Orders</span>
+          </button>
+        </ng-container>
 
-      <button mat-button class="menu-button" routerLink="/purchase-item" routerLinkActive="active">
-        <mat-icon>local_mall</mat-icon>
-        <span>Purchase Item</span>
-      </button>
 
-      <button mat-button class="menu-button" routerLink="/purchase-part" routerLinkActive="active">
-        <mat-icon>local_mall</mat-icon>
-        <span>Purchase Part</span>
-      </button>
+        <button mat-button class="menu-button" routerLink="/reports" routerLinkActive="active">
+          <mat-icon>description</mat-icon>
+          <span translate>Reports</span>
+        </button>
+        <ng-container *ngIf="role.includes('Admin')">
+          <button mat-button class="menu-button" routerLink="/users" routerLinkActive="active">
+            <mat-icon>supervisor_account</mat-icon>
+            <span translate>Users</span>
+          </button>
+        </ng-container>
+        <mat-divider></mat-divider>
 
-      <button mat-button class="menu-button" routerLink="/reports" routerLinkActive="active">
-        <mat-icon>description</mat-icon>
-        <span>Reports</span>
-      </button>
-
-      <button mat-button class="menu-button" routerLink="/users" routerLinkActive="active">
-        <mat-icon>supervisor_account</mat-icon>
-        <span>Users</span>
-      </button>
-
-      <mat-divider></mat-divider>
-
-      <button mat-button class="menu-button" routerLinkActive="active" (click)="logout()">
-        <mat-icon>undo</mat-icon>
-        <span>Logout</span>
-      </button>
+        <button mat-button class="menu-button" routerLinkActive="active" (click)="logout()">
+          <mat-icon>undo</mat-icon>
+          <span translate>Logout</span>
+        </button>
     </mat-sidenav>
 
-    <mat-sidenav-content class=" mat-elevation-z8">
+    <mat-sidenav-content class="mat-elevation-z8">
 
       <app-section-header></app-section-header>
       <div class="content">

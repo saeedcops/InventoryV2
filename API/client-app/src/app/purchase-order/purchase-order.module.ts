@@ -16,7 +16,7 @@ import { PurchaseOrderDetailsComponent } from './purchase-order-detail/purchase-
     PurchaseOrderDetailsComponent
   ],
   imports: [
-    //CommonModule,
+    CommonModule,
     SharedModule,
    // RouterModule,
 

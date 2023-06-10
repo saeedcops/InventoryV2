@@ -1,12 +1,12 @@
 
   <div mat-dialog-title>
-    <h1>Orders Form</h1>
+    <h1>{{"ADD Order" | translate}}</h1>
   </div>
   <form [formGroup]="reactform" (ngSubmit)="ProceedSave()">
     <div mat-dialog-content class="content">
       <div class="row">
         <mat-form-field appearance="outline" >
-          <mat-label>Customer</mat-label>
+          <mat-label translate>Customer</mat-label>
           <mat-select formControlName="customerId">
             <mat-option *ngFor="let val of customers" [value]="val.id">
               {{val.name}}
@@ -16,7 +16,7 @@
 
 
         <mat-form-field appearance="outline">
-          <mat-label>Engineer</mat-label>
+          <mat-label translate>Engineer</mat-label>
           <mat-select formControlName="engineerId">
             <mat-option *ngFor="let val of engineers" [value]="val.id">
               {{val.name}}
@@ -28,11 +28,11 @@
       <div class="row">
 
         <mat-radio-group formControlName="orderType">
-          <mat-radio-button value="0">Buy</mat-radio-button>
-          <mat-radio-button value="1">Borrow</mat-radio-button>
-          <mat-radio-button value="2">MaintenanceContract</mat-radio-button>
-          <mat-radio-button value="3">Workshop</mat-radio-button>
-          <mat-error *ngIf="reactform.get('orderType')?.invalid">Order Type Required </mat-error>
+          <mat-radio-button value="0">{{"Sell" | translate}}</mat-radio-button>
+          <mat-radio-button value="1">{{"Borrow" | translate}}</mat-radio-button>
+          <mat-radio-button value="2">{{"MaintenanceContract" | translate}}</mat-radio-button>
+          <mat-radio-button value="3">{{"Workshop" | translate}}</mat-radio-button>
+          <mat-error *ngIf="reactform.get('orderType')?.invalid">{{"Order Type Required" | translate}} </mat-error>
         </mat-radio-group>
 
 
@@ -43,14 +43,14 @@
       <div class="row">
         <table formArrayName="items">
           <div>
-            <a mat-raised-button color="primary" (click)="Addnewrow('items')">Add Item (+)</a>
+            <a mat-raised-button color="primary" (click)="Addnewrow('items')">{{"Add Item (+)" | translate}}</a>
           </div>
           <tbody>
             <tr *ngFor="let item of addItems.controls;let i=index" [formGroupName]="i">
               <td>
 
                 <mat-form-field appearance="outline">
-                  <mat-label>Part Number</mat-label>
+                  <mat-label translate>PartNumber</mat-label>
                   <mat-select formControlName="partNumber">
                     <mat-option *ngFor="let val of orderItems" [value]="val.partNumber">
                       {{val.partNumber }} -- {{ val.qty}}
@@ -59,7 +59,7 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
-                  <mat-label>Qty</mat-label>
+                  <mat-label translate>Qty</mat-label>
                   <input matInput type="number" placeholder="Ex. Qty" formControlName="count">
                 </mat-form-field>
               </td>
@@ -71,14 +71,14 @@
 
         <table formArrayName="parts">
           <div>
-            <a mat-raised-button color="primary" (click)="Addnewrow('parts')">Add Parts (+)</a>
+            <a mat-raised-button color="primary" (click)="Addnewrow('parts')">{{"Add Parts (+)" | translate}}</a>
           </div>
           <tbody>
             <tr *ngFor="let item of addParts.controls;let i=index" [formGroupName]="i">
               <td>
 
                 <mat-form-field appearance="outline">
-                  <mat-label>Part Number</mat-label>
+                  <mat-label translate>PartNumber</mat-label>
                   <mat-select formControlName="partNumber">
                     <mat-option *ngFor="let val of orderParts" [value]="val.partNumber">
                       {{val.partNumber }} -- {{val.qty}}
@@ -87,7 +87,7 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
-                  <mat-label>Qty</mat-label>
+                  <mat-label translate>Qty</mat-label>
                   <input matInput type="number" placeholder="Ex. Qty" formControlName="count">
                 </mat-form-field>
               </td>
@@ -99,8 +99,8 @@
       </div>
 
       <div mat-dialog-actions class="action">
-        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
-        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">{{"Cancel" | translate}}</button>
+        <button mat-raised-button color="primary" type="submit">{{"Submit" | translate}}</button>
       </div>
     </div>
   </form>

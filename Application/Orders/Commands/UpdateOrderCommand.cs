@@ -1,18 +1,15 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
+using Application.Common.Security;
 using Domain.Entities;
 using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Orders.Commands
 {
-   public record UpdateOrderCommand : IRequest<Order>
+    [Authorize(Roles = "Supervaisuor")]
+    public record UpdateOrderCommand : IRequest<Order>
     {
         public int Id { get; set; }
         public int? CustomerId { get; set; }

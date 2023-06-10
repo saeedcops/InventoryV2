@@ -1,20 +1,14 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
-using Application.Common.Models;
-using Domain.Entities;
+using Application.Common.Security;
 using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Orders.Commands
 {
-
-  public record ReturnOrderCommand : IRequest<bool>
+    [Authorize(Roles = "Supervaisuor")]
+    public record ReturnOrderCommand : IRequest<bool>
     {
         public int OrderId { get; set; }
     }

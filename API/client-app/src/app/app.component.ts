@@ -7,6 +7,9 @@ import { AccountService } from './account/account.service';
 import { ReplaySubject } from 'rxjs';
 import { IUser } from './shared/models/user';
 import { DOCUMENT } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,24 +19,33 @@ export class AppComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   private userSource = new ReplaySubject<IUser>();
-
+  lang = localStorage.getItem('lang') ?? "ar";
+  role = localStorage.getItem('role') ?? "";
   user$ = this.userSource.asObservable();
 
-  constructor(private _accountService: AccountService, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private translateService: TranslateService,private _accountService: AccountService, @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
+
+    let htmlTag = this.document.getElementsByTagName("html")[0] as HTMLHtmlElement;
+    htmlTag.dir = this.lang === "ar" ? "rtl" : "ltr";
+    this.translateService.setDefaultLang(this.lang);
+    this.translateService.use(this.lang);
     const token = localStorage.getItem('token');
     this._accountService.loadCurrentUser(token!);
     this.user$ = this._accountService.user$;
    
   }
 
-  changeLangage(lang: string) {
+  changeLangage() {
+    this.lang = this.lang === "ar" ? "en" : "ar";
+
     let htmlTag = this.document.getElementsByTagName("html")[0] as HTMLHtmlElement;
-    htmlTag.dir = lang === "ar" ? "rtl" : "ltr";
-    //SwitchAppLanguage('en')
-    //this.translateService.setDefaultLang(lang);
-    //this.translateService.use(lang);
+    htmlTag.dir = this.lang === "ar" ? "rtl" : "ltr";
+    localStorage.setItem('lang',this.lang);
+    this.translateService.setDefaultLang(this.lang);
+    window.location.reload();
+    this.translateService.use(this.lang);
     //this.changeCssFile(lang);
   }
 

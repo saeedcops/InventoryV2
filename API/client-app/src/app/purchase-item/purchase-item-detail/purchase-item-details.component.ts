@@ -17,7 +17,7 @@ export class PurchaseItemDetailsComponent implements OnInit {
     private pcService: BreadcrumbService,
     private bcService: BreadcrumbService) {
 
-    this.bcService.set('@PurchaseDetails', ' ');
+    this.bcService.set('@PurchaseItemDetails', ' ');
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class PurchaseItemDetailsComponent implements OnInit {
       this.item = pro;
 
       
-      this.pcService.set('@PurchaseDetails', pro.partNumber);
+      this.pcService.set('@PurchaseItemDetails', pro.model);
       console.log(this.item);
     }, error => {
       console.log(error);

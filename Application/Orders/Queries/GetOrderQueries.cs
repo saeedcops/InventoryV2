@@ -1,13 +1,17 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Mapping;
 using Application.Common.Models;
+using Application.Common.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
+
 namespace Application.Orders.Queries
 {
+    [Authorize(Roles = "Supervaisuor")]
     public record GetOrderQueries : IRequest<Order>
     {
         public int Id { get; set; }

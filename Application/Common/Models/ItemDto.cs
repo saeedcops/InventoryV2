@@ -21,7 +21,7 @@ namespace Application.Common.Models
         public string CreatedBy { get; set; }
         public string SerialNumber { get; set; }
         public string OracleCode { get; set; }
-        public string ItemStatus { get; set; }
+        public ItemStatus ItemStatus { get; set; }
         public string Model { get; set; }
         public string Description { get; set; }
        // public string ItemType { get; set; }

@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Items.Queries
 {
-  //  [Authorize(Roles ="AddItem")]
+    //  [Authorize(Roles ="AddItem")]
+    [Authorize(Roles = "User")]
     public record GetItemQuery : IRequest<Item>
     {
         public int Id { get; init; }

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,6 +56,16 @@ namespace Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+
+            builder.Entity<PurchaseItem>().HasOne(c => c.Brand).WithMany().OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<Order>().HasOne(c => c.Customer).WithMany().OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<Order>().HasOne(c => c.Engineer).WithMany().OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<Item>().HasOne(c => c.Brand).WithMany().OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<Item>().HasOne(c => c.Warehouse).WithMany().OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<Part>().HasOne(c => c.Warehouse).WithMany().OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<PurchaseOrderPart>().HasOne(c => c.Part).WithMany().OnDelete(DeleteBehavior.NoAction);
+
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
             base.OnModelCreating(builder);

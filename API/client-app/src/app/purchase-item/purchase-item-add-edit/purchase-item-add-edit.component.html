@@ -1,27 +1,27 @@
 <div mat-dialog-title>
-  <h1>Item Form</h1>
+  <h1>   {{"ADD Machine" | translate}}</h1>
 </div>
 <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
   <div mat-dialog-content class="content">
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>partNumber</mat-label>
+        <mat-label translate>PartNumber</mat-label>
         <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber">
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>oracleCode</mat-label>
+        <mat-label translate>OracleCode</mat-label>
         <input matInput placeholder="Ex. OracleCode" formControlName="oracleCode">
       </mat-form-field>
     </div>
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Model</mat-label>
+        <mat-label translate>Model</mat-label>
         <input matInput type="text" placeholder="Ex.  model" formControlName="model">
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Brand</mat-label>
+        <mat-label translate>Brand</mat-label>
         <mat-select formControlName="brandId">
           <mat-option *ngFor="let val of brands" [value]="val.id">
             {{val.name}}
@@ -32,12 +32,12 @@
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
+        <mat-label translate>Description</mat-label>
         <input matInput type="text" placeholder="Ex. Description" formControlName="description">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Exceed Limit</mat-label>
+        <mat-label translate>ExceededLimit</mat-label>
         <input matInput type="number" placeholder="Ex. Exceed Limit" formControlName="exceededLimit">
       </mat-form-field>
 
@@ -45,7 +45,7 @@
 
     <div class="row">
       <mat-form-field>
-        <mat-label>Select Image</mat-label>
+        <mat-label translate>Select Image</mat-label>
         <input matInput readonly type="text" id="itemImage" (click)="hiddenInput.click()">
         <input hidden type="file" accept=".png,.jpg,.jfif" #hiddenInput (change)="GetFileOnLoad($event)">
         <mat-icon matSuffix>folder_open</mat-icon>
@@ -54,7 +54,7 @@
       <img [src]="url" class="itemImg" alt="Image" />
     </div>
     <div>
-      <a mat-raised-button color="primary" (click)="Addnewrow()">Add Part (+)</a>
+      <a mat-raised-button color="primary" (click)="Addnewrow()"> {{"Add Parts (+)" | translate}}</a>
     </div>
 
     <table formArrayName="parts">
@@ -63,7 +63,7 @@
           <td>
 
             <mat-form-field appearance="outline">
-              <mat-label>Part Number</mat-label>
+              <mat-label translate>PartNumber</mat-label>
               <mat-select formControlName="partNumber">
                 <mat-option *ngFor="let val of itemParts" [value]="val.partNumber">
                   {{val.partNumber}}
@@ -72,7 +72,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline" style="visibility:hidden">
-              <mat-label>Part Number</mat-label>
+              <mat-label translate>PartNumber</mat-label>
               <input matInput type="number" placeholder="Ex. Part Number" formControlName="count">
             </mat-form-field>
           </td>
@@ -85,7 +85,7 @@
 
   </div>
     <div mat-dialog-actions class="action">
-      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
-      <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+      <button mat-raised-button type="button" [mat-dialog-close]="false">{{"Cancel" | translate}}</button>
+      <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save' | translate}}</button>
     </div>
 </form>

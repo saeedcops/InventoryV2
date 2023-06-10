@@ -1,12 +1,14 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.Common.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.PurchaseParts.Commands
 {
-  public record UpdatePurchasePartCommand : IRequest<int>
+    [Authorize(Roles = "User")]
+    public record UpdatePurchasePartCommand : IRequest<int>
     {
         public string PartNumber { get; set; }
         public string OracleCode { get; set; }

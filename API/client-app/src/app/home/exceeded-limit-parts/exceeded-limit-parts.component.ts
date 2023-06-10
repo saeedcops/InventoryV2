@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Chart } from 'angular-highcharts';
 import { map, } from 'rxjs';
 import { IPartNumber } from '../../shared/models/order';
@@ -15,7 +16,7 @@ export class ExceededLimitPartsComponent implements OnInit {
 
   
 
-  constructor(private _homeService: HomeService) { }
+  constructor(private _homeService: HomeService, private translate: TranslateService) { }
 
   ngOnInit(): void {
 
@@ -31,7 +32,7 @@ export class ExceededLimitPartsComponent implements OnInit {
             height: 225
           },
           title: {
-            text: 'Exceeded Limit Parts'
+            text: this.translate.instant('Exceeded Limit Parts') 
           },
           xAxis: {
             categories: mappedItems.map(i => i.name),

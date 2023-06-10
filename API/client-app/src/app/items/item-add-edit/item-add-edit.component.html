@@ -1,33 +1,33 @@
 <div mat-dialog-title>
-  <h1>Item Form</h1>
+  <h1 translate>ADD Machine</h1>
 </div>
 <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()" >
   <div mat-dialog-content class="content">
     <div class="row">
       <mat-form-field appearance="outline" >
-        <mat-label>partNumber</mat-label>
+        <mat-label translate>PartNumber</mat-label>
         <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber" (ngModelChange)="getItemById($event)" >
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>oracleCode</mat-label>
+        <mat-label translate>OracleCode</mat-label>
         <input matInput placeholder="Ex. OracleCode" formControlName="oracleCode">
       </mat-form-field>
     </div>
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Serial Number</mat-label>
+        <mat-label translate>SerialNumber</mat-label>
         <input matInput type="text" placeholder="Ex. Serial Number" formControlName="serialNumber">
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Model</mat-label>
+        <mat-label translate>Model</mat-label>
         <input matInput placeholder="Ex. Model" formControlName="model">
       </mat-form-field>
     </div>
 
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
+        <mat-label translate>Description</mat-label>
         <input matInput type="text" placeholder="Ex. Description" formControlName="description">
       </mat-form-field>
 
@@ -36,7 +36,7 @@
     <div class="row">
 
       <mat-form-field appearance="outline">
-        <mat-label>Brand</mat-label>
+        <mat-label translate>Brand</mat-label>
         <mat-select formControlName="brandId">
           <mat-option *ngFor="let val of brands" [value]="val.id">
             {{val.name}}
@@ -45,7 +45,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Warehouse</mat-label>
+        <mat-label translate>Warehouse</mat-label>
         <mat-select formControlName="warehouseId">
           <mat-option *ngFor="let val of warehouses" [value]="val.id">
             {{val.name}}
@@ -58,7 +58,7 @@
    
   </div>
   <div mat-dialog-actions class="action">
-    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
-    <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">{{"Cancel" | translate}}</button>
+    <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save' | translate}}</button>
   </div>
 </form>

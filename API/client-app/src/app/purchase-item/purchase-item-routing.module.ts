@@ -6,7 +6,7 @@ import { PurchaseItemDetailsComponent } from './purchase-item-detail/purchase-it
 
 const routes: Routes = [
   { path: '', component: PurchaseItemsComponent },
-  { path: ':id', component: PurchaseItemDetailsComponent, data: { breadcrumb: { alias: 'PurchaseDetails' } } },
+  { path: ':id', component: PurchaseItemDetailsComponent, data: { breadcrumb: { alias: 'PurchaseItemDetails' } } },
 
 ];
 

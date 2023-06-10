@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { IItemDetail } from '../../shared/models/item';
-import { IPurchaseItem, IPurchaseOrder, IPurchasePart } from '../../shared/models/purchase';
 import { ItemService } from '../item.service';
 
 @Component({
@@ -11,14 +11,19 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-details.component.scss']
 })
 export class ItemDetailsComponent implements OnInit {
+  status = [this._translate.instant('Stored'),
+            this._translate.instant('Sold'),
+            this._translate.instant('Borrowed'),
+            this._translate.instant('Workshop')];
   item!: IItemDetail;
   qty = 1;
   constructor(private _itemService: ItemService,
     private activeRoute: ActivatedRoute,
     private pcService: BreadcrumbService,
+    private _translate:TranslateService,
     private bcService: BreadcrumbService) {
 
-    this.bcService.set('@PurchaseDetails', ' ');
+    this.bcService.set('@ItemDetails', ' ');
   }
 
   ngOnInit(): void {
@@ -28,7 +33,7 @@ export class ItemDetailsComponent implements OnInit {
   loadProduct() {
     this._itemService.getItem(Number.parseInt( this.activeRoute.snapshot.paramMap.get('id')!)).subscribe(pro => {
       this.item = pro;
-      this.pcService.set('@PurchaseDetails', pro.partNumber);
+      this.pcService.set('@ItemDetails', pro.model);
       console.log(this.item);
     }, error => {
       console.log(error);

@@ -1,15 +1,18 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.Common.Security;
 using Domain.Entities;
 using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IO;
 
 namespace Application.PurchaseParts.Commands
 {
-  public record CreatePurchasePartCommand : IRequest<int>
+    [Authorize(Roles = "User")]
+    public record CreatePurchasePartCommand : IRequest<int>
     {
         [Required]
         public string PartNumber { get; set; }

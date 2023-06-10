@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Parts.Queries
 {
-   
+    [Authorize(Roles = "User")]
     public record GetPartQuery : IRequest<Part>
     {
         public int Id { get; init; }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { ItemAddEditComponent } from './item-add-edit/item-add-edit.component';
 import { ItemService } from './item.service';
@@ -13,8 +14,14 @@ import { ItemService } from './item.service';
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent implements OnInit{
+ 
+  status = [this._translate.instant('Stored'),
+            this._translate.instant('Sold'),
+            this._translate.instant('Borrowed'),
+            this._translate.instant('Workshop')];
 
-  constructor(private _matDialog: MatDialog, private _itemService: ItemService, private toastr: ToastrService) { }
+  constructor(private _matDialog: MatDialog, private _translate: TranslateService,
+    private _itemService: ItemService, private toastr: ToastrService) { }
 
   loadItems() {
     this._itemService.getItems();
@@ -70,7 +77,7 @@ export class ItemsComponent implements OnInit{
        // console.log(res.items);
       },
       error => {
-        this.toastr.error(error);
+       // this.toastr.error(error);
       }
     );
   }

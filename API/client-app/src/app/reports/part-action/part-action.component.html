@@ -1,31 +1,32 @@
 <div class="row" mat-dialog-title>
-  <h1 >Part Actions Report</h1>
+  <h1 translate>Part Actions Report</h1>
 
   <button *ngIf="(parts$ | async) != null" printTitle="Part Actions Report"
           printSectionId="print-section"
           ngxPrint>
-    print
+    {{"Print" | translate}}
+
   </button>
 </div>
 <form *ngIf="(parts$ | async) == null" [formGroup]="reportForm" (ngSubmit)="onFormSubmit()">
   <div mat-dialog-content class="content">
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>partNumber</mat-label>
+        <mat-label translate>PartNumber</mat-label>
         <input matInput type="text" placeholder="Ex. Part Number" formControlName="partNumber">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>From</mat-label>
+        <mat-label translate>From</mat-label>
         <input matInput type="date" placeholder="Ex. From Date" formControlName="from">
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>To</mat-label>
+        <mat-label translate>To</mat-label>
         <input matInput type="date" placeholder="Ex. To Date" formControlName="to">
       </mat-form-field>
 
       <div mat-dialog-actions class="action">
-        <button mat-raised-button color="primary" type="submit">Generate</button>
+        <button mat-raised-button color="primary" type="submit">{{"Generate" | translate}}</button>
       </div>
     </div>
 
@@ -36,27 +37,27 @@
 <div id="print-section" >
   <table border=1 frame=hsides  rules=rows class="center" *ngIf="(parts$ | async) as it">
     <tr>
-      <th>CreatedAt</th>
-      <th>CreatedBy</th>
-      <th>Customer</th>
-      <th>Description</th>
-      <th>Engineer</th>
-      <th>PartStatus</th>
-      <th>Model</th>
-      <th>OracleCode</th>
-      <th>ActionDate</th>
-      <th>PartNumber</th>
-      <th>Warehouse</th>
+      <th translate>CreatedAt</th>
+      <th translate>CreatedBy</th>
+      <th translate>Customer</th>
+      <th translate>Description</th>
+      <th translate>Engineer</th>
+      <th translate>PartStatus</th>
+      <th translate>Model</th>
+      <th translate>OracleCode</th>
+      <th translate>ActionDate</th>
+      <th translate>PartNumber</th>
+      <th translate>Warehouse</th>
     </tr>
 
     <tr *ngFor="let val of it">
-      <td>{{val.created | date}}</td>
+      <td>{{val.created | date }}</td>
       <td>{{val.createdBy}}</td>
 
       <td>{{val.customer}}</td>
       <td>{{val.description}}</td>
       <td>{{val.engineer}}</td>
-      <td>{{val.partStatus}}</td>
+      <td>{{status[val.partStatus]}}</td>
       <td>{{val.model}}</td>
       <td>{{val.oracleCode}}</td>
       <td>{{val.orderDate | date}}</td>

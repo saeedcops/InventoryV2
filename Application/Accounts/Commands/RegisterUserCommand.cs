@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Application.Accounts.Commands
 {
-   // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public record RegisterUserCommand : IRequest<Result>
     {
         public string Username { get; set; }

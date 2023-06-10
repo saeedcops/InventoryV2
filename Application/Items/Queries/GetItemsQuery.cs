@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Items.Queries
 {
-   // [Authorize(Roles ="AddItem")]
+    // [Authorize(Roles ="AddItem")]
+    [Authorize(Roles = "User")]
     public record GetItemsQuery : IRequest<List<ItemDto>>
     {
     }

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { ItemService } from '../items/item.service';
 import { IOrderDetail } from '../shared/models/order';
@@ -16,9 +17,18 @@ import { OrdersService } from './orders.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
+  status = [this._translate.instant('Returned'),
+            this._translate.instant('Ready'),
+            this._translate.instant('Delivered')];
+
+  oType = [this._translate.instant('Sell'),
+            this._translate.instant('Borrow'),
+            this._translate.instant('MaintenanceContract'),
+              this._translate.instant('Workshop')];
 
   constructor(private _matDialog: MatDialog,
     private _orderService: OrdersService,
+    private _translate: TranslateService,
     private toastr: ToastrService) { }
 
   loadItems() {
@@ -70,7 +80,9 @@ export class OrdersComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
        // console.log(res);
       },
-      error => { this.toastr.error(error); },
+      error => {
+        //this.toastr.error(error);
+      },
     );
   }
 
@@ -90,7 +102,7 @@ export class OrdersComponent implements OnInit {
     console.log(data);
 
     this._orderService.returnOrder(data).subscribe(res => {
-      this.toastr.success("Order Returned to store");
+      this.toastr.success("Order Returned to store","Return");
       this.getOrders();
     }, err => {
      // this.toastr.error(err);

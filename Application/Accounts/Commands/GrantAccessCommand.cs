@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Accounts.Commands
 {
-   // [Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin")]
     public record GrantAccessCommand : IRequest<bool>
     {
         public string Username { get; set; }

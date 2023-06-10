@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Chart } from 'angular-highcharts';
 import { map, Observable } from 'rxjs';
 import { IDashboardItem } from '../../shared/models/item';
@@ -15,7 +16,7 @@ export class SoldItemsComponent implements OnInit {
   chart = new Chart();
 
 
-  constructor(private _homeService: HomeService) { }
+  constructor(private _homeService: HomeService, private translate: TranslateService) { }
 
   ngOnInit(): void {
 
@@ -31,7 +32,7 @@ export class SoldItemsComponent implements OnInit {
             height: 225
           },
           title: {
-            text: 'Sold Items'
+            text: this.translate.instant('Sold Items') 
           },
           xAxis: {
             categories: mappedItems.map(i => i.name),

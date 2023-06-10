@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.PurchaseParts.Queries
 {
-   // [Authorize(Roles ="AddItem")]
+    // [Authorize(Roles ="AddItem")]
+    [Authorize(Roles = "User")]
     public record GetPurchasePartsQuery : IRequest<List<PurchasePartsDto>>
     {
     }

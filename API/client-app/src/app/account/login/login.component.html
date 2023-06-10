@@ -5,24 +5,24 @@
     <div mat-dialog-content class="content">
       <img src="../../../assets/daltex.jpg" width="60" height="60"/>
       <div mat-dialog-title>
-        <h1>Login Form</h1>
+        <h1> {{"Login" | translate}}</h1>
       </div>
       <div class="row">
         <mat-form-field appearance="outline">
-          <mat-label>Username</mat-label>
+          <mat-label translate>Username</mat-label>
           <input matInput type="text" placeholder="Ex. UserName" formControlName="email">
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="outline">
-          <mat-label>password</mat-label>
+          <mat-label translate>Password</mat-label>
           <input matInput type="password" placeholder="Ex. password" formControlName="password">
         </mat-form-field>
       </div>
 
     </div>
     <div mat-dialog-actions class="action">
-      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button mat-raised-button color="primary" type="submit">{{"Login" | translate}}</button>
     </div>
   </form>
 </div>

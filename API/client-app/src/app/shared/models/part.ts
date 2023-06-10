@@ -18,7 +18,7 @@ export interface IPart {
   warehouse: string
   engineer: string
   orderDate: string
-  partStatus: string
+  partStatus: number
   brandId: number
   warehouseId: number
   customerId: number

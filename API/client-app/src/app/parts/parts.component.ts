@@ -1,8 +1,10 @@
+import { transition } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { PartAddEditComponent } from './part-add-edit/part-add-edit.component';
 import { PartService } from './part.service';
@@ -14,10 +16,17 @@ import { PartService } from './part.service';
 })
 export class PartsComponent implements OnInit {
 
-  constructor(private _matDialog: MatDialog, private _itemService: PartService, private toastr: ToastrService) { }
+  status = [this._translate.instant('Stored'),
+            this._translate.instant('Sold'),
+            this._translate.instant('Borrowed'),
+            this._translate.instant('Workshop')];
+
+  constructor(private _matDialog: MatDialog, private _translate: TranslateService,
+    private _itemService: PartService) { }
 
   openDialog() {
     this._matDialog.open(PartAddEditComponent);
+    
   }
 
 
@@ -65,7 +74,7 @@ export class PartsComponent implements OnInit {
       //  console.log(res);
       },
       error => {
-        this.toastr.error(error);
+       // this.toastr.error(error);
       }
     );
   }
