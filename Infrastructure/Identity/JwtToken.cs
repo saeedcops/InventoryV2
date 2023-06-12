@@ -42,7 +42,7 @@ namespace Infrastructure.Identity
 
             var desc = new SecurityTokenDescriptor
             {
-                Expires = DateTime.Now.AddMinutes(1),
+                Expires = DateTime.Now.AddHours(1),
                 Subject = new ClaimsIdentity(claimes),
                 SigningCredentials = cred,
                 Issuer = _conf["Token:Issuer"]

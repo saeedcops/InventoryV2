@@ -120,7 +120,20 @@
   "Purchase-orders": "اوامر الشراء",
   "Purchase-Item": "مكن اوامر الشراء",
   "Purchase-Part": "قطع اوامر الشراء",
-  "Machines": "المكن"
+  "Machines": "المكن",
+  "Stored": "مخزنة",
+  "Sold": "تم البيع",
+  "Returned": "تم اعادته",
+  "Ready": "تم الصرف",
+  "Delivered": "تم التوصيل",
+  "items": "المكن",
+  "purchase-orders": "اوامر الشراء",
+  "orders": "المصروفات",
+  "purchase-item": "مكن اوامر التوريد",
+  "purchase-part": "قطع اوامر التوريد"
+
+
+
 
 
 

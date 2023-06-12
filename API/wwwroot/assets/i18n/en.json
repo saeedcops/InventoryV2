@@ -121,7 +121,18 @@
   "Purchase-orders": "Purchase-orders",
   "Purchase-Item": "Purchase-Item",
   "Purchase-Part": "Purchase-Part",
-  "Machines": "Machines"
+  "Machines": "Machines",
+  "Stored": "Stored",
+  "Sold": "Sold",
+  "Returned": "Returned",
+  "Ready": "Ready",
+  "Delivered": "Delivered",
+  "items": "items",
+  "purchase-orders": "purchase-orders",
+  "orders": "orders",
+  "purchase-item": "purchase-item",
+  "purchase-part": "purchase-part"
+
 
 
 }

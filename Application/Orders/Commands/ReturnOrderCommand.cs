@@ -24,7 +24,10 @@ namespace Application.Orders.Commands
 
         public async Task<bool> Handle(ReturnOrderCommand request, CancellationToken cancellationToken)
         {
-            var order = await _context.Orders.Include(o=>o.OrderItems).FirstOrDefaultAsync(o => o.Id == request.OrderId && o.OrderStatus != OrderStatus.Returned);
+            var order = await _context.Orders
+                .Include(o=>o.OrderItems)
+                .Include(o => o.OrderParts)
+                .FirstOrDefaultAsync(o => o.Id == request.OrderId && o.OrderStatus != OrderStatus.Returned);
             if (order == null)
                 throw new NotFoundException($"Order with Id {request.OrderId} Not found or it's already on store");
             if (order.OrderItems != null)

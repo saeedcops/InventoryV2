@@ -35,11 +35,14 @@ export class ExceededLimitPartsComponent implements OnInit {
             text: this.translate.instant('Exceeded Limit Parts') 
           },
           xAxis: {
+            title: {
+              text: this.translate.instant('PartNumber')
+            },
             categories: mappedItems.map(i => i.name),
           },
           yAxis: {
             title: {
-              text: ''
+              text: this.translate.instant('Qty')
             }
           },
           series: [
