@@ -58,18 +58,18 @@ export class PurchaseItemAddEditComponent implements OnInit {
 
   Genrow(): FormGroup {
     return new FormGroup({
-      partNumber: new FormControl('', Validators.required),
+      partNumber: new FormControl('',Validators.required),
       count: new FormControl(0)
     });
   }
 
   Removeitem(index: any) {
-    if (this.parts.length > 1) {
+    //if (this.parts.length > 1) {
       this.parts = this.empForm.get("parts") as FormArray;
       this.parts.removeAt(index)
-    } else {
-      this.toastr.warning("Item must contains at least 1 parts");
-    }
+    //} else {
+    //  this.toastr.warning("Item must contains at least 1 parts");
+    //}
   }
 
   get addPart() {

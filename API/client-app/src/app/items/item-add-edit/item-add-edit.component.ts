@@ -34,7 +34,7 @@ export class ItemAddEditComponent implements OnInit {
       serialNumber: [null, Validators.required],
       model: [null, Validators.required],
       description: '',
-      exceededLimit: '',
+      exceededLimit: 0,
       brandId: [null, Validators.required],
       warehouseId: [null, Validators.required],
       image: '',

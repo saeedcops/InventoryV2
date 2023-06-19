@@ -72,7 +72,7 @@ namespace Infrastructure.Persistence
 
             if (_userManager.Users.All(u => u.UserName != administrator.UserName))
             {
-                await _userManager.CreateAsync(administrator, "P@ssw0rd");
+                await _userManager.CreateAsync(administrator, "C0p$@123");
                 await _userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
             }
 

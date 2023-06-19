@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
   constructor(private translateService: TranslateService,private _accountService: AccountService, @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
-
+    console.log(this.role);
     let htmlTag = this.document.getElementsByTagName("html")[0] as HTMLHtmlElement;
     htmlTag.dir = this.lang === "ar" ? "rtl" : "ltr";
     this.translateService.setDefaultLang(this.lang);
@@ -51,6 +51,7 @@ export class AppComponent implements OnInit{
 
   logout() {
     this._accountService.logout();
+    
   }
   ngAfterViewInit() {
     //setTimeout(() => {

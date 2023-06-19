@@ -24,7 +24,7 @@ export class CustomersAddEditComponent implements OnInit {
       id:'',
       name:[null,Validators.required],
       phone: [null, Validators.required],
-      email: [null, Validators.required],
+      email: [null, Validators.email],
       address:'',
     });
 

@@ -31,8 +31,7 @@ export class PartAddEditComponent implements OnInit {
       partNumber:[null,Validators.required],
       oracleCode: [null, Validators.required],
       model: '',
-      exceededLimit: '',
-
+      exceededLimit: 0,
       description:  '',
       warehouseId: [null, Validators.required],
       image: '',

@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.loginForm.value).subscribe(() => {
      
      
-      this.router.navigateByUrl(this.returnUrl);
+      window.location.reload();
+     // this.router.navigateByUrl(this.returnUrl);
 
       //this.router.events
       //  .pipe(take(1), filter((evt: any) => evt instanceof RoutesRecognized), pairwise())

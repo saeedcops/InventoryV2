@@ -34,15 +34,15 @@ namespace Infrastructure.Identity
 
             var claimes = new List<Claim> {
 
-            new Claim(ClaimTypes.Email,user.UserName),
-            new Claim(ClaimTypes.Role,roleBuilder.ToString()),
-        };
+                new Claim(ClaimTypes.Email,user.UserName),
+                new Claim(ClaimTypes.Role,roleBuilder.ToString()),
+            };
 
             var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
             var desc = new SecurityTokenDescriptor
             {
-                Expires = DateTime.Now.AddHours(1),
+                Expires = DateTime.Now.AddHours(3),
                 Subject = new ClaimsIdentity(claimes),
                 SigningCredentials = cred,
                 Issuer = _conf["Token:Issuer"]

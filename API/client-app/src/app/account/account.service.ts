@@ -87,6 +87,7 @@ export class AccountService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.userSource.next(this.user);
 
     this.router.navigateByUrl('/');
