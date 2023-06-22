@@ -1,10 +1,10 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ItemsComponent } from './items/items.component';
 import { AccountService } from './account/account.service';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, Observer, ReplaySubject } from 'rxjs';
 import { IUser } from './shared/models/user';
 import { DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
@@ -23,9 +23,13 @@ export class AppComponent implements OnInit{
   role = localStorage.getItem('role') ?? "";
   user$ = this.userSource.asObservable();
 
-  constructor(private translateService: TranslateService,private _accountService: AccountService, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private translateService: TranslateService,
+    private _accountService: AccountService,
+    @Inject(DOCUMENT) private document: Document) {
+  }
 
   ngOnInit(): void {
+
     console.log(this.role);
     let htmlTag = this.document.getElementsByTagName("html")[0] as HTMLHtmlElement;
     htmlTag.dir = this.lang === "ar" ? "rtl" : "ltr";
@@ -34,7 +38,7 @@ export class AppComponent implements OnInit{
     const token = localStorage.getItem('token');
     this._accountService.loadCurrentUser(token!);
     this.user$ = this._accountService.user$;
-   
+    
   }
 
   changeLangage() {
@@ -49,22 +53,25 @@ export class AppComponent implements OnInit{
     //this.changeCssFile(lang);
   }
 
+
   logout() {
     this._accountService.logout();
     
   }
-  ngAfterViewInit() {
-    //setTimeout(() => {
-    //this.observer.observe(["(max-width: 800px)"]).subscribe((res: { matches: any; }) => {
-    //  if (res.matches) {
-    //   // this.sidenav.mode = "over";
-    //    this.sidenav.close();
-    //  } else {
-    //    this.sidenav.mode = "side";
-    //    this.sidenav.open();
-    //  }
-    //});
-    //});
-  }
+
+  //ngAfterViewInit() {
+    
+  //  setTimeout(() => {
+  //  this.observer.observe(["(max-width: 800px)"]).subscribe((res: { matches: any; }) => {
+  //    if (res.matches) {
+  //      this.sidenav.mode = "over";
+  //      this.sidenav.close();
+  //    } else {
+  //      this.sidenav.mode = "side";
+  //      this.sidenav.open();
+  //    }
+  //  });
+  //  });
+  //}
 
 }

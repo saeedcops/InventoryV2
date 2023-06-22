@@ -31,9 +31,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.accountService.login(this.loginForm.value).subscribe(() => {
-     
-     
-      window.location.reload();
+
+
+      window.location.href = this.returnUrl;
+
      // this.router.navigateByUrl(this.returnUrl);
 
       //this.router.events

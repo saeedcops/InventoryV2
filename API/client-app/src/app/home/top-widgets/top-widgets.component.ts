@@ -24,13 +24,11 @@ export class TopWidgetsComponent implements OnInit {
 
       this._homeService.getItems().subscribe(res => {
         res.forEach(c => this.items += c.qty);
-        console.log(this.items);
 
       }, err => { console.log(err); });
 
       this._homeService.getParts().subscribe(res => {
         res.forEach(c => this.parts += c.qty);
-        console.log(this.parts);
 
       }, err => { console.log(err); });
 
@@ -38,25 +36,21 @@ export class TopWidgetsComponent implements OnInit {
 
       this._homeService.getSoldItems().subscribe(res => {
         res.forEach(c => this.soldItems += c.qty);
-        console.log(this.items);
 
       }, err => { console.log(err); });
 
       this._homeService.getSoldParts().subscribe(res => {
         res.forEach(c => this.soldItems += c.qty);
-        console.log(this.parts);
 
       }, err => { console.log(err); });
 
       this._homeService.getBorrowItems().subscribe(res => {
         this.borrowItems += res;
-        console.log(this.items);
 
       }, err => { console.log(err); });
 
       this._homeService.getBorrowParts().subscribe(res => {
         this.borrowItems += res;
-        console.log(this.parts);
 
       }, err => { console.log(err); });
     }

@@ -23,7 +23,6 @@ export class LoadingInterceptor implements HttpInterceptor {
     //if (request.url.includes('PurchaseItems/'))
     //  return next.handle(request);
 
-    console.log("Busy");
     this.busyService.busy();
     return next.handle(request).pipe(
      // delay(1000),

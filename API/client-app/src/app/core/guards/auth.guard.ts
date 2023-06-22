@@ -14,7 +14,6 @@ export class AuthGuard implements CanActivate {
     this.accountService.loadCurrentUser(localStorage.getItem('token')!);
     return this.accountService.user$.pipe(
       map(auth => {
-        console.log("Check");
         if (auth) {
           return true;
         }

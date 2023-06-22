@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Chart } from 'angular-highcharts';
-import { map, tap } from 'rxjs';
+import { map } from 'rxjs';
 import { IPartNumber } from '../../shared/models/order';
 import { HomeService } from '../home.service';
 

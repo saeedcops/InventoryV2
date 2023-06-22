@@ -31,6 +31,7 @@ export class ExceededLimitPartsComponent implements OnInit {
             type: 'bar',
             height: 225
           },
+
           title: {
             text: this.translate.instant('Exceeded Limit Parts') 
           },

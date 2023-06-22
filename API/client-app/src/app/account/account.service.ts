@@ -60,7 +60,6 @@ export class AccountService {
     return this.http.get<IUser>(this.baseUrl + 'Accounts', { headers: header })
       .subscribe(res => {
         this.userSource.next(res);
-        console.log(res);
       }, err => {
        // this.userSource.next(this.user);
         console.log(err);
@@ -76,7 +75,7 @@ export class AccountService {
             localStorage.setItem('token', user.token);
             localStorage.setItem('role', user.role);
             localStorage.setItem('user', user.user);
-            console.log(user);
+            //console.log(user);
             this.userSource.next(user);
           } else {
             this.toaster.error(this.translate.instant('Username or Password wrong!',"Error"))
