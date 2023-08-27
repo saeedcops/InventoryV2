@@ -117,11 +117,6 @@ app.UseSwaggerUI();
 app.UseStaticFiles();
 app.UseIpRateLimiting();
 
-//app.UseStaticFiles(new StaticFileOptions
-//{
-//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
-//    RequestPath = "/wwwroot"
-//});
 
 app.UseSerilogRequestLogging();
 app.UseCors("CorsPolicy");
@@ -129,12 +124,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-//app.MapControllers();
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller}/{action=Index}/{id?}");
-
 
 app.MapFallbackToFile("index.html");
 
