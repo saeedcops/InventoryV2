@@ -7,7 +7,6 @@ using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
@@ -68,14 +67,14 @@ builder.Services.Configure<IpRateLimitOptions>(options =>
     options.RealIpHeader = "X-Real-IP";
     options.ClientIdHeader = "X-ClientId";
     options.GeneralRules = new List<RateLimitRule>
-        {
+         {
             new RateLimitRule
             {
                 Endpoint = "*",
                 Period = "60s",
                 Limit = 20,
             }
-        };
+         };
 });
 builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
 builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
