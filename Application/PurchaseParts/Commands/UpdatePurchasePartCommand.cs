@@ -14,6 +14,7 @@ namespace Application.PurchaseParts.Commands
         public string OracleCode { get; set; }
         public string Name { get; set; }
         public int ExceedLimit { get; set; }
+        public string LocalCode { get; set; }
 
         public string Description { get; set; }
         public byte[]? Image { get; set; }
@@ -35,6 +36,7 @@ namespace Application.PurchaseParts.Commands
                 throw new NotFoundException($"No PurchaseParts with {request.PartNumber}");
 
             entity.OracleCode = request.OracleCode != null ? request.OracleCode : entity.OracleCode;
+            entity.LocalCode = request.LocalCode != null ? request.LocalCode : entity.LocalCode;
             entity.Name = request.Name != null ? request.Name : entity.Name;
             entity.Description = request.Description != null ? request.Description : entity.Description;
             entity.Image = request.Image != null ? request.Image : entity.Image;

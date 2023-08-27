@@ -14,6 +14,8 @@ namespace Application.Common.Models
     {
         public string PartNumber { get; set; }
         public string OracleCode { get; set; }
+        public string LocalCode { get; set; }
+
         public ItemStatus PartStatus { get; set; }
         public string Model { get; set; }
         public string OrderDate { get; set; }
@@ -23,6 +25,8 @@ namespace Application.Common.Models
         public string Warehouse { get; set; }
         public string Customer { get; set; }
         public string Engineer { get; set; }
-       // public byte[] Image { get; set; }
+        public string AddVoucher { get; set; }
+
+        // public byte[] Image { get; set; }
     }
 }

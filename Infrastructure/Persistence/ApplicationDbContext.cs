@@ -64,7 +64,12 @@ namespace Infrastructure.Persistence
             builder.Entity<Item>().HasOne(c => c.Brand).WithMany().OnDelete(DeleteBehavior.NoAction);
             builder.Entity<Item>().HasOne(c => c.Warehouse).WithMany().OnDelete(DeleteBehavior.NoAction);
             builder.Entity<Part>().HasOne(c => c.Warehouse).WithMany().OnDelete(DeleteBehavior.NoAction);
-            builder.Entity<PurchaseOrderPart>().HasOne(c => c.Part).WithMany().OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<PurchaseOrderPart>().HasOne(c => c.Part).WithMany().OnDelete(DeleteBehavior.SetNull);
+            builder.Entity<PurchaseOrderItem>().HasOne(c => c.Item).WithMany().OnDelete(DeleteBehavior.SetNull);
+           // builder.Entity<PurchaseItem>().HasOne(c => c.Parts).WithMany().OnDelete(DeleteBehavior.SetNull);
+
+            //builder.Entity<PurchaseOrder>().HasMany(c => c.Parts).WithOne().OnDelete(DeleteBehavior.NoAction);
+            //builder.Entity<PurchaseOrder>().HasOne(c => c.Items).WithOne().OnDelete(DeleteBehavior.NoAction);
 
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

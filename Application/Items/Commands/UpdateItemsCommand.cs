@@ -15,6 +15,8 @@ namespace Application.Items.Commands
         public string? SerialNumber { get; set; }
         public string? OracleCode { get; set; }
         public string? Model { get; set; }
+        public string? AddVoucher { get; set; }
+        public string LocalCode { get; set; }
 
         public string? Description { get; set; }
         public int ItemTypeId { get; set; }
@@ -45,9 +47,10 @@ namespace Application.Items.Commands
             entity.PartNumber = request.PartNumber != null ? request.PartNumber : entity.PartNumber;
             entity.SerialNumber = request.SerialNumber != null ? request.SerialNumber : entity.SerialNumber;
             entity.OracleCode = request.OracleCode != null ? request.OracleCode : entity.OracleCode;
+            entity.LocalCode = request.LocalCode != null ? request.LocalCode : entity.LocalCode;
             entity.Model = request.Model != null ? request.Model : entity.Model;
             entity.Description = request.Description != null ? request.Description : entity.Description;
-            //entity.ItemTypeId = request.ItemTypeId != 0 ? request.ItemTypeId : entity.ItemTypeId;
+            entity.AddVoucher = request.AddVoucher != null ? request.AddVoucher : entity.AddVoucher;
             entity.BrandId = request.BrandId != 0 ? request.BrandId : entity.BrandId;
             entity.WarehouseId = request.WarehouseId != 0 ? request.WarehouseId : entity.WarehouseId;
             entity.CustomerId = request.CustomerId != 0 ? request.CustomerId : entity.CustomerId;

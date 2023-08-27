@@ -7,6 +7,15 @@
       <mat-label style="color:teal;"> {{order.id}}</mat-label>
       <br />
       <hr />
+
+      <mat-label>{{"Exchange Voucher :" | translate}} </mat-label>
+      <mat-label style="color:teal;"> {{order.exchangeVoucher}}</mat-label>
+      <br />
+      <hr />
+      <mat-label>{{"Exchange :" | translate}} </mat-label>
+      <mat-label style="color:teal;"> {{order.exchangeId}}</mat-label>
+      <br />
+      <hr />
       <mat-label>{{"Order Type :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{oType[order.orderType]}}</mat-label>
       <br />
@@ -22,14 +31,15 @@
       <br />
       <hr />
 
-      <mat-label>{{"Engineer :" | translate}} </mat-label>
-      <mat-label style="color:teal;"> {{order.engineer.name}}</mat-label>
-      <br />
-      <hr />
+
 
     </div>
     <div class="col-6 m-5">
 
+      <mat-label>{{"Engineer :" | translate}} </mat-label>
+      <mat-label style="color:teal;"> {{order.engineer.name}}</mat-label>
+      <br />
+      <hr />
       <mat-label>{{"Created At :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{order.created | date}}</mat-label>
       <br />

@@ -8,6 +8,8 @@ export interface IOrder {
   orderType: string
   orderStatus: string
   customer: string
+  exchangeId:string
+  exchangeVoucher:string
   engineer: string
 }
 
@@ -22,6 +24,8 @@ export interface IOrderDetail {
   orderType: number
   orderStatus: number
   customerId: number
+  exchangeId: string
+  exchangeVoucher: string
   customer: ICustomer
   engineerId: number
   engineer: IEngineer

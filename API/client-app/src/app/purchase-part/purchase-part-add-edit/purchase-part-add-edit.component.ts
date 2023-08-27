@@ -26,6 +26,7 @@ export class PurchasePartAddEditComponent implements OnInit {
     this.empForm = this._fb.group({
       partNumber:[null,Validators.required],
       oracleCode: '',
+      localCode: '',
       name: [null, Validators.required],
       description: [null, Validators.required],
       exceededLimit: [null, Validators.required],

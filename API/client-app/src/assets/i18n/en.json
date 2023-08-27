@@ -131,7 +131,16 @@
   "purchase-orders": "purchase-orders",
   "orders": "orders",
   "purchase-item": "purchase-item",
-  "purchase-part": "purchase-part"
+  "purchase-part": "purchase-part",
+  "Exchange": "Exchange",
+  "Exchange :": "Exchange :",
+  "Are you sure return order?": "Are you sure return order to store?",
+  "Exchange Voucher :": "Exchange Voucher :",
+  "Exchange Voucher": "Exchange Voucher",
+  "Add Voucher :": "Add Voucher :",
+  "Add Voucher": "Add Voucher",
+  "LocalCode": "LocalCode",
+  "Local Code :": "Local Code :"
 
 
 

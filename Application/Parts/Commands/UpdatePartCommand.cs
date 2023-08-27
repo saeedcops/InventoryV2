@@ -1,16 +1,8 @@
 ﻿using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Common.Security;
-using Domain.Entities;
-using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Parts.Commands
 {
@@ -21,6 +13,9 @@ namespace Application.Parts.Commands
         public string? PartNumber { get; set; }
         public string? OracleCode { get; set; }
         public string? Model { get; set; }
+        public string AddVoucher { get; set; }
+        public string LocalCode { get; set; }
+
         public string? Description { get; set; }
         public int? BrandId { get; set; }
         public int? WarehouseId { get; set; }
@@ -48,10 +43,11 @@ namespace Application.Parts.Commands
 
             entity.PartNumber = request.PartNumber != null ? request.PartNumber : entity.PartNumber;
             entity.OracleCode = request.OracleCode != null ? request.OracleCode : entity.OracleCode;
+            entity.LocalCode = request.LocalCode != null ? request.LocalCode : entity.LocalCode;
             entity.Model = request.Model != null ? request.Model : entity.Model;
             entity.Image = request.Image != null ? request.Image : entity.Image;
             entity.Description = request.Description != null ? request.Description : entity.Description;
-           // entity.BrandId = request.BrandId != null ? (int)request.BrandId : entity.BrandId;
+            entity.AddVoucher = request.AddVoucher != null ? request.AddVoucher : entity.AddVoucher;
             entity.WarehouseId = request.WarehouseId != null ? (int)request.WarehouseId : entity.WarehouseId;
             entity.CustomerId = request.CustomerId != null ? (int)request.CustomerId : entity.CustomerId;
             entity.EngneerId = request.EngineerId != null ? (int)request.EngineerId : entity.EngneerId;

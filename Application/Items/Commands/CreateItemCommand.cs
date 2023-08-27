@@ -20,6 +20,9 @@ namespace Application.Items.Commands
         public string PartNumber { get; set; }
         public string SerialNumber { get; set; }
         public string OracleCode { get; set; }
+        public string AddVoucher { get; set; }
+        public string LocalCode { get; set; }
+
         public string Model { get; set; }
         public string Description { get; set; }
         public int ExceededLimit { get; set; }
@@ -55,8 +58,10 @@ namespace Application.Items.Commands
                 SerialNumber = request.SerialNumber,
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
+                LocalCode = request.LocalCode,
                 Image = request.Image,
-                ExceededLimit = request.ExceededLimit
+                ExceededLimit = request.ExceededLimit,
+                AddVoucher = request.AddVoucher,
 
             };
 

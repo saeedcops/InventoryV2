@@ -4,8 +4,22 @@
   </div>
   <form [formGroup]="reactform" (ngSubmit)="ProceedSave()">
     <div mat-dialog-content class="content">
+
       <div class="row">
-        <mat-form-field appearance="outline" >
+
+        <mat-form-field appearance="outline">
+          <mat-label translate>Exchange</mat-label>
+          <input matInput type="text" placeholder="Ex. Exchange" formControlName="exchangeId">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label translate>Exchange Voucher</mat-label>
+          <input matInput type="text" placeholder="Ex. ExchangeVoucher" formControlName="exchangeVoucher">
+        </mat-form-field>
+
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
           <mat-label translate>Customer</mat-label>
           <mat-select formControlName="customerId">
             <mat-option *ngFor="let val of customers" [value]="val.id">

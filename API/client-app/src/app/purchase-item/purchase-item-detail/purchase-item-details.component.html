@@ -3,7 +3,7 @@
 
   <div class="row" *ngIf="item">
     <div class="col-6 m-5">
-     
+
       <mat-label> {{"Model :" | translate}}</mat-label>
       <mat-label style="color:teal;"> {{item.model}}</mat-label>
       <br />
@@ -15,6 +15,11 @@
 
       <mat-label>{{"Brand :" | translate}} </mat-label>
       <mat-label style="color:teal;"> {{item.brand.name}}</mat-label>
+      <br />
+      <hr />
+
+      <mat-label> {{"Local Code :" | translate}}</mat-label>
+      <mat-label style="color:teal;"> {{item.localCode}}</mat-label>
       <br />
       <hr />
 
@@ -55,7 +60,7 @@
 
   <br />
   <hr />
-  <h1 style="color:teal;"><strong>{{"Parts :" | translate}}</strong> </h1>
+  <!--<h1 style="color:teal;"><strong>{{"Parts :" | translate}}</strong> </h1>
   <div class="row" *ngIf="item">
 
     <div class="row" style="background:gray; border-radius:10px; ">
@@ -110,5 +115,5 @@
 
     </div>
 
-  </div>
+  </div>-->
 </div>

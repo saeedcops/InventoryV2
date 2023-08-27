@@ -130,7 +130,16 @@
   "purchase-orders": "اوامر الشراء",
   "orders": "المصروفات",
   "purchase-item": "مكن اوامر التوريد",
-  "purchase-part": "قطع اوامر التوريد"
+  "purchase-part": "قطع اوامر التوريد",
+  "Exchange": "طلب الصرف",
+  "Exchange :": "طلب الصرف :",
+  "Are you sure return order?": "هل انت متأكد اعادة الصرف الي المخزن؟",
+  "Exchange Voucher :": "سند الصرف :",
+  "Exchange Voucher": "سند الصرف",
+  "Add Voucher :": "سند الاضافة :",
+  "Add Voucher": "سند الاضافة",
+  "LocalCode": "الرقم المحلي",
+  "Local Code :": "الرقم المحلي :"
 
 
 

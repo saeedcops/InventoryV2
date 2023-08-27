@@ -43,6 +43,8 @@ export class OrdersComponent implements OnInit {
     'id',
     'orderType',
     'orderStatus',
+    'exchangeId',
+    'exchangeVoucher',
     'created',
     'createdBy',
     'customer',
@@ -78,7 +80,7 @@ export class OrdersComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-       // console.log(res);
+        console.log(res);
       },
       error => {
         //this.toastr.error(error);
@@ -100,16 +102,17 @@ export class OrdersComponent implements OnInit {
     console.log(id);
     let data = { 'orderId': id };
     console.log(data);
+    if (confirm(this._translate.instant('Are you sure return order?'))) {
+      this._orderService.returnOrder(data).subscribe(res => {
+        this.toastr.success("Order Returned to store","Return");
+        this.getOrders();
+      }, err => {
+       // this.toastr.error(err);
 
-    this._orderService.returnOrder(data).subscribe(res => {
-      this.toastr.success("Order Returned to store","Return");
-      this.getOrders();
-    }, err => {
-     // this.toastr.error(err);
+        console.log(err);
 
-      console.log(err);
-
-    });
+      });
+    }
   }
 
 

@@ -25,6 +25,7 @@ export class PurchasePartComponent implements OnInit{
   displayedColumns: string[] = [
     'partNumber',
     'oracleCode',
+    'localCode',
     'description',
     'exceededLimit',
     'name',
@@ -92,6 +93,23 @@ export class PurchasePartComponent implements OnInit{
         }
       },
     });
+  }
+
+  delete(id: number) {
+    let data = { 'id': id };
+    this._itemService.deletePart(data).subscribe(
+      res => {
+        this.toastr.success('Part deleted!', 'done');
+        this.getItemList();
+        console.log(res);
+
+      },
+      error => {
+        this.toastr.error("Could't delete the Part becuase it's linked to Order!", 'Error');
+
+        console.log(error);
+      }
+    );
   }
 
   openView(id: string) {

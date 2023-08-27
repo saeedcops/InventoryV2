@@ -20,6 +20,8 @@ namespace Application.PurchaseParts.Commands
         public string OracleCode { get; set; }
         [Required]
         public string Name { get; set; }
+        public string LocalCode { get; set; }
+
         public string Description { get; set; }
         public int ExceededLimit { get; set; }
 
@@ -41,6 +43,7 @@ namespace Application.PurchaseParts.Commands
             {
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
+                LocalCode = request.LocalCode,
                 Description = request.Description,  
                 Image = request.Image,
                 Name = request.Name,

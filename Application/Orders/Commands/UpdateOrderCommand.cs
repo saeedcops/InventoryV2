@@ -14,6 +14,7 @@ namespace Application.Orders.Commands
         public int Id { get; set; }
         public int? CustomerId { get; set; }
         public int? EngineerId { get; set; }
+        public string? ExchangeId { get; set; }
         public int? OrderType { get; set; }
         public List<string>? OrderItemsPartNumber { get; set; }
         public List<string>? OrderPartsPartNumber { get; set; }
@@ -55,6 +56,7 @@ namespace Application.Orders.Commands
             entity.OrderType = request.OrderType != null ? (OrderType) request.OrderType : entity.OrderType;
             entity.CustomerId = request.CustomerId != null ? (int)request.CustomerId : entity.CustomerId;
             entity.EngineerId = request.EngineerId != null ? (int)request.EngineerId : entity.EngineerId;
+            entity.ExchangeId = request.ExchangeId != null ? request.ExchangeId : entity.ExchangeId;
             
             _context.Orders.Update(entity);
             await _context.SaveChangesAsync(cancellationToken);

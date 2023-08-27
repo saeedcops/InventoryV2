@@ -15,6 +15,8 @@ namespace Application.Common.Models
         [Required]
         public string PartNumber { get; set; }
         public int Id { get; set; }
+        public string AddVoucher { get; set; }
+        public string LocalCode { get; set; }
 
         public string Created { get; set; }
         public string OrderDate { get; set; }

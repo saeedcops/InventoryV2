@@ -17,6 +17,7 @@ namespace Application.Common.Models
         public string Description { get; set; }
         public string Brand { get; set; }
         public int ExceededLimit { get; set; }
+        public string LocalCode { get; set; }
 
         public string Created { get; set; }
         public string CreatedBy { get; set; }

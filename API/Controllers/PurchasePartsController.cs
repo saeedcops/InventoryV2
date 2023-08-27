@@ -4,6 +4,7 @@ using Application.Items.Commands;
 using Application.Items.Queries;
 using Application.PurchaseParts.Commands;
 using Application.PurchaseParts.Queries;
+using Application.Warehouses.Commands;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +39,13 @@ namespace API.Controllers
 
         [HttpPost("Update")]
         public async Task<ActionResult<int>> Update([FromBody] UpdatePurchasePartCommand command)
+        {
+
+            return await Mediator.Send(command);
+        }
+
+        [HttpPost("Delete")]
+        public async Task<ActionResult<bool>> Delete([FromBody] DeletePurchasePartCommand command)
         {
 
             return await Mediator.Send(command);

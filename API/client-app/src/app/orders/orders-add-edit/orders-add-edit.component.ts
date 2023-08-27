@@ -62,6 +62,8 @@ export class OrdersAddEditComponent implements OnInit {
     customerId: new FormControl('', Validators.required),
     engineerId: new FormControl('', Validators.required),
     orderType: new FormControl('', Validators.required),
+    exchangeId: new FormControl('', Validators.required),
+    exchangeVoucher: new FormControl('', Validators.required),
     items: new FormArray([]),
     parts: new FormArray([]),
   });

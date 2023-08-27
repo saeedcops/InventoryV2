@@ -16,6 +16,9 @@ namespace Application.Common.Models
         public OrderType OrderType { get; set; } 
         public OrderStatus OrderStatus { get; set; } 
         public string Customer { get; set; }
+        public string ExchangeId { get; set; }
+        public string ExchangeVoucher { get; set; }
+
         public string Engineer { get; set; }
         public string Created { get; set; }
         public string CreatedBy { get; set; }

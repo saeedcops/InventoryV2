@@ -10,6 +10,7 @@ namespace Application.Common.Models
         public string OracleCode { get; set; }
         public string Description { get; set; }
         public int ExceededLimit { get; set; }
+        public string LocalCode { get; set; }
 
         public string Name { get; set; }
         public string Created { get; set; }

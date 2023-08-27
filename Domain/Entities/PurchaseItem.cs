@@ -15,12 +15,14 @@ namespace Domain.Entities
         public string PartNumber { get; set; }
         [Required]
         public string OracleCode { get; set; }
+        public string? LocalCode { get; set; }
+
         public string Model { get; set; }
         public string Description { get; set; }
         public int BrandId { get; set; }
         public int ExceededLimit { get; set; }
         public Brand Brand { get; set; }
         public byte[]? Image { get; set; }
-        public  List<PurchasePart> Parts { get; set; }
+       // public  List<PurchasePart> Parts { get; set; }
     }
 }

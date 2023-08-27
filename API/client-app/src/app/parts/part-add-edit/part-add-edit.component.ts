@@ -30,6 +30,8 @@ export class PartAddEditComponent implements OnInit {
       id:'',
       partNumber:[null,Validators.required],
       oracleCode: [null, Validators.required],
+      localCode: [null, Validators.required],
+      addVoucher: [null, Validators.required],
       model: '',
       exceededLimit: 0,
       description:  '',
@@ -48,6 +50,7 @@ export class PartAddEditComponent implements OnInit {
         this.empForm.patchValue({
           partNumber: res.partNumber,
           oracleCode: res.oracleCode,
+          localCode: res.localCode,
           model: res.name,
           description: res.description,
           warehouseId: 3,

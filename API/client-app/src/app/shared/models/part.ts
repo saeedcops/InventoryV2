@@ -10,9 +10,12 @@ export interface IPartPagination {
 export interface IPart {
   partNumber: string
   oracleCode: string
+  localCode: string
+
   model: string
   description: string
   created: string
+  addVoucher: number
   createdBy: string
   customer: string
   warehouse: string

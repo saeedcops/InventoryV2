@@ -4,6 +4,7 @@ export interface IPurchaseItemAdd {
 
   partNumber: string
   oracleCode: string
+  localCode: string
   model: string
   description: string
   brandId: number
@@ -19,6 +20,7 @@ export interface IPurchaseItem {
   lastModifiedBy: string
   partNumber: string
   oracleCode: string
+  localCode: string
   model: string
   exceededLimit: number
 
@@ -43,6 +45,7 @@ export interface IPurchasePart {
   lastModifiedBy: string
   partNumber: string
   exceededLimit: number
+  localCode: string
   oracleCode: string
   description: string
   name: string

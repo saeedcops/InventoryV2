@@ -33,7 +33,9 @@ export interface IItem {
   partNumber: string
   serialNumber: string
   oracleCode: string
+  localCode: string
   itemStatus: number
+  addVoucher: number
   model: string
   description: string
   created: string
@@ -58,12 +60,14 @@ export interface IItemDetail {
   partNumber: string
   serialNumber: string
   oracleCode: string
+  localCode: string
   itemStatus: number
   partStatus: number
   model: string
   description: string
   brand: IBrand
   id: number
+  addVoucher: number
   warehouse: IWarehouse
   customer: ICustomer
   engineer: IEngineer

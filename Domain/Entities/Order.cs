@@ -14,6 +14,8 @@ namespace Domain.Entities
         public OrderType OrderType { get; set; } = OrderType.Purchase;
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Ready;
         public int CustomerId { get; set; }
+        public string ExchangeId { get; set; }
+        public string ExchangeVoucher { get; set; }
         public Customer Customer { get; set; }
         public int EngineerId { get; set; }
         public Engineer Engineer { get; set; }

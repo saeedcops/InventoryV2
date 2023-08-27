@@ -17,6 +17,13 @@
 
     <div class="row">
       <mat-form-field appearance="outline">
+        <mat-label translate>LocalCode</mat-label>
+        <input matInput placeholder="Ex. LocalCode" formControlName="localCode">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
         <mat-label translate>Model</mat-label>
         <input matInput type="text" placeholder="Ex.  model" formControlName="model">
       </mat-form-field>
@@ -53,34 +60,34 @@
 
       <img [src]="url" class="itemImg" alt="Image" />
     </div>
-    <div>
-      <a mat-raised-button color="primary" (click)="Addnewrow()"> {{"Add Parts (+)" | translate}}</a>
-    </div>
+    <!--<div>
+    <a mat-raised-button color="primary" (click)="Addnewrow()"> {{"Add Parts (+)" | translate}}</a>
+  </div>
 
-    <table formArrayName="parts">
-      <tbody>
-        <tr *ngFor="let item of addPart.controls;let i=index" [formGroupName]="i">
-          <td>
+  <table formArrayName="parts">
+    <tbody>
+      <tr *ngFor="let item of addPart.controls;let i=index" [formGroupName]="i">
+        <td>
 
-            <mat-form-field appearance="outline">
-              <mat-label translate>PartNumber</mat-label>
-              <mat-select formControlName="partNumber">
-                <mat-option *ngFor="let val of itemParts" [value]="val.partNumber">
-                  {{val.partNumber}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label translate>PartNumber</mat-label>
+            <mat-select formControlName="partNumber">
+              <mat-option *ngFor="let val of itemParts" [value]="val.partNumber">
+                {{val.partNumber}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-            <mat-form-field appearance="outline" style="visibility:hidden">
-              <mat-label translate>PartNumber</mat-label>
-              <input matInput type="number" placeholder="Ex. Part Number" formControlName="count">
-            </mat-form-field>
-          </td>
+          <mat-form-field appearance="outline" style="visibility:hidden">
+            <mat-label translate>PartNumber</mat-label>
+            <input matInput type="number" placeholder="Ex. Part Number" formControlName="count">
+          </mat-form-field>
+        </td>
 
-          <td><button mat-button color="accent" (click)="Removeitem(i)">(-)</button></td>
-        </tr>
-      </tbody>
-    </table>
+        <td><button mat-button color="accent" (click)="Removeitem(i)">(-)</button></td>
+      </tr>
+    </tbody>
+  </table>-->
 
 
   </div>

@@ -97,5 +97,21 @@ export class PurchaseOrderComponent implements OnInit{
     });
   }
 
+  delete(id: number) {
+    let data = { 'id': id };
+    this._itemService.deleteOrder(data).subscribe(
+      res => {
+        this.toastr.success('Order deleted!', 'done');
+        this.getItemList();
+        console.log(res);
+
+      },
+      error => {
+        this.toastr.error("Could't delete the Order becuase it's linked to Item!", 'Error');
+
+        console.log(error);
+      }
+    );
+  }
 
 }

@@ -2,6 +2,7 @@ using API.Filters;
 using API.Services;
 using Application;
 using Application.Common.Interfaces;
+using AspNetCoreRateLimit;
 using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.Persistence;
@@ -56,6 +57,33 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddRazorPages();
 
+//Rate Limiter
+builder.Services.AddMemoryCache();
+
+builder.Services.Configure<IpRateLimitOptions>(options =>
+{
+    options.EnableEndpointRateLimiting = true;
+    options.StackBlockedRequests = false;
+    options.HttpStatusCode = 429;
+    options.RealIpHeader = "X-Real-IP";
+    options.ClientIdHeader = "X-ClientId";
+    options.GeneralRules = new List<RateLimitRule>
+        {
+            new RateLimitRule
+            {
+                Endpoint = "*",
+                Period = "60s",
+                Limit = 20,
+            }
+        };
+});
+builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+builder.Services.AddInMemoryRateLimiting();
+
+
 // Customise default API behaviour
 builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true);
@@ -87,6 +115,7 @@ using (var scope = app.Services.CreateScope())
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseStaticFiles();
+app.UseIpRateLimiting();
 
 //app.UseStaticFiles(new StaticFileOptions
 //{

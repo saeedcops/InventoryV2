@@ -28,8 +28,10 @@ namespace Application.Orders.Commands
                 .Include(o=>o.OrderItems)
                 .Include(o => o.OrderParts)
                 .FirstOrDefaultAsync(o => o.Id == request.OrderId && o.OrderStatus != OrderStatus.Returned);
+
             if (order == null)
                 throw new NotFoundException($"Order with Id {request.OrderId} Not found or it's already on store");
+
             if (order.OrderItems != null)
                 foreach (var item in order.OrderItems)
                 {

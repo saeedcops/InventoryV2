@@ -30,4 +30,10 @@ export class PurchasePartService {
   updatePart(data: any) {
     return this.http.post(this.baseUrl + 'Purchaseparts/update', data);
   }
+
+  deletePart(data: any) {
+
+
+    return this.http.post(this.baseUrl + 'Purchaseparts/delete', data);
+  }
 }

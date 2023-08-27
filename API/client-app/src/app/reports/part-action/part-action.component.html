@@ -18,11 +18,16 @@
 
       <mat-form-field appearance="outline">
         <mat-label translate>From</mat-label>
-        <input matInput type="date" placeholder="Ex. From Date" formControlName="from">
+        <input matInput [matDatepicker]="picker" placeholder="Choose from date" formControlName="from">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label translate>To</mat-label>
-        <input matInput type="date" placeholder="Ex. To Date" formControlName="to">
+        <input matInput [matDatepicker]="picker1" placeholder="Choose to date" formControlName="to">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
 
       <div mat-dialog-actions class="action">
@@ -39,6 +44,7 @@
     <tr>
       <th translate>CreatedAt</th>
       <th translate>CreatedBy</th>
+      <th translate>Add Voucher</th>
       <th translate>Customer</th>
       <th translate>Description</th>
       <th translate>Engineer</th>
@@ -53,6 +59,7 @@
     <tr *ngFor="let val of it">
       <td>{{val.created | date }}</td>
       <td>{{val.createdBy}}</td>
+      <td>{{val.addVoucher}}</td>
 
       <td>{{val.customer}}</td>
       <td>{{val.description}}</td>

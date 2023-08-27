@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -19,7 +20,9 @@ export class PartActionComponent implements OnInit {
   private partSource = new ReplaySubject<IPart[]>();
   parts$ = this.partSource.asObservable();
   reportForm: FormGroup;
-  constructor(private _reportService: ReportsService, private _fb: FormBuilder,
+  constructor(private _reportService: ReportsService,
+    private datePipe: DatePipe,
+    private _fb: FormBuilder,
      private _translate: TranslateService) {
 
     this.reportForm = this._fb.group({
@@ -34,18 +37,22 @@ export class PartActionComponent implements OnInit {
 
 
   onFormSubmit() {
+    if (this.reportForm.valid) {
 
-        console.log(this.reportForm.value);
-        this._reportService.getPartActions(this.reportForm.value).subscribe(
-          next => {
-            this.partSource.next(next);
-             console.log(next);
-          },
-          error => {
-            console.log(error);
-          },
-        );
-      
+
+      this.reportForm.value.from = this.datePipe.transform(this.reportForm.value.from.toDateString(), "dd-MM-yyyy");
+      this.reportForm.value.to = this.datePipe.transform(this.reportForm.value.to.toDateString(), "dd-MM-yyyy");
+      console.log(this.reportForm.value);
+      this._reportService.getPartActions(this.reportForm.value).subscribe(
+        next => {
+          this.partSource.next(next);
+          console.log(next);
+        },
+        error => {
+          console.log(error);
+        },
+      );
+    }
     }
   
 }

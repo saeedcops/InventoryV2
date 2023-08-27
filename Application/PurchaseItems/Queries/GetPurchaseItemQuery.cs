@@ -32,7 +32,7 @@ namespace Application.PurchaseItems.Queries
 
             var entity = await _context.PurchaseItems
                 .Include(i => i.Brand)
-                .Include(i => i.Parts)
+                //.Include(i => i.Parts)
                 .FirstOrDefaultAsync(p => p.PartNumber.Equals(request.PartNumber));
 
             if (entity == null)

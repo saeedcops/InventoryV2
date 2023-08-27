@@ -13,6 +13,7 @@
     <tr>
       <th translate>CreatedAt</th>
       <th translate>CreatedBy</th>
+      <th translate>Add Voucher</th>
       <th translate>Description</th>
       <th translate>PartStatus</th>
       <th translate>Model</th>
@@ -24,6 +25,7 @@
     <tr *ngFor="let val of it">
       <td>{{val.created | date}}</td>
       <td>{{val.createdBy}}</td>
+      <td>{{val.addVoucher}}</td>
 
       <td>{{val.description}}</td>
       <td>{{status[val.partStatus]}}</td>

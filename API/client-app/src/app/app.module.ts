@@ -46,6 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PurchasePartModule } from './purchase-part/purchase-part.module';
 import { OrderModule } from './orders/order.module';
 import { PartsModule } from './parts/parts.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -111,9 +113,11 @@ import { PartsModule } from './parts/parts.module';
 
   ],
   providers: [MatDialogModule,
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
   ],
   bootstrap: [AppComponent]
 })

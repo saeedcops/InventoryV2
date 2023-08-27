@@ -20,11 +20,13 @@ namespace Application.PurchaseItems.Commands
         public string OracleCode { get; set; }
         [Required]
         public string Model { get; set; }
+        public string LocalCode { get; set; }
+
         public string Description { get; set; }
         public int BrandId { get; set; }
         public int ExceededLimit { get; set; }
         public byte[]? Image { get; set; }
-        public List<OrderItem> Parts { get; set; }
+       // public List<OrderItem> Parts { get; set; }
     }
 
     public class CreatePurchaseItemCommandHandler : IRequestHandler<CreatePurchaseItemCommand, int>
@@ -42,6 +44,7 @@ namespace Application.PurchaseItems.Commands
             {
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
+                LocalCode = request.LocalCode,
                 Model = request.Model,
                 Description = request.Description,  
                 BrandId = request.BrandId,
@@ -49,12 +52,12 @@ namespace Application.PurchaseItems.Commands
                 ExceededLimit = request.ExceededLimit,
  
             };
-            var parts = new List<PurchasePart>();
-            if (request.Parts != null)
-                foreach (var serial in request.Parts)
-                 parts.Add(await _context.PurchaseParts.FirstOrDefaultAsync(x => x.PartNumber.Equals(serial.PartNumber)));
+            //var parts = new List<PurchasePart>();
+            //if (request.Parts != null)
+            //    foreach (var serial in request.Parts)
+            //     parts.Add(await _context.PurchaseParts.FirstOrDefaultAsync(x => x.PartNumber.Equals(serial.PartNumber)));
        
-            entity.Parts = parts;
+            //entity.Parts = parts;
             entity = _context.PurchaseItems.Add(entity).Entity;
 
             await _context.SaveChangesAsync(cancellationToken);

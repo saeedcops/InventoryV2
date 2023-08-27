@@ -34,8 +34,10 @@ export class PartsComponent implements OnInit {
     'id',
     'partNumber',
     'oracleCode',
+    'localCode',
     'description',
     'partStatus',
+    'addVoucher',
     'model',
     'warehouseId',
     'action'

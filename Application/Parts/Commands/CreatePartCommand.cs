@@ -13,6 +13,9 @@ namespace Application.Parts.Commands
         public string PartNumber { get; set; }
         public string? OracleCode { get; set; }
         public string Model { get; set; }
+        public string AddVoucher { get; set; }
+        public string LocalCode { get; set; }
+
         public string? Description { get; set; }
         public byte[]? Image { get; set; }
         public int BrandId { get; set; }
@@ -41,8 +44,9 @@ namespace Application.Parts.Commands
                 Model = request.Model,
                 PartNumber = request.PartNumber,
                 OracleCode = request.OracleCode,
+                LocalCode = request.LocalCode,
                 ExceededLimit = request.ExceededLimit,
-
+                AddVoucher = request.AddVoucher
             };
 
             _context.Parts.Add(entity);

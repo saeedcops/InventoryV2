@@ -43,4 +43,10 @@ export class PurchaseOrderService {
   updatePurchase(data: any) {
     return this.http.post(this.baseUrl + 'PurchaseOrders/update', data);
   }
+
+  deleteOrder(data: any) {
+
+
+    return this.http.post(this.baseUrl + 'PurchaseOrders/delete', data);
+  }
 }

@@ -15,7 +15,7 @@ import { PurchaseItemService } from '../purchase-item.service';
 })
 export class PurchaseItemAddEditComponent implements OnInit {
   empForm: FormGroup;
-  parts!: FormArray;
+ // parts!: FormArray;
   brands!: IBrand[];
   itemParts!: IPurchasePart[];
   url:string = '';
@@ -30,11 +30,12 @@ export class PurchaseItemAddEditComponent implements OnInit {
     this.empForm = this._fb.group({
       partNumber:[null,Validators.required],
       oracleCode: [null, Validators.required],
+      localCode: '',
       model: [null, Validators.required],
       description: [null, Validators.required],
       brandId: [null, Validators.required],
       exceededLimit: [null, Validators.required],
-      parts: new FormArray([]),
+     // parts: new FormArray([]),
       image: { value: '', disabled: false }
     });
 
@@ -51,33 +52,33 @@ export class PurchaseItemAddEditComponent implements OnInit {
     };
   }
 
-  Addnewrow() {
-    this.parts = this.empForm.get("parts") as FormArray;
-    this.parts.push(this.Genrow())
-  }
+  //Addnewrow() {
+  //  this.parts = this.empForm.get("parts") as FormArray;
+  //  this.parts.push(this.Genrow())
+  //}
 
-  Genrow(): FormGroup {
-    return new FormGroup({
-      partNumber: new FormControl('',Validators.required),
-      count: new FormControl(0)
-    });
-  }
+  //Genrow(): FormGroup {
+  //  return new FormGroup({
+  //    partNumber: new FormControl('',Validators.required),
+  //    count: new FormControl(0)
+  //  });
+  //}
 
-  Removeitem(index: any) {
-    //if (this.parts.length > 1) {
-      this.parts = this.empForm.get("parts") as FormArray;
-      this.parts.removeAt(index)
-    //} else {
-    //  this.toastr.warning("Item must contains at least 1 parts");
-    //}
-  }
+  //Removeitem(index: any) {
+  //  //if (this.parts.length > 1) {
+  //    this.parts = this.empForm.get("parts") as FormArray;
+  //    this.parts.removeAt(index)
+  //  //} else {
+  //  //  this.toastr.warning("Item must contains at least 1 parts");
+  //  //}
+  //}
 
-  get addPart() {
-    return this.empForm.get("parts") as FormArray;
-  }
+  //get addPart() {
+  //  return this.empForm.get("parts") as FormArray;
+  //}
   ngOnInit(): void {
     this.empForm.patchValue(this.data);
-    this.Addnewrow();
+   // this.Addnewrow();
     this._itemService.getBrands().subscribe(res =>
     {
       this.brands = res;

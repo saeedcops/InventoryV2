@@ -37,7 +37,7 @@ namespace Application.Reports.Queries
         public async Task<List<PartDto>> Handle(GetPartsActionsQuery request, CancellationToken cancellationToken)
         {
             DateTime from = Convert.ToDateTime(request.From);
-            DateTime to = Convert.ToDateTime(request.To);
+            DateTime to = Convert.ToDateTime(request.To).AddDays(1);
             return await _context.Parts
                 .Where(i => i.PartNumber.Equals(request.PartNumber) &&
                             i.OrderDate >= from &&

@@ -17,6 +17,9 @@ namespace Application.Orders.Commands
         public int CustomerId { get; set; }
         public int EngineerId { get; set; }
         public int OrderType { get; set; }
+        public string ExchangeId { get; set; }
+        public string ExchangeVoucher { get; set; }
+
         public List<OrderItem> Items { get; set; }
         public List<OrderItem> Parts { get; set; }
         public byte[]? Document { get; set; }
@@ -162,9 +165,10 @@ namespace Application.Orders.Commands
                 EngineerId = request.EngineerId,
                 OrderType =(OrderType) request.OrderType,
                 Document = request.Document,
+                ExchangeId = request.ExchangeId,
                 OrderItems = items,
                 OrderParts = parts,
-                
+                ExchangeVoucher = request.ExchangeVoucher,
                
             };
 

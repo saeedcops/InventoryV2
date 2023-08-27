@@ -50,12 +50,14 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{"Action" | translate}} </th>
         <td mat-cell *matCellDef="let row">
           <button mat-icon-button color="primary" routerLink="/purchase-orders/{{row.id}}">
-              <mat-icon>remove_red_eye</mat-icon>
+            <mat-icon>remove_red_eye</mat-icon>
           </button>
           <button mat-icon-button color="primary" (click)="openEditForm(row)">
             <mat-icon>edit</mat-icon>
           </button>
-
+          <button mat-icon-button color="warn" (click)="delete(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </td>
       </ng-container>
 

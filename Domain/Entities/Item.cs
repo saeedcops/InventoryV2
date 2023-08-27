@@ -12,8 +12,10 @@ namespace Domain.Entities
         public string SerialNumber { get; set; }
         [Required]
         public string OracleCode { get; set; }
+        public string LocalCode { get; set; }
         public DateTime? OrderDate { get; set; }
         public int ExceededLimit { get; set; }
+        public string AddVoucher { get; set; }
 
         public ItemStatus ItemStatus { get; set; } = ItemStatus.stored;
         public string Model { get; set; }

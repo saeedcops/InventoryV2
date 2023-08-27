@@ -19,11 +19,12 @@ namespace Application.PurchaseItems.Commands
         public string OracleCode { get; set; }
         public string Model { get; set; }
         public int ExceedLimit { get; set; }
+        public string LocalCode { get; set; }
 
         public string Description { get; set; }
         public int BrandId { get; set; }
         public byte[]? Image { get; set; }
-        public List<OrderItem>? Parts { get; set; }
+       // public List<OrderItem>? Parts { get; set; }
     }
 
     public class UpdatePurchaseItemCommandHandler : IRequestHandler<UpdatePurchaseItemCommand, int>
@@ -42,20 +43,21 @@ namespace Application.PurchaseItems.Commands
                 throw new NotFoundException($"No PurchaseItems with {request.PartNumber}");
 
             entity.OracleCode = request.OracleCode != null ? request.OracleCode : entity.OracleCode;
+            entity.LocalCode = request.LocalCode != null ? request.LocalCode : entity.LocalCode;
             entity.Model = request.Model != null ? request.Model : entity.Model;
             entity.Description = request.Description != null ? request.Description : entity.Description;
             entity.BrandId = request.BrandId != 0 ? request.BrandId : entity.BrandId;
             entity.Image = request.Image != null ? request.Image : entity.Image;
             entity.ExceededLimit = request.ExceedLimit != 0 ? request.ExceedLimit : entity.ExceededLimit;
            
-            if (request.Parts != null)
-            {
-                var parts = new List<PurchasePart>();
-                foreach (var serial in request.Parts)
-                    parts.Add(await _context.PurchaseParts.FirstOrDefaultAsync(x => x.PartNumber.Equals(serial.PartNumber)));
+            //if (request.Parts != null)
+            //{
+            //    var parts = new List<PurchasePart>();
+            //    foreach (var serial in request.Parts)
+            //        parts.Add(await _context.PurchaseParts.FirstOrDefaultAsync(x => x.PartNumber.Equals(serial.PartNumber)));
 
-                entity.Parts = parts;
-            }
+            //    entity.Parts = parts;
+            //}
             _context.PurchaseItems.Update(entity);
             await _context.SaveChangesAsync(cancellationToken);
 
